@@ -73,14 +73,14 @@ func initialize() -> void:
 
 func get_lesson(lesson_path: String) -> BBCodeParser.ParseNode:
 	var effective_lesson_path := lesson_path
-	if TranslationManager.current_language != TranslationManager.DEFAULT_LOCALE:
-		effective_lesson_path = "%s.%s.%s" % [
+	if TranslationManager.current_language != "en":
+		var localized_path := "%s.%s.%s" % [
 			lesson_path.get_basename(),
 			TranslationManager.current_language,
 			lesson_path.get_extension(),
 		]
-		if not FileAccess.file_exists(effective_lesson_path):
-			effective_lesson_path = lesson_path
+		if FileAccess.file_exists(localized_path):
+			effective_lesson_path = localized_path
 
 	if _lesson_cache.has(effective_lesson_path):
 		return _lesson_cache[effective_lesson_path]

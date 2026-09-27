@@ -45,7 +45,7 @@ const COMPLETENESS_THRESHOLD := SHARED.TRANSLATION_COMPLETENESS_THRESHOLD
 var overall_tr_progress := { "en": 1.0 }
 var lesson_tr_data := {}
 
-var current_language := DEFAULT_LOCALE:
+var current_language := "":
 	set = set_language
 
 var _loaded_translations := []
@@ -53,7 +53,8 @@ var _loaded_translations := []
 
 func _ready() -> void:
 	var current_profile := UserProfiles.get_profile()
-	set_language(current_profile.language)
+	var target_lang := current_profile.language if not current_profile.language.is_empty() else DEFAULT_LOCALE
+	set_language(target_lang)
 
 	_update_language_completeness()
 
@@ -139,7 +140,7 @@ func current_translation_is_rtl() -> bool:
 
 
 func set_language(language_code: String) -> void:
-	if current_language == language_code:
+	if current_language == language_code and _loaded_translations.size() > 0:
 		return
 
 	current_language = language_code
@@ -152,8 +153,8 @@ func set_language(language_code: String) -> void:
 
 		_loaded_translations = []
 
-	# If the language is set to the default locale, we don't need to do anything else.
-	if current_language == DEFAULT_LOCALE:
+	# If the language is English (source locale), scenes are already in English and no PO files exist.
+	if current_language == "en":
 		TranslationServer.set_locale(current_language)
 		current_profile.language = current_language
 		current_profile.save()
@@ -202,9 +203,4 @@ func set_language(language_code: String) -> void:
 
 
 func _reset_language() -> void:
-	current_language = DEFAULT_LOCALE
-	TranslationServer.set_locale(current_language)
-
-	var current_profile := UserProfiles.get_profile()
-	current_profile.language = current_language
-	current_profile.save()
+	set_language(DEFAULT_LOCALE)
