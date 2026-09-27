@@ -1,16 +1,11 @@
 /* --- BASE --- */
 
 :root {
-  --max-width: 1920px;
   /*--background-color: #303049;*/
   --game-background-color: #090a20;
   --bar-height: 14px;
   --bar-width: 300px;
   --bar-corner-radius: calc(var(--bar-height) / 2);
-
-  --render-width: 1920px;
-  --render-height: 1080px;
-  --render-aspect-ratio: calc(var(--render-width) / var(--render-height));
 
   --scale: 1;
 }
@@ -30,8 +25,8 @@ body {
   background-color: var(--game-background-color);
 }
 
-.layer {
-  position: absolute;
+.layer,
+.fullscreen {
   left: 0;
   top: 0;
   right: 0;
@@ -40,8 +35,17 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: var(--max-width);
   margin: 0 auto;
+}
+
+.layer {
+  position: absolute;
+}
+
+.fullscreen {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
 }
 
 /* --- /BASE --- */
@@ -50,14 +54,14 @@ body {
 
 #canvas-container {
   background-color: var(--game-background-color);
-  max-width: var(--render-width);
-  max-height: var(--render-height);
   width: 100%;
   height: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  /**transform: scale(var(--scale));
+  transform-origin: center center;*/
 }
 
 /* --- /CANVAS CONTAINER --- */
@@ -73,6 +77,8 @@ body {
   margin: 0;
   border: none;
   background-color: var(--game-background-color);
+  width: 100%;
+  height: 100%;
 }
 
 #canvas:focus {
@@ -138,11 +144,13 @@ body {
 .notices {
   font-family: "Noto Sans", "Droid Sans", Arial, sans-serif;
   color: #3b3943;
-  width: 640px;
+  max-width: 640px;
   padding: 3em;
+  margin: 1em;
   background: #fdfdfd;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
+
 /*-- /NOTICES --*/
 
 /*-- STATES --*/
@@ -180,7 +188,9 @@ body {
   display: none;
 }
 
-@media (orientation: portrait), (max-aspect-ratio: 4/3), (max-width: 750px) {
+@media (orientation: portrait),
+(max-width: 700px),
+(max-height: 400px) {
   .mobile-only {
     display: flex;
   }
@@ -212,7 +222,8 @@ body {
 
 /*-- FULLSCREEN ELEMENTS --*/
 
-.button-fullscreen {
+.button-fullscreen-on,
+.button-fullscreen-off {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -230,40 +241,25 @@ body {
   transform: scale(var(--scale));
 }
 
-.button-fullscreen:hover,
-.button-fullscreen:active {
+.button-fullscreen-off {
+  display: none;
+  background-image: url("fullscreen_off.png");
+}
+
+.button-fullscreen-on:hover,
+.button-fullscreen-on:active,
+.button-fullscreen-off:hover,
+.button-fullscreen-off:active {
   opacity: 1;
 }
 
-.button-fullscreen span {
+.button-fullscreen-on span,
+.button-fullscreen-off span {
   display: none;
 }
 
-/* This is an unfortunate hack to detect fullscreen */
-#fullscreen-detector {
-  position: fixed;
-  visibility: hidden;
-  top: 0;
-  left: 0;
-}
-
-.debug #fullscreen-detector {
-  width: 25px;
-  height: 25px;
-  background: red;
-  visibility: visible;
-}
-
-@media all and (display-mode: fullscreen) {
-  #fullscreen-detector {
-    top: 10px;
-  }
-  .button-fullscreen {
-    background-image: url("fullscreen_off.png");
-  }
-}
-
-.native-fullscreen .button-fullscreen {
+.native-fullscreen .button-fullscreen-on,
+.native-fullscreen .button-fullscreen-off {
   display: none;
 }
 
