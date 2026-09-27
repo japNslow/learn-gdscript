@@ -1,150 +1,152 @@
-[lesson title="What Code is Like"]
+[lesson title="Как Выглядит Код"]
 
-Learning to program can be daunting.
+Обучение программированию может пугать.
 
-Yet, you want to make video games, so [b]there is no way around learning to program[/b]. [i]Every[/i] video game is a computer program.
+Но если вы все-таки хотите создавать видеоигры, то [b]без умения программировать вам не обойтись[/b]. [i]Каждая[/i] видеоигра — это компьютерная программа.
 
-[title]Telling the computer what to do[/title]
+[title]Объясняем компьютеру, что мы от него хотим[/title]
 
-Programming is the process of writing precise [glossary term="instructions"]instructions[/glossary] that tell a computer how to perform a task.
+Программирование — это процесс написания точных [glossary term="instructions"]инструкций[/glossary], которые объясняют компьютеру, как выполнить поставленную задачу.
 
-A game's instructions are, for example: moving a character, drawing a life bar, or playing a sound.
+Примерами таких инструкций могут быть: перемещение персонажа, рисование полоски жизни или воспроизведение звука.
 
-To do any of that, you need to learn a [b]programming language[/b]: a specialized language to tell the computer what to do.
+Чтобы написать какую-нибудь из этих инструкций, вам нужно научиться использовать [b]язык программирования[/b] — специализированный язык, позволяющий указать компьютеру, что ему делать.
 
 [visual path="CodeProgrammingLanguage.tscn"]
 
-Programming languages are different from natural ones like English or Spanish. The computer does not think. Unlike us, it can't [i]interpret[/i] what you tell it.
+Языки программирования отличаются от естественных языков, таких как русский или английский. Компьютер не думает. В отличие от нас, он не может [i]понять суть[/i] того, что вы ему говорите.
 
-You can't tell it something vague like "draw a circle."
+Вы не можете сказать ему что-то неопределённое вроде «нарисуй круг.»
 
-Which circle? Where? Which color should it be? How big should it be?
+Какой круг? Нарисовать где? Какого цвета он должен быть? Насколько большим он должен быть?
 
-[title]The computer needs exact instructions[/title]
+[title]Компьютеру нужны точные инструкции[/title]
 
-To draw a filled circle, the computer needs to know exact drawing coordinates, the radius, the thickness, and color you want.
+Чтобы нарисовать закрашенный круг, компьютеру необходимо знать точные координаты рисования, радиус, толщину и нужный цвет.
 
-The code to do so [i]may[/i] look like this.
+Код для рисования круга [i]может[/i] выглядеть следующим образом.
 
-[i]Click the button to run the code example and see the result.[/i]
+[i]Нажмите кнопку, чтобы запустить пример кода и увидеть результат.[/i]
 
 [visual path="RunDrawCircle.tscn"]
 
-In the following lessons, you'll learn how this code works.
+В следующих уроках вы узнаете, как работает этот код.
 
-For now, we want to give you a sense of what computer code looks like. In this example, everything matters: each parenthesis, capital letter, period, and comma.
+А пока мы хотим дать вам представление о том, как он выглядит. В этом примере важно все: каждая скобка, заглавная буква, точка и запятая.
 
-The computer always does [b]exactly[/b] what you tell it to. No more, no less. It [i]blindly[/i] follows every instruction.
+Компьютер всегда делает [b]в точности[/b] то, что вы ему говорите. Ни больше, ни меньше. Он [i]слепо[/i] следует каждой инструкции.
 
-[b]When you program, you're the one in charge, and you're free to do [i]anything[/i] you want.[/b]
+[b]Когда вы программируете, вы отвечаете за все, и вольны делать [i]все[/i], что захотите.[/b]
 
-[quiz_choice question="How do you give instructions to a computer?" multiple="false" shuffle="true"]
-[option correct]Using a programming language and precise instructions[/option]
-[option tr="Replace English with current language"]Using prose in plain English[/option]
-[explanation]Computers don't understand natural languages like English. To make them do anything, you need to give them precise instructions they understand, using a programming language.[/explanation]
+[quiz_choice question="Как объяснить компьютеру что делать?" multiple="false" shuffle="true"]
+[option correct]Использовать язык программирования и точные инструкции[/option]
+[option tr="Replace English with current language"]Использовать прозу на простом английском языке[/option]
+[explanation]Компьютеры не понимают естественных языков, таких как английский. Чтобы заставить их что-то делать, вам нужно дать им точные инструкции на языке программирования, которые будут для них понятны.[/explanation]
 [/quiz_choice]
 
-[title]You'll learn to code with GDScript[/title]
+[title]Вы научитесь программировать с помощью GDScript[/title]
 
-In this course, you'll learn the GDScript programming language (the name stands for "Godot script").
+В этом курсе вы изучите язык программирования GDScript (название означает "Godot script" — "скриптовый язык Godot").
 
-This is a language by game developers for game developers. You can use it within the Godot game engine to create games and applications.
+GDScript — это язык от разработчиков игр для разработчиков игр. Вы можете использовать его в игровом движке Godot для создания игр и приложений.
 
-It's the language used by games like [url=https://store.steampowered.com/app/1637320/Dome_Keeper/]Dome Keeper[/url] and [url=https://store.steampowered.com/app/1942280/Brotato/]Brotato[/url], and Godot also powers hits like [url=https://store.steampowered.com/app/2835570/Buckshot_Roulette/]Buckshot Roulette[/url] and [url=https://store.steampowered.com/app/2868840/Slay_the_Spire_2/]Slay the Spire 2[/url].
+Это язык, на котором созданы такие игры, как [url=https://store.steampowered.com/app/1637320/Dome_Keeper/]Dome Keeper[/url] и [url=https://store.steampowered.com/app/1942280/Brotato/]Brotato[/url], а Godot также лежит в основе таких хитов, как [url=https://store.steampowered.com/app/2835570/Buckshot_Roulette/]Buckshot Roulette[/url] и [url=https://store.steampowered.com/app/2868840/Slay_the_Spire_2/]Slay the Spire 2[/url].
 
 [visual path="ImageBrotato.tscn"]
 
-GDScript is an excellent language to get started with programming because it's specialized. Unlike some other languages, it doesn't have an [i]overwhelming[/i] amount of features for you to learn.
+GDScript — отличный язык для знакомства с программированием, благодаря своей специализации. В отличие от некоторых других языков, в нем нет [i]ошеломляюще огромного[/i] количества особенностей, требующих изучения.
 
-[title]Most programming languages are similar[/title]
+[title]Большинство языков программирования похожи[/title]
 
-Don't be afraid of being locked in. The concepts you learn in your first programming language will apply to all the others.
+Не бойтесь попасть в заложники одного языка. Концепции, которые вы изучите в своем первом языке программирования, будут применимы и ко всем остальным.
 
-Most languages have more similarities than differences. Once you learn one, it takes much less time to become productive with the next one.
+Большинство языков имеют больше сходств, чем различий. Как только вы изучите один из них, вам потребуется гораздо меньше времени, чтобы начать продуктивно работать со следующим.
 
-Here's an example of the same code in three languages: GDScript, JavaScript, and Python.
+Вот пример одного и того же кода на трех языках: GDScript, JavaScript и Python.
 
-Try to spot the similarities and differences.
+Попытайтесь найти сходства и различия.
 
 [visual path="ThreeCodeExamples.tscn"]
 
-It doesn't look [i]that[/i] different, does it?
+Код не выглядит [i]таким уж[/i] разным, не так ли?
 
-[quiz_choice question="Are programming languages all completely different?" multiple="false" shuffle="true"]
-If you learn one language and then want to learn another, will you have to start from scratch?
-[option correct]No, they have many similarities[/option]
-[option]Yes, they are completely different[/option]
-[explanation]Most programming languages build upon the same ideas of how to program. As a result, they're mostly similar.
+[quiz_choice question="Все языки программирования совершенно разные?" multiple="false" shuffle="true"]
+Если при изучении одного языка, вы захотите выучить другой, придется ли вам начинать с нуля?
+[option correct]Нет, у них много общего[/option]
+[option]Да, они совершенно разные[/option]
+[explanation]
+Большинство языков программирования основаны на одних и тех же идеях о том, как программировать. В результате они в основном похожи.
 
-It's not to say all languages are the same, though. Some offer a really unique syntax and require a completely different mindset compared to GDScript.
+Однако это не значит, что все языки одинаковы. Некоторые предлагают действительно уникальный синтаксис и требуют совершенно другого образа мышления по сравнению с GDScript.
 
-However, languages like GDScript, Python, JavaScript, C++, C#, and many others build upon a similar programming philosophy.[/explanation]
+Однако такие языки, как GDScript, Python, JavaScript, C++, C# и многие другие, основаны на аналогичной философии программирования.
+[/explanation]
 [/quiz_choice]
 
-[title]This is a course for beginners[/title]
+[title]Этот курс для начинающих[/title]
 
-If you want to learn to make games or code but don't know where to start, this course should be perfect.
+Если вы хотите научиться создавать игры или программировать, но не знаете, с чего начать — этот курс идеально вам подойдёт.
 
 [visual path="WelcomeAnimation.tscn"]
 
-We designed it for [i]absolute beginners[/i], but if you already know another language, it can be a fun way to get started with Godot.
+Мы разработали его для [i]абсолютных новичков[/i], но если вы уже знаете другой язык, данный курс может быть интересным способом начать работу с Godot.
 
-We will give you the coding foundations you need to start making games and applications with Godot.
+Мы дадим вам основы программирования, необходимые для того, чтобы начать создавать игры и приложения с помощью Godot.
 
-Please be patient. It will take time before you can make your first complete game alone.
+Пожалуйста, наберитесь терпения. Потребуется время, прежде чем вы сможете сделать свою первую полноценную игру в одиночку.
 
-[title]Learning to make games takes practice[/title]
+[title]Обучение созданию игр требует практики[/title]
 
-Creating games is more accessible than ever, but it still takes a lot of work and practice.
+Создание игр стало более доступным, чем когда-либо, но оно по-прежнему требует много работы и практики.
 
-Do not expect any single course or book to turn you into a professional. [b]Programming is something you learn through practice.[/b]
+Не ждите, что какой-то один курс или книга сделают из вас профессионала. [b]Программирование — это то, чему вы учитесь на практике.[/b]
 
-If something doesn't make immediate sense, don't stress it too much! Keep learning and come back to it later.
+Если что-то не получается понять сразу, не переживайте слишком сильно! Продолжайте учиться и возвращайтесь к этому позже.
 
-Enjoy the process and celebrate every little success. You will never stop learning as a game developer.
+Наслаждайтесь процессом и радуйтесь каждому маленькому успеху. Как разработчик игр, вы никогда не перестанете учиться.
 
-[title]What and how you'll learn[/title]
+[title]Чему и как вы научитесь[/title]
 
-In this free course, you will learn the foundations you need to start coding things like these:
+В этом бесплатном курсе вы изучите основы, необходимые для того, чтобы начать программировать такие вещи как:
 
 [visual path="res://course/lesson-26-looping-over-dictionaries/ExampleDisplayInventory.tscn"]
 
 [visual path="res://course/lesson-19-creating-arrays/visuals/ExamplePathfinding.tscn"]
 
-Along the way, we'll teach you:
+Попутно мы научим вас:
 
-- Some of the mindset you need as a developer. Too many programming courses skip that essential part.
-- How to write GDScript code.
-- Essential programming foundations to get you started.
+- Некоторым особенностям мышления, необходимым вам как разработчику. Слишком многие курсы программирования пропускают эту категорически важную часть.
+- Как писать код на языке GDScript.
+- Ключевым основам программирования, которые помогут вам начать работу.
 
-As you go through the course, you will have many questions. We will answer them the best we can as we go.
+По мере прохождения курса у вас возникнет много вопросов. Мы ответим на них как можно лучше по ходу дела.
 
-But there is so much to cover that we have to take a few shortcuts. We don't want to [i]overwhelm[/i] you with information. We also want to respect the pace at which our brains memorize things.
+Но в курсе так много всего нужно охватить, что нам пришлось сделать несколько сокращений. Мы не хотим [i]перегружать[/i] вас информацией. Также мы попытаемся придерживаться темпа, при котором ваш мозг лучше всего запомнит пройденный материал.
 
-We broke down the course into short lessons and practices. If we put too much into each part, you'd learn slower.
+Для этого мы специально разбили курс на короткие уроки и практические задания. Если мы будем вкладывать слишком много информации в каждую часть, вы будете учиться медленнее.
 
-If at any time you're left with burning questions, you're more than welcome to join [url=https://discord.gg/87NNb3Z]our Discord community[/url].
+Если в любой момент прохождения курса у вас возникнут горящие вопросы, мы с большой радостью на них ответим [url=https://discord.gg/87NNb3Z]в нашем сообществе Discord[/url].
 
-[note title="Is this for Godot 4?"]
-What you'll learn in this free course is fully compatible with Godot 4. While we initially designed this series for Godot 3, the foundations of GDScript are still the same in Godot 4.
+[note title="Актуален ли этот курс для Godot 4?"]
+То, что вы изучите в этом бесплатном курсе, полностью совместимо с Godot 4. Несмотря на то, что изначально этот курс был создан для Godot 3, основы GDScript не поменялись в четвертой версии движка.
 [/note]
 
-[title]Programming is a skill[/title]
+[title]Программирование — это навык[/title]
 
-Programming is a skill, so to get good at it, you must practice. It is why we built this app.
+Программирование — это навык, поэтому, чтобы овладеть им, вы должны практиковаться. Именно поэтому мы создали это приложение.
 
-Each lesson is followed by an interactive practice to use what you learned.
+За каждым уроком следует интерактивная практика, позволяющая закрепить то, что вы выучили.
 
-Speaking of which, it's time to look at the practice screen!
+Пришло время взглянуть на экран практики!
 
-To continue, click the [i]Practice[/i] button below. It will give you a short run through how practices work.
+Чтобы продолжить, нажмите кнопку [i]Практика[/i] ниже. После нажатия вы получите краткое представление о том, как работают упражнения.
 
-[practice id="try-your-first-code" title="Try Your First Code"]
-[description]Run your first bit of code and see the result.[/description]
+[practice id="try-your-first-code" title="Первое Знакомство С Кодом"]
+[description]Запустите свой первый кусочек кода и посмотрите на результат.[/description]
 [goal]
-We prepared a code sample for you. For this practice, you don't need to change anything.
+Мы подготовили для вас образец кода. В этом практическом упражнении вам не нужно ничего менять.
 
-To test the code, click the [i]Run[/i] button below the code editor.
+Чтобы протестировать код, нажмите кнопку [i]Выполнить[/i] под редактором кода.
 [/goal]
 [starting_code]
 func _ready():
@@ -153,6 +155,7 @@ func _ready():
 [cursor line="0" column="0"]
 [validator path="first_practice/TestsWhatCodeIsLike.gd"]
 [script_slice path="first_practice/WelcomeToTheApp.gd" name="welcome_to_app"]
-[hint]Click the [i]Run[/i] button.[/hint]
+[hint]Нажмите кнопку [i]Выполнить[/i].[/hint]
 [/practice]
+
 [/lesson]

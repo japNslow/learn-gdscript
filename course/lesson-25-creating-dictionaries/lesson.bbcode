@@ -1,99 +1,99 @@
-[lesson title="Creating Dictionaries"]
+[lesson title="Создание словарей"]
 
-In the last lesson, we used an array to represent a player's inventory.
+В последнем уроке мы использовали массив для представления инвентаря игрока.
 
-With just an array of item names, though, we can't easily keep track of the amount of each item.
+Однако, в массиве, содержащем только названия предметов, отслеживать количество предметов каждого типа очень непросто.
 
-Instead, we can bundle the item names and amounts into a single [glossary term="dictionary"]dictionary[/glossary].
+Вместо этого мы можем объединить названия предметов и их количество в один [glossary term="dictionary"]словарь[/glossary].
 
-A dictionary is a data structure that allows you to map pairs of values. In the pair, we call the first value a [i]key[/i] as we use it to access the second.
+Словарь (dictionary) — это структура данных, которая позволяет вам сопоставлять пары значений. Первое значение в паре мы называем [i]ключом[/i], оно используется для получения второго значения пары.
 
-In other words, a dictionary has a list of [i]keys[/i], and each key points to a [i]value[/i].
+Другими словами, словарь содержит в себе список [i]ключей[/i], а каждый ключ указывает на какое-то [i]значение[/i].
 
-To define a dictionary, we use curly brackets. A colon separates each key and its value. A comma separates each key and value pair.
+Для определения словаря используются фигурные скобки. Ключ и его значение отделяются друг от друга двоеточием. Пары ключ-значение отделяются друг от друга запятыми.
 
 [visual path="visuals/CodeDictionary.tscn"]
 
-[title]Dictionaries can hold any values[/title]
+[title]Словари могут содержать любые значения[/title]
 
-Dictionaries can map about any value to any other value.
+Словари могут сопоставлять любое значение с любым другим значением.
 
-For example, we can use the name of an item as a key and the amount as the corresponding value. This makes dictionaries excellent for keeping track of a player's inventory.
+Например, мы можем использовать название предмета в качестве ключа и количество таких объектов в качестве значения в паре. Это делает словари отличным инструментом для создания инвентаря игрока.
 
 [visual path="visuals/CodeInventory.tscn"]
 
-Here we matched the name (a string) to the amount (a number). But a key could be a string, a number, or even a vector!
+Здесь мы сопоставили имя (строку) и количество (число). Но вместо строки ключ может быть и числом, и даже вектором!
 
-Although we can have all of these different keys, keep in mind that every key has to be [i]unique[/i]. That means we [i]couldn't[/i] have a dictionary like the following.
+Хоть мы и можем использовать разные ключи, всегда держите в голове, что каждый ключ должен быть [i]уникальным[/i]. Это значит, что мы [i]не должны[/i] использовать словари, как в примере ниже.
 
 [visual path="visuals/CodeInventoryError.tscn"]
 
-We would get the following error.
+Это приведёт к следующей ошибке.
 
 [visual path="visuals/ErrorDuplicateKey.tscn"]
 
-[quiz_choice question="In the above example, which key would cause an error?" multiple="false" shuffle="true"]
+[quiz_choice question="Использование какого ключа приводит к ошибке в предыдущем примере?" multiple="false" shuffle="true"]
 [option correct]"healing heart"[/option]
 [option]"shield"[/option]
 [option]"sword"[/option]
-[explanation]The key [code]"healing heart"[/code] appears [b]twice[/b] in the dictionary.
+[explanation]
+Ключ [code]"healing heart"[/code] используется в словаре [b]дважды[/b].
 
-In the above example, Godot wouldn't know whether to return [code]3[/code] or [code]8[/code] when using [code]inventory["healing heart"][/code]. This is why keys need to be unique.[/explanation]
+При выполнении кода из примера выше, Godot не поймёт, что он должен возвращать, [code]3[/code] или [code]8[/code], при попытке получить значение по ключу [code]"healing heart"[/code] из [code]inventory[/code]. Поэтому ключи должны быть уникальными.
+[/explanation]
 [/quiz_choice]
 
-[note title="How dictionaries work under the hood"]
-Dictionaries are also called mappings or [i]associative arrays[/i]. Under the hood, they use arrays and several functions to efficiently store and retrieve values across arrays.
-
-Precisely, dictionaries use a [i]hashing algorithm[/i]. Hashing algorithms convert one value into another.
-
-In this case, hashing consists of converting a given key into a unique whole number. The dictionary then uses that number as an array's index!
-
-That's how a dictionary works: when you give it a key, it converts it into a unique index and uses that index to retrieve the corresponding value in the computer's memory.
-
-That's also why you can't have the same key twice: it would map to the same array index, causing you to overwrite an existing value.
+[note title="Как работают словари изнутри"]
+Словари также называют маппингами [i]ассоциативными массивами[/i]. Под капотом, они используют массивы и несколько функций для эффективного хранения и извлечения значений этих массивов.
+Для этого словари используют [i]алгоритм хеширования[/i]. Алгоритмы хеширования преобразуют одно значение в другое.
+В нашем случае, хеширование состоит в конвертации переданного значения в уникальное целое число. Затем словари используют это число для получения значения по индексу из массива!
+Вот как работают словари: когда вы передаёте ему ключ, он преобразует его в уникальный индекс и использует этот индекс для извлечения сопоставленного значения из памяти компьютера.
+Так же это объясняет, почему вы не можете использовать один ключ дважды: он будет преобразовываться к такому же индексу массива, что приведёт к перезаписи существующего значения.
 [/note]
 
-[title]Accessing values[/title]
+[title]Получение значений[/title]
 
-We access the value of keys by writing the dictionary name, with the key in between square brackets.
+Чтобы получить значение по ключу нужно написать имя словаря, а после указать ключ в квадратных скобках.
 
 [visual path="visuals/SyntaxAccessValue.tscn"]
 
 [visual path="visuals/CodeInventory.tscn"]
 
-[quiz_choice question="How would you access how many gems the player has?" multiple="false" shuffle="true"]
+[quiz_choice question="Как узнать, сколько драгоценных камней (gem) есть у игрока?" multiple="false" shuffle="true"]
 [option]var item_count = inventory["gem"][/option]
 [option correct]var item_count = inventory["gems"][/option]
 [option]var item_count = inventory["sword"][/option]
-[explanation]We need to make sure the key is the same as we defined in the dictionary.
+[explanation]
+Мы должны быть уверены, что получаем значение именно по тому ключу, который использовали при определении массива.
 
-In our case, [code]var item_count = inventory["gems"][/code] is correct.[/explanation]
+В нашем случае, правильным является [code]var item_count = inventory["gems"][/code].
+[/explanation]
 [/quiz_choice]
 
-[title]Changing values[/title]
+[title]Изменение значений[/title]
 
-We can also change values directly, which is useful in our case for adding or removing items from the player's inventory.
+Также, мы можем изменять значения напрямую, что, в нашем случае, полезно для добавления или удаления предметов из инвентаря игрока.
 
 [visual path="visuals/CodeAddValue.tscn"]
 
 [visual path="visuals/ExampleAddValue.tscn"]
 
-In the following practices, we'll use a dictionary to create a player inventory and create a function to change the value of items.
+В следующих упражнениях мы создадим инвентарь игрока при помощи словаря, а также напишем функцию для изменения количества предметов в инвентаре.
 
-[practice id="creating-an-inventory-using-a-dictionary" title="Creating an inventory using a dictionary"]
-[description]Collecting items is fun, but we need a good way to store them. Write a dictionary to display the player's items.[/description]
+[practice id="creating-an-inventory-using-a-dictionary" title="Создание инвентаря при помощи словаря"]
+[description]Собирать предметы весело, но нам нужен хороший способ их хранения. Напишите словарь для отображения предметов игрока.[/description]
 [goal]
-Let's give some items to the player.
+Давайте дадим несколько предметов игроку.
 
-We use a dictionary for the player's inventory. We defined the [code]inventory[/code] variable for you, but it contains no items yet.
+Мы используем словарь в качестве инвентаря игрока. Переменная [code]inventory[/code] уже определена, но в ней нет значений.
 
-Give the player the following items by adding the correct keys and values to the dictionary:
+Дайте игроку перечисленные предметы, при помощи добавления правильных ключей и значений в словарь:
 
-- Three "healing heart".
-- Nine "gems".
-- One "sword".
+- Три "healing heart".
+- Девять "gems".
+- Один "sword".
 
-The keys should be text strings, and the values whole numbers.
+В качестве ключей должны использоваться строки, а в качестве значений — целые числа.
 [/goal]
 [starting_code]
 var inventory = {
@@ -103,20 +103,20 @@ var inventory = {
 [cursor line="0" column="0"]
 [validator path="creating-inventory/TestInventory.gd"]
 [script_slice path="creating-inventory/CreatingInventory.gd" name="create"]
-[hint]Don't forget to add commas to separate each key and value pair.[/hint]
-[hint]To define a key and give it an item count, use [code]"item name" : number[/code].[/hint]
+[hint]Не забудьте добавить запятые для разделения каждой пары «ключ-значение».[/hint]
+[hint]Чтобы определить ключ и задать ему количество предметов, используйте [code]«название предмета» : число[/code].[/hint]
 [/practice]
 
-[practice id="increasing-item-counts" title="Increasing item counts"]
-[description]The player might walk over a pick-up or find something in a chest, so we need a way to change the item counts in our inventory.[/description]
+[practice id="increasing-item-counts" title="Увеличиваем количество предметов"]
+[description]Игрок может поднять предмет с пола или найти что-то в сундуке, поэтому нам нужен способ изменить количество предметов в инвентаре.[/description]
 [goal]
-We want to change the item counts in the player's inventory whenever the player picks up or uses an item.
+Мы хотим изменять количество предметов в инвентаре игрока каждый раз, когда он подбирает или использует предмет.
 
-We've started the [code]add_item()[/code] function for you.
+Мы уже начали функцию [code]add_item()[/code] за вас.
 
-The [code]inventory[/code] dictionary should use the [code]item_name[/code] parameter as the key to access its values, and we should increase the value by [code]amount[/code].
+Словарь [code]inventory[/code] должен использовать параметр [code]item_name[/code] в качестве ключа для получения количества предметов, а количество должно увеличиваться на [code]amount[/code].
 
-To test this practice, we'll use your [code]add_item()[/code] function to increase the item count of Healing Heart, Gems, and Sword.
+Для проверки этого упражнения мы будем использовать вашу функцию [code]add_item()[/code] для увеличения количества Healing Heart, Gems и Sword.
 [/goal]
 [starting_code]
 func add_item(item_name, amount):
@@ -125,8 +125,8 @@ func add_item(item_name, amount):
 [cursor line="0" column="0"]
 [validator path="adding-items/TestAddingItems.gd"]
 [script_slice path="adding-items/AddingItems.gd" name="add"]
-[hint]You can access the value in the [code]inventory[/code] dictionary by using [code]inventory[item_name][/code][/hint]
-[hint]Remember to add [code]amount[/code] to the value. You can do this directly with [code]+=[/code][/hint]
-[docs]add_item[/docs]
+[hint]Вы можете получить доступ к значению в словаре [code]inventory[/code], используя [code]inventory[item_name][/code][/hint]
+[hint]Не забудьте добавить [code]amount[/code] к значению. Это можно сделать напрямую с помощью [code]+=[/code][/hint]
 [/practice]
+
 [/lesson]

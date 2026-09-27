@@ -1,136 +1,122 @@
-[lesson title="We Stand on the Shoulders of Giants"]
+[lesson title="Мы стоим на плечах гигантов"]
 
-As programmers, we rely on a lot of code created by others before us.
+Как программисты, мы полагаемся на большое количество кода, созданного другими программистами до нас.
 
-Every programming language comes with a wealth of features created by other programmers to save you time.
+Каждый язык программирования поставляется со множеством полезностей созданных другими программистами, для экономии вашего времени.
 
-We call a bundle of code created by fellow developers a [glossary term="library"]library[/glossary].
+Мы называем пакет кода, написанный другими разработчиками, [glossary term="library"]библиотекой[/glossary].
 
-It's a bunch of code sitting there, waiting for you to use it.
+Это куча кода, ожидающего, когда вы его используете.
 
-Game engines like Godot bundle many libraries together. They provide a massive toolset to save you time when making games.
+Игровые движки, такие как Godot, содержат в себе множество таких библиотек. Они предоставляют огромный набор инструментов, чтобы сэкономить ваше время при создании игр.
 
-[title]You'll always use a lot of existing code[/title]
+[title]Вы всегда будете использовать больше количество существующего кода[/title]
 
-When coding, you always use a lot of code from developers who came before you.
+При написании кода вы всегда используете много кода от разработчиков, которые писали код до вас.
 
-In a moment, you'll write your first code. You'll use [glossary term="functions"]functions[/glossary] created by the Godot developers.
+Очень скоро вы напишете свой первый кусочек кода. При этом вы будете использовать [glossary term="functions"]функции[/glossary], созданные разработчиками Godot.
 
-A function is a list of [glossary term="instructions"]instructions[/glossary] with an exact name. We can tell the computer to execute all the instructions in sequence with that name.
+Функция — это список [glossary term="instructions"]инструкций[/glossary] с точным именем. Мы можем приказать компьютеру выполнить все инструкции последовательно, используя это имя.
 
-[title]Calling functions[/title]
+[title]Вызов функций[/title]
 
-When you tell the computer to execute a function, we say you [i]call[/i] the function.
+Когда вы указываете компьютеру выполнить функцию, мы говорим, что вы [i]вызываете[/i] функцию.
 
-To call a function, you write its [i]exact[/i] name followed by an open and closed parenthesis. To call the function named "show", you would write [code]show()[/code].
+Чтобы вызвать функцию, вам нужно написать её [i]точное[/i] имя, а следом за ним поставить открывающую и закрывающую скобки. Чтобы вызвать функцию с именем «show», вы должны написать [code]show()[/code].
 
-In Godot, calling [code]show()[/code] makes something visible, like a character or item. The complementary [code]hide()[/code] function hides the entity.
+В Godot вызов [code]show()[/code] делает что-то видимым, например персонажа или предмет. Дополнительная функция [code]hide()[/code] скрывает объект.
 
-Once an entity is visible, calling [code]show()[/code] again doesn't have any effect.
+Если объект уже видимый, вызов [code]show()[/code] не окажет никакого эффекта.
 
-Similarly, once you hide something, calling [code]hide()[/code] again doesn't change anything.
+Аналогично, если вы уже скрыли объект, повторный вызов [code]hide()[/code] ничего не поменяет.
 
-[i]Click the Run button on any example below to execute the code listing.[/i]
+[i]Нажмите кнопку «Run» в любом примере ниже, чтобы выполнить листинг кода.[/i]
 
 [visual path="ExampleShow.tscn"]
 
-In the code listing above, we write the function call [code]hide()[/code] in a new function named [code]run()[/code] to execute the code. Creating a new function is necessary to execute instructions in GDScript.
+В приведённом выше листинге мы записали вызов функции [code]hide()[/code] в новую функцию с именем [code]run()[/code] для того чтоб код выполнился. Создание новой функции необходимо для выполнения инструкций в GDScript.
 
-[note title="Can you tell me more about that \"run()\" function?"]
-In GDScript, unlike in some other languages, we must write our code inside of custom functions.
-
-You'll learn what functions are and how they work in great detail in the course, but here's a quick look at them if you're curious.
-
-A function is a bundle of code you can execute anytime. It's a named list of instructions.
-
-To define a function, you need to write the [code]func[/code] keyword, the function's name, parentheses, and a colon: [code]func run():[/code] defines a function named [code]run()[/code].
-
-You then go to the next line to write the function's body. That's the instructions of the function.
-
-Notice how each instruction starts with a leading [code]Tab[/code] character. The computer uses that to know which lines are part of the function.
-
-Throughout the course, you'll see many functions called [code]run()[/code].
-
-Those are functions we created to give you interactive examples.
+[note title="Можете рассказать мне больше о функции «run()»?"]
+В GDScript, в отличие от некоторых других языков, мы обязаны помещать весь наш код внутрь функций.
+В ходе курса вы подробно узнаете, что такое функции и как они работают, но вот их краткий обзор, если вам любопытно.
+Функция — это кусочек кода, который вы можете выполнить в любое время. Это именованный список инструкций.
+Чтобы определить функцию, вам нужно написать ключевое слово [code]func[/code], имя функции, круглые скобки и двоеточие: [code]func run():[/code] определяет функцию с именем [code]run()[/code].
+Затем вам нужно перейти к следующей строке, чтобы написать тело функции, то есть список инструкций из которых она состоит.
+Обратите внимание, что каждая инструкция начинается с символа [code]Tab[/code] (табуляции). Компьютер использует символы табуляции, чтобы узнать, какие строки являются частью функции.
+На протяжении всего курса вы увидите множество функций, названных [code]run()[/code].
+Это функции, которые мы создали, чтобы предоставить вам интерактивные примеры.
 [/note]
 
-[title]Function arguments[/title]
+[title]Аргументы функции[/title]
 
-We use parentheses to call functions because you can give the function [glossary term="arguments"]arguments[/glossary] inside the parentheses when calling it.
+Мы используем круглые скобки для вызова функций, потому что в них можно поместить [glossary term="arguments"]аргументы[/glossary] функции при её вызове.
 
-Here's a [glossary term="sprite"]sprite[/glossary] standing straight. If we call the [code]rotate(0.3)[/code] function, the character [i]sprite[/i] turns by 0.3 radians.
+Вот [glossary term="sprite"]спрайт[/glossary], стоящий прямо. Если мы вызовем функцию [code]rotate(0.3)[/code], [glossary term="sprite"]спрайт[/glossary] персонажа повернётся на 0.3 радиан.
 
 [visual path="ExampleRotateSprite.tscn"]
 
-The [code]0.3[/code] part between the parentheses is the function's [i]argument[/i].
+Запись [code]0.3[/code] в круглых скобках — это [i]аргумент[/i] функции.
 
-Arguments are values (numbers, bits of text, and more) that change how the function behaves.
+Аргументы — это значения (числа, фрагменты текста и многое другое), которые изменяют поведение функции.
 
-Arguments let you fine-tune the effect of the function call. They can be optional at times, but functions often require arguments in order to work.
+Аргументы позволяют вам точно настроить эффект который произведёт функция при вызове. Иногда аргументы могут быть необязательными, но часто функции требуют их для работы.
 
-For example, calling [code]rotate()[/code] without any argument would result in an error. Without an argument, Godot doesn't know by [i]how much[/i] you intend to rotate the [i]sprite[/i].
+Например, вызов [code]rotate()[/code] без какого-либо аргумента приведет к ошибке. Без аргументов Godot не знает [i]как сильно[/i] вы собираетесь повернуть [i]спрайт[/i].
 
-Don't worry about memorizing what arguments each function requires or accepts! As a programmer, the documentation will always be close by for you to refer to.
+Не беспокойтесь о том, что вам нужно запомнить, какие аргументы требует или принимает каждая функция! Документация всегда будет у вас под рукой, чтобы вы могли обратиться к ней, как программист.
 
-Finally, notice how we use a dot in the number [code]0.3[/code] above: you need to use a dot like this to represent decimal numbers. You can't use commas as they have a different purpose in code.
+Наконец, обратите внимание, как мы используем точку в числе [code]0.3[/code] выше: вам нужно использовать такую точку для представления десятичных дробей. Вы не можете использовать запятые, так как они имеют другое предназначение в коде.
 
-[note title="What are radians?"]
-The value of [code]0.3[/code] is an angle in [glossary term="radians"]radians[/glossary]. In daily life, we're used to measuring angles in degrees. The radian is another scale commonly used in video games and math.
-
-You can convert radians into degrees by multiplying them by 180 and dividing them by PI:
-
+[note title="Что такое радианы?"]
+Значение [code]0.3[/code] представляет собой угол в [glossary term="radians"]радианах[/glossary]. В повседневной жизни мы привыкли измерять углы в градусах. Радиан — это ещё одна шкала, обычно используемая в видеоиграх и математике.
+Вы можете преобразовать радианы в градусы, умножив их на 180 и разделив результат на число Пи:
 [code]degrees = radians * 180 / PI[/code]
-
-An angle of [code]PI[/code] radians corresponds to [code]180[/code] degrees. And [code]2 * PI[/code] is a full turn: [code]360[/code] degrees.
-
-[b]How do radians work exactly?[/b]
-
-Radians are a way to measure angles based on the radius of a circle.
-
-To get the angle in radians, you take the circle's radius and wrap it around the circle. That angle is [code]1[/code] radian because you are wrapping the radius [code]1[/code] time around the circle.
-
-Because the perimeter of a circle is [code]2 * PI * radius[/code], a full turn (360°) corresponds to [code]2 * PI[/code] radians: you need to wrap the radius of a circle [code]2 * PI[/code] times around the circle to make a full circle.
+Угол [code]PI[/code] радиан соответствует [code]180[/code] градусам. А [code]2 * PI[/code] — это полный оборот: [code]360[/code] градусов.
+[b]Как именно работают радианы?[/b]
+Радианы — это способ измерения углов на основе радиуса окружности.
+Чтобы получить угол в радианах, вы берёте длину радиуса окружности и отмеряете на окружности дугу, равную этой длине. Угол этой дуги составит [code]1[/code] радиан, потому что вы отмерили длину радиуса на окружности [code]1[/code] раз.
+Поскольку периметр окружности равен [code]2 * PI * radius[/code], полный оборот (360°) соответствует [code]2 * PI[/code] радианам: вам нужно отмерить на окружности дугу равную [code]2 * PI[/code] радиусам, чтобы сделать полный круг.
 [/note]
 
-[quiz_choice question="What does the code below do?" multiple="true" shuffle="true"]
+[quiz_choice question="Что делает код приведенный ниже?" multiple="true" shuffle="true"]
 [code]show()[/code]
-[option correct]It calls the function named "show".[/option]
-[option correct]It makes the entity (like a game character or a sprite) visible.[/option]
-[explanation]Both answers were right! Technically, the code calls the [code]show()[/code] function. And doing so makes the game entity visible.[/explanation]
+[option correct]Он вызывает функцию с именем «show».[/option]
+[option correct]Он делает игровой объект (к примеру, персонажа или спрайт) видимым.[/option]
+[explanation]Оба ответа были правильными! Технически код вызывает функцию [code]show()[/code], а эта функция, в свою очередь, делает игровой объект видимым.[/explanation]
 [/quiz_choice]
 
-Another example: With the [code]move_local_x()[/code] function, you can move the character to its left and right. The function takes one argument: a number of pixels to offset the entity.
+Другой пример: с помощью функции [code]move_local_x()[/code] вы можете перемещать персонажа влево и вправо. Функция принимает один аргумент: количество пикселей для смещения объекта.
 
-The complementary function [code]move_local_y()[/code] makes the character move up and down.
+Похожая функция [code]move_local_y()[/code] заставляет персонажа перемещаться вверх и вниз.
 
-This is one way to move a character in a game, although we'll see more powerful ways to do this later.
+Мы показали один из способов перемещения персонажа в игре, хотя позже мы рассмотрим более эффективные способы.
 
 [visual path="ExampleMoveSprite.tscn"]
 
-[note title="Why move_local_y(20) moves the character down"]
-With positive values ([code]20[/code]), the code above moves the robot to the right and down.
-
-This is probably different than what you studied at school: in math classes, the horizontal axis points to the right, like here, but the vertical axis points up.
-
-In video games, and generally in 2D computer graphics, the vertical axis points down instead. So whenever you move something on the Y-axis with a positive value, it'll move [i]down[/i].
+[note title="Почему move_local_y(20) перемещает персонажа вниз"]
+При положительных значениях ([code]20[/code]) приведенный выше код перемещает робота вправо и вниз.
+Вероятно, это отличается от того, что вы изучали в школе: на уроках математики горизонтальная ось направлена вправо, как и здесь, но вертикальная ось направлена вверх.
+В видеоиграх и, как правило, в компьютерной 2D-графике вертикальная ось направлена вниз. Поэтому всякий раз, когда вы перемещаете что-то по оси Y с положительным значением, оно перемещается [i]вниз[/i].
 [/note]
 
-[quiz_choice question="How do you call a function?" multiple="false" shuffle="true"]
-What is the syntax you use to call a function in general?
-[option correct]You write its name followed by an opening and a closing parenthesis.[/option]
-[option]You write its name followed by a colon.[/option]
-[option]You write a value, like a number, followed by an opening and a closing parenthesis.[/option]
-[explanation]To call a function, you need to write its exact name followed by an opening and a closing parenthesis.
+[quiz_choice question="Как вызвать функцию?" multiple="false" shuffle="true"]
+Какой синтаксис можно использовать для вызова функции?
+[option correct]Написать имя функции, затем поставить открывающую и закрывающую круглые скобки.[/option]
+[option]Написать имя функции, затем двоеточие.[/option]
+[option]Написать значение, например число, затем поставить открывающую и закрывающую круглые скобки.[/option]
+[explanation]
+Чтобы вызвать функцию, нужно написать ее точное имя, а затем поставить открывающую и закрывающую круглые скобки.
 
-If the function requires one or more [i]arguments[/i], you add them inside the parentheses. Whether you need to do that or not depends on the function.[/explanation]
+Если функция принимает один или несколько [i]аргументов[/i], можно добавить их в круглые скобки. Нужно добавлять аргументы или нет, зависит от конкретной функции.
+[/explanation]
 [/quiz_choice]
 
-[practice id="make-the-character-visible" title="Make The Character Visible"]
-[description]The robot's invisible! Call a function to bring it back.[/description]
+[practice id="make-the-character-visible" title="Сделайте персонажа видимым"]
+[description]Робот невидим! Вызовите функцию, чтобы вернуть его обратно.[/description]
 [goal]
-Our robot character's invisible! Call the [code]show()[/code] function to make it appear.
+Наш персонаж-робот невидим! Вызовите функцию [code]show()[/code], чтобы заставить его появиться.
 
-Please call [code]show()[/code] inside the [code]run()[/code] function, on line [code]2[/code], and keep the [code]Tab[/code] character at the start of the line. The computer needs that to understand your code.
+Пожалуйста, вызовите [code]show()[/code] внутри функции [code]run()[/code] в строке [code]2[/code], обязательно сохранив символ [code]Tab[/code] (табуляцию) в начале строки. Компьютеру это нужно, чтобы понять ваш код.
 [/goal]
 [starting_code]
 func run():
@@ -139,16 +125,15 @@ func run():
 [cursor line="0" column="0"]
 [validator path="make-visible/TestsMakeCharacterVisible.gd"]
 [script_slice path="make-visible/MakeCharacterVisible.gd" name="show"]
-[hint]Your code should call show() inside the run() function.[/hint]
-[docs]show[/docs]
+[hint]Ваш код должен вызывать функцию show() внутри функции run().[/hint]
 [/practice]
 
-[practice id="make-the-robot-upright" title="Make the Robot Upright"]
-[description]The robot is turned sideways. Help it straighten up with a function call.[/description]
+[practice id="make-the-robot-upright" title="Поставьте робота в вертикальное положение"]
+[description]Робот повернут боком. Помогите ему выпрямиться с помощью вызова функции.[/description]
 [goal]
-The robot was turned by [code]-0.5[/code] radians. You need to make it upright by calling the [code]rotate()[/code] function.
+Робот повёрнут на [code]-0.5[/code] радиан. Вам нужно поставить его в вертикальное положение, вызвав функцию [code]rotate()[/code].
 
-Please call [code]rotate()[/code] inside the [code]run()[/code] function, on line [code]2[/code], and keep the [code]Tab[/code] character at the start of the line. The computer needs that to understand your code.
+Пожалуйста, вызовите [code]rotate()[/code] внутри функции [code]run()[/code] в строке [code]2[/code], обязательно сохранив символ [code]Tab[/code] (табуляцию) в начале строки. Компьютеру это нужно, чтобы понять ваш код.
 [/goal]
 [starting_code]
 func run():
@@ -157,9 +142,9 @@ func run():
 [cursor line="0" column="0"]
 [validator path="make-upright/TestsMakeRobotUpright.gd"]
 [script_slice path="make-upright/MakeRobotUpright.gd" name="rotate"]
-[hint]You need to use the rotate() function, and give the proper arguments.[/hint]
-[hint]You need to call the rotate() function inside the run() function.[/hint]
-[hint]Call rotate(0.5) to turn the character 0.5 radians clockwise.[/hint]
-[docs]rotate[/docs]
+[hint]Вам нужно использовать функцию rotate() и передать ей правильные аргументы.[/hint]
+[hint]Вам нужно вызвать функцию rotate() внутри функции run().[/hint]
+[hint]Вызовите rotate(0.5), чтобы повернуть персонажа на 0,5 радиана по часовой стрелке.[/hint]
 [/practice]
+
 [/lesson]

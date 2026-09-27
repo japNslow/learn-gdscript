@@ -1,89 +1,91 @@
-[lesson title="Introduction to For Loops"]
+[lesson title="Введение в циклы for"]
 
-In the last lesson, we looked at [code]while[/code] loops. We found they were useful if we don't know how many times we should repeat code. But [code]while[/code] loops can result in infinite loops if we're not careful.
+В прошлом уроке мы рассмотрели циклы [code]while[/code]. Мы выяснили, что они полезны, когда заранее неизвестно, сколько раз нужно повторить код. Однако циклы [code]while[/code] могут привести к бесконечным зацикливаниям, если не быть осторожным.
 
-For example, the loop below never ends because we never increment [code]number[/code].
+Например, приведённый ниже цикл никогда не завершится, потому что мы никогда не увеличиваем переменную [code]number[/code].
 
 [visual path="visuals/CodeWhileLoop.tscn"]
 
-There's a safer and easier kind of loop: the [code]for[/code] loop. We'll look at it in this lesson.
+Существует более безопасный и простой вид цикла — цикл [code]for[/code]. Мы рассмотрим его в этом уроке.
 
-Unlike [code]while[/code] loops, [code]for[/code] loops don't run forever, so you're much less likely to get infinite loop bugs in your game. [b]We recommend using [glossary term="for loops"]for loops[/glossary] instead of while loops because of this[/b].
+В отличие от циклов [code]while[/code], циклы [code]for[/code] не выполняются бесконечно, поэтому вероятность ошибок, связанных с бесконечными циклами, значительно ниже. [b]Мы рекомендуем использовать циклы for вместо while именно по этой причине[/b].
 
-In this example, I changed the code above to use a [code]for[/code] loop instead. The loop below will change the [code]cell[/code] three times.
+В этом примере я изменил приведённый выше код, заменив его на цикл [code]for[/code]. Следующий цикл изменит переменную [code]cell[/code] три раза.
 
 [visual path="visuals/CodeForLoop.tscn"]
 
-Let's explain what's going on here.
+Давайте рассмотрим, что здесь происходит.
 
-[title]The range() function[/title]
+[title]Функция range()[/title]
 
-Godot has the helper function [code]range()[/code]. Calling [code]range(n)[/code] creates a list of numbers from [code]0[/code] to [code]n - 1[/code].
+В Godot есть вспомогательная функция [code]range()[/code]. Вызов [code]range(n)[/code] создаёт список чисел от [code]0[/code] до [code]n - 1[/code].
 
-So calling [code]range(3)[/code] outputs the list of numbers [code][0, 1, 2][/code], and [code]range(5)[/code] outputs [code][0, 1, 2, 3, 4][/code].
+Таким образом, вызов [code]range(3)[/code] создаст список чисел [code][0, 1, 2][/code], а [code]range(5)[/code] создаст список [code][0, 1, 2, 3, 4][/code].
 
-[quiz_choice question="What list of numbers would range(6) create?" multiple="false" shuffle="true"]
-What would [code]print(range(6))[/code] print to the console?
+[quiz_choice question="Какой список чисел создаст вызов range(6)?" multiple="false" shuffle="true"]
+Что [code]print(range(6))[/code] выведет в консоль?
 [option correct][0, 1, 2, 3, 4, 5][/option]
 [option][1, 2, 3, 4, 5, 6][/option]
 [option][0, 1, 2, 3, 4, 5, 6][/option]
-[explanation]The function [code]range(n)[/code] creates a list of numbers from [code]0[/code] to [code]n - 1[/code]. The output list will start with [code]0[/code] and end with [code]5[/code].
+[explanation]
+Функция [code]range(n)[/code] создаёт список чисел от [code]0[/code] до [code]n - 1[/code]. Выходной список будет начинаться с [code]0[/code] и заканчиваться на [code]5[/code].
 
-So calling [code]range(6)[/code] will output a list of six numbers which are [code][0, 1, 2, 3, 4, 5][/code].[/explanation]
+Поэтому вызов [code]range(6)[/code] выведет список из шести чисел: [code][0, 1, 2, 3, 4, 5][/code].
+[/explanation]
 [/quiz_choice]
 
-[title]How for loops work[/title]
+[title]Как работают циклы for[/title]
 
-In a [code]for[/code] loop, the computer takes each value inside a list, stores it in a temporary variable, and executes the code in the loop once per value.
+При выполнении цикла [code]for[/code] компьютер берёт значение из списка, сохраняет его во временной переменной и выполняет код тела цикла по одному разу для каждого значения.
 
 [visual path="visuals/PrintForLoop.tscn"]
 
-In the above example, for each item in the list [code][0, 1, 2][/code], Godot sets [code]number[/code] to the item, then executes the code in the [code]for[/code] loop.
+В примере ниже, для каждого элемента в списке [code][0, 1, 2][/code] Godot присваивает [code]number[/code] значение числа, а затем выполняет код тела цикла [code]for[/code].
 
-We'll explain arrays more thoroughly in the next lesson, but notice that [code]number[/code] is just a temporary variable. You create it when defining the loop, and the loop takes care of changing its value. Also, you can name this variable anything you want.
+В этом примере мы выводим значение [code]number[/code] в процессе продвижения Godot через цикл. Вы создаете его при определении цикла, и цикл сам заботится об изменении своего значения. Кроме того, вы можете назвать эту переменную как угодно.
 
-This code behaves the same as the previous example:
+Этот код ведёт себя похожим образом с кодом из предыдущего примера:
 
 [visual path="visuals/PrintForLoopArray.tscn"]
 
-In both examples, we print the value of the temporary variable we created: [code]number[/code] in the first example and [code]element[/code] in the second.
+В обоих примерах мы печатаем значение созданной нами временной переменной: [code]number[/code] в первом примере и [code]element[/code] во втором.
 
-As Godot moves through the loop, it assigns each value of the array to that variable. First, it sets the variable to [code]3[/code], then to [code]5[/code], and finally, to [code]7[/code].
+По мере прохождения цикла Godot присваивает каждое значение массива этой переменной. Сначала он присваивает переменной значение [code]0[/code], затем значение [code]1[/code] и, наконец, значение [code]2[/code].
 
-We can break down the instructions the loop runs. You can see how a loop is a shortcut to code that otherwise gets very long.
+Мы можем остановить инструкции, которые выполняет цикл. Вы можете видеть, что цикл — это специальный приём упрощения кода, который другим способом становится очень длинным.
 
 [visual path="visuals/PrintForLoopArrayUnwrapped.tscn"]
 
-We can put whatever code we like in the loop's code block, including other function calls like [code]draw_rectangle()[/code].
+Мы можем поместить в блок кода цикла любой код, который нам нравится, включая вызовы других функций, таких как [code]draw_rectangle()[/code].
 
-[title]Using a for loop instead of a while loop[/title]
+[title]Использование цикла for вместо цикла while[/title]
 
-Here's our old [code]move_to_end()[/code] function which used a [code]while[/code] loop.
+Вот наш старая функция [code]move_to_end()[/code], которая использует цикл [code]while[/code].
 
 [visual path="visuals/CodeWhileMove.tscn"]
 
-If we use a [code]for[/code] loop instead, the code becomes a little simpler.
+Если мы используем цикл [code]for[/code] вместо него, код станет немного проще.
 
 [visual path="visuals/CodeForMove.tscn"]
 
-With the [code]for[/code] loop, we check the board's width first. Then we move the robot that many times. This is simpler than checking if the robot reached the end of the board over and over.
+С помощью цикла [code]for[/code] мы сначала проверяем ширину доски, а затем перемещаем робота именно столько раз. Это проще, чем многократно проверять, достиг ли робот конца доски.
 
-The function still works the same way, assuming the robot starts at [code]cell.x = 0[/code] each time (the left edge of the board). The [code]while[/code] loop would work no matter where the robot starts. You can run it below.
+Функция работает аналогично в предположении, что робот каждый раз начинает с [code]cell.x = 0[/code] (левый край доски). Цикл [code]while[/code] работал бы независимо от того, где начинает робот. Вы можете запустить её ниже.
 
 [visual path="visuals/ExampleBoardFor.tscn"]
 
-In the practices, we'll use [code]for[/code] loops in different ways to get you used to using them.
+В упражнениях мы будем использовать цикл [code]for[/code] различными способами для того, чтобы вы привыкли их использовать.
 
-[practice id="using-a-for-loop-to-move-to-the-end-of-the-board" title="Using a for loop to move to the end of the board"]
-[description]Use a for loop to have our robot move from the top of the board to the bottom.[/description]
+[practice id="using-a-for-loop-to-move-to-the-end-of-the-board" title="Использование цикла for для перемещения к концу доски"]
+[description]Используйте цикл for для перемещения нашего робота из верхней части доски в нижнюю.[/description]
 [goal]
-Once again, the robot has decided to stand at the top of the board.
+Робот снова решил остановиться в верхней части доски.
 
-This time, use a [code]for[/code] loop in the [code]move_to_bottom()[/code] function to have it move to the bottom of the board.
+В этот раз используйте цикл [code]for[/code] в функции [code]move_to_bottom()[/code], чтобы переместить робота в нижнюю часть доски.
 
-The board size is determined by the [code]Vector2[/code] variable named [code]board_size[/code].
+Размер доски определяется переменной типа [code]Vector2[/code] под названием [code]board_size[/code].
 
-The robot's starting cell is [code]Vector2(2, 0)[/code].
+Стартовая ячейка робота — [code]Vector2(2, 0)[/code].
 [/goal]
 [starting_code]
 func move_to_bottom():
@@ -92,22 +94,21 @@ func move_to_bottom():
 [cursor line="0" column="0"]
 [validator path="for_move/TestPracticeBoardFor.gd"]
 [script_slice path="for_move/PracticeBoardFor.gd" name="move_to_end"]
-[hint]You'll have to alter the [code]y[/code] sub-variable of [code]cell[/code] to move the robot downwards[/hint]
-[hint]Call [code]range(n)[/code] to get a list of numbers from [code]0[/code] to [code]n - 1[/code][/hint]
-[hint]Use [code]for number in range(board_size.y - 1):[/code] to loop enough times.[/hint]
-[docs]board_size,cell,range[/docs]
+[hint]Вам нужно изменить подпеременную [code]y[/code] в [code]cell[/code], чтобы переместить робота вниз[/hint]
+[hint]Вызов [code]range(n)[/code] создаёт список чисел от [code]0[/code] до [code]n - 1[/code][/hint]
+[hint]Используйте оператор [code]for number in range(board_size.y - 1):[/code], чтобы выполнить цикл достаточное количество раз.[/hint]
 [/practice]
 
-[practice id="improving-code-with-a-for-loop" title="Improving code with a for loop"]
-[description]In the past we had to copy and paste code to draw multiple rectangles. Let's revisit previous code and improve it with a for loop.[/description]
+[practice id="improving-code-with-a-for-loop" title="Улучшение кода при помощи цикла for"]
+[description]В прошлом нам пришлось копировать код, чтобы нарисовать несколько прямоугольников. Давайте вернёмся к старому коду и улучшим его при помощи цикла for.[/description]
 [goal]
-Use a [code]for[/code] loop to remove the duplicate code in the [code]run()[/code] function.
+Используйте цикл [code]for[/code] для удаления дубликатов кода в функции [code]run()[/code].
 
-In this practice, we revisit the turtle and drawing rectangles.
+В этом упражнении мы вернёмся к черепахе и рисованию прямоугольников.
 
-With our new knowledge of [code]for[/code] loops, we can condense this code to take up less space and make it easier to modify.
+Наши новые знания циклов [code]for[/code] позволяют нам сократить этот код, чтобы он занимал меньше места и его было проще модифицировать.
 
-The turtle should draw three squares in a horizontal line. The squares should be 100 pixels apart.
+Черепаха должна нарисовать три квадрата горизонтально, друг за другом. Сторона квадрата должна быть равна 100 пикселям.
 [/goal]
 [starting_code]
 func run():
@@ -123,7 +124,7 @@ func run():
 [cursor line="0" column="0"]
 [validator path="for_rectangles/ForTestsDrawingRectangles.gd"]
 [script_slice path="for_rectangles/ForDrawingMultipleRectangles.gd" name="run"]
-[hint]Use the line [code]for number in range(3):[/code][/hint]
-[docs]jump,draw_rectangle,range[/docs]
+[hint]Используйте строку [code]for number in range(3):[/code][/hint]
 [/practice]
+
 [/lesson]

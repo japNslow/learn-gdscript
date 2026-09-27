@@ -1,120 +1,122 @@
-[lesson title="Introduction to Member Variables"]
+[lesson title="Введение в свойства"]
 
-In this lesson, we take a first look at variables.
+В этом уроке мы впервые рассмотрим переменные.
 
-In games, you need to keep track of many values that change over time:
+В играх вам нужно отслеживать множество значений, которые меняются с течением времени:
 
-- The player's score.
-- Every character or enemy's health.
-- The last checkpoint.
+- Счет игрока.
+- Здоровье каждого персонажа или врага.
+- Последнюю контрольную точку.
 
-And so much more. You need to store, retrieve, and update those values.
+И многие другие. Вам нужно хранить, извлекать и обновлять эти значения.
 
-We call those values [i][glossary term="variables"]variables[/glossary][/i]. Variables are labels you use to keep track of values that vary over time. Here's an example of a variable tracking a character or monster's health.
+Мы называем эти значения [i][glossary term="variables"]переменными[/glossary][/i]. Переменные — это метки, которые вы используете для отслеживания значений, изменяющихся во времени. Вот пример переменной, отслеживающей здоровье персонажа или монстра.
 
 [visual path="ExampleHealthVariableDefinition.tscn"]
 
-The line above defines a new variable named [code]health[/code] and assigns it a starting value of [code]100[/code] (that's what the equal sign does, more on that below).
+Строка выше определяет новую переменную с именем [code]health[/code] и присваивает ей начальное значение [code]100[/code] (подробнее о том, что делает знак равно, будет ниже).
 
-Function parameters, which you saw in the previous lesson, are another example of variables.
+Параметры функции, которые вы видели в предыдущем уроке, являются ещё одним примером переменных.
 
-In this lesson, we start using variables built into Godot. They're a particular kind called [i][glossary term="member variables"]member variables[/glossary][/i].
+В этом уроке мы начнем использовать переменные, встроенные в Godot. Они являются особым видом и называются [i][glossary term="member variables"]свойствами[/glossary][/i].
 
-Member variables are values attached to a game entity. They're useful properties like the [code]position[/code], [code]rotation[/code], and [code]scale[/code] of a character.
+Свойства — это значения, привязанные к игровому объекту, например ими являются: положение [code]position[/code], вращение [code]rotation[/code], и масштаб [code]scale[/code] персонажа.
 
-In a previous lesson, we saw how we could use the [code]rotate()[/code] function to rotate our character.
+В предыдущем уроке мы видели, как можно использовать функцию [code]rotate()[/code] для поворота персонажа.
 
 [visual path="res://course/lesson-3-standing-on-shoulders-of-giants/ExampleRotateSprite.tscn"]
 
-This function increases or decreases the value of the entity's [code]rotation[/code] member variable.
+Эта функция увеличивает или уменьшает значение свойства [code]rotation[/code] объекта.
 
-Say we want to reset the rotation to [code]0[/code] and make the character upright. Using the [code]rotate()[/code] function can prove difficult: you need to know the character's exact current angle to cancel it out.
+Допустим, мы хотим сбросить угол наклона на [code]0[/code] и вернуть персонажа в вертикальное положение. Использование функции [code]rotate()[/code] может оказаться сложным: для отмены поворота необходимо точно знать текущий угол наклона персонажа.
 
-It's much easier to use the member variable rather than the function.
+Гораздо проще использовать свойство, а не функцию.
 
-The following code assigns the value [code]0[/code] to the character's rotation, resetting its angle and making it upright.
+Следующий код присваивает значение [code]0[/code] свойству персонажа, сбрасывая его угол наклона.
 
 [visual path="RunResetCharacterRotation.tscn"]
 
-Notice how we use the equal sign ([code]=[/code]) to change the value of a variable.
+Обратите внимание как мы используем знак равенства ([code]=[/code]) для изменения значения переменной.
 
-[quiz_choice question="What's a variable?" multiple="false" shuffle="true"]
-[option correct]A label you use to keep track of a value that can change.[/option]
-[option]A function that varies over time.[/option]
-[option]A decimal number.[/option]
-[explanation]Variables are labels you use to access values that change over time.
+[quiz_choice question="Что такое переменная?" multiple="false" shuffle="true"]
+[option correct]Метка для отслеживания значения, которое может меняться.[/option]
+[option]Функция, которая изменяется с течением времени.[/option]
+[option]Десятичная дробь.[/option]
+[explanation]
+Переменные - это метки, которые вы используете для доступа к значениям, изменяющимся со временем.
 
-You can also use them to put a name on a value you want to reuse throughout your code. It makes your code easier to read and to change.[/explanation]
+Вы также можете использовать их, чтобы дать имя значению, которое вы хотите повторно использовать во всем коде. Это облегчает чтение и изменение кода.
+[/explanation]
 [/quiz_choice]
 
-[title]Accessing sub-variables with the dot[/title]
+[title]Использование точки для получения доступа ко вложенным переменным[/title]
 
-In video games, you will see many member variables that have sub-values.
+В видеоиграх вы увидите множество свойств, которые имеют вложенные значения.
 
-For example, the [code]position[/code] we mentioned has two coordinates: [code]x[/code] and [code]y[/code].
+Например, упомянутая нами позиция [code]position[/code] имеет две координаты: [code]x[/code] и [code]y[/code].
 
-It's the same for the [code]scale[/code]: it has [code]x[/code] and [code]y[/code] sub-variables. They respectively control the horizontal and vertical size of the game entity.
+То же самое касается масштаба [code]scale[/code]: у него есть вложенные переменные [code]x[/code] и [code]y[/code]. Они управляют горизонтальным и вертикальным размером игрового объекта соответственно.
 
-To access those X and Y sub-components, you add a dot (".") after the variable name.
+Чтобы получить доступ к этим вложенным компонентам X и Y, добавьте точку (".") после имени переменной.
 
-The code below places the entity at [code]200[/code] pixels on the x-axis and [code]250[/code] pixels on the y-axis.
+Приведенный ниже код размещает объект в координаты [code]200[/code] пикселей по оси x и [code]250[/code] пикселей по оси y.
 
 [visual path="ExampleSetCharacterPosition.tscn"]
 
-Notice how we use the equal sign ("=") to assign the numbers on the right to the sub-variables on the left.
+Обратите внимание как мы используем знак равенства ("="), чтобы присвоить числа справа вложенным переменным слева.
 
-Unlike in maths, in computer programming, the equal sign ("=") does not mean "is equal to."
+В отличие от математики, в компьютерном программировании знак равенства ("=") не означает "равно."
 
-Instead, it means "assign the result of the expression on the right to the variable on the left". We assign values so often in code that we prefer to reserve the equal sign for that.
+Вместо этого он означает "присвоить результат выражения справа переменной слева". Мы настолько часто присваиваем значения в коде, что предпочли зарезервировать знак равенства для этого.
 
-[title]In games, the Y-axis is positive going down[/title]
+[title]В играх ось Y направлена вниз[/title]
 
-Note that in games, assuming your character's position starts at (0, 0), the code above moves the entity [code]200[/code] pixels to the right and [code]250[/code] pixels down.
+Обратите внимание, что в играх, если ваш персонаж находится в позиции (0, 0), приведенный выше код переместит его на [code]200[/code] пикселей вправо и на [code]250[/code] пикселей вниз.
 
-In math, the y-axis is generally positive going up by convention.
+В математике, как правило, ось Y направлена вверх, потому что так принято.
 
-The convention is the [i]opposite[/i] in video games and many computer applications: the y-axis is positive going down.
+В видеоиграх и многих компьютерных приложениях принято [i]обратное[/i]: положительные значения оси Y направлены вниз.
 
 [visual path="VisualXAndYAxis.tscn"]
 
-[note title="Why does the Y-axis point downwards?"]
-This may be confusing if you only saw the y-axis pointing up in math classes. However, in math, axes go in any direction. They don't even have to be perpendicular.
-
-On the computer, the position (0, 0) happens to correspond to the top-left of your computer screen. It then makes sense for coordinates to be positive when going towards the bottom-right corner.
-
-This leads to another question: why is position zero the top left of the screen? This is due to computer and TV displays history: they would calculate and display pixels starting from the top left corner and moving towards the bottom right corner.
+[note title="Почему ось Y направлена вниз?"]
+Это может сбивать с толку, если вы видели только ось Y, указывающую вверх, на уроках математики. Однако в математике оси могут идти в любом направлении. Они даже не должны быть перпендикулярны.
+На компьютере позиция (0, 0) соответствует верхнему левому углу экрана вашего компьютера. Поэтому, становление координат положительными при движении к правому нижнему углу имеет смысл.
+Это приводит к другому вопросу: почему нулевая позиция находится в верхнем левом углу экрана? Так сложилось в ходе истории компьютерных и телевизионных дисплеев: они вычисляли и отображали пиксели, начиная с верхнего левого угла, двигаясь к нижнему правому.
 [/note]
 
-Let's look at one last example before moving on to the practice. The following code makes the character 1.5 times its starting size.
+Прежде чем перейти к упражнениям, давайте рассмотрим последний пример. Следующий код делает персонажа в 1.5 раза больше его изначального размера.
 
 [visual path="ExampleSetCharacterScale.tscn"]
 
-[quiz_choice question="How do you access sub-variables?" multiple="false" shuffle="true"]
-Variables often hold sub-values, like the [code]position[/code] has two sub-variables: [code]x[/code] and [code]y[/code]. How would you access the [code]x[/code], for example?
-[option correct]You write a dot (".") between the variable and the sub-variable name.[/option]
-[option]You write an arrow ("->") between the variable and the sub-variable name.[/option]
-[option]You write a slash ("/") between the variable and the sub-variable name.[/option]
-[explanation]To access a sub-variable, you need to write a dot between the parent variable name and the sub-variable name.
+[quiz_choice question="Как получить доступ ко вложенным переменным?" multiple="false" shuffle="true"]
+Переменные часто содержат вложенные значения, например позиция [code]position[/code] имеет две вложенные переменные: [code]x[/code] и [code]y[/code]. Как получить доступ к [code]x[/code], например?
+[option correct]Написать точку (".") между переменной и именем вложенной переменной.[/option]
+[option]Написать стрелку ("->") между переменной и именем вложенной переменной.[/option]
+[option]Написать косую черту ("/") между переменной и именем вложенной переменной.[/option]
+[explanation]
+Чтобы получить доступ ко вложенной переменной, необходимо написать точку между именем родительской переменной и именем вложенной переменной.
 
-For example, to access the [code]x[/code] sub-variable of the [code]position[/code] variable, you'll write [code]position.x[/code].[/explanation]
+Например, чтобы получить доступ ко вложенному значению [code]x[/code] переменной [code]position[/code], необходимо написать [code]position.x[/code].
+[/explanation]
 [/quiz_choice]
 
-In a future lesson, we'll explain why and how those variables have sub-variables.
+В следующем уроке мы объясним, почему и зачем в этих переменных есть вложенные переменные.
 
-For now, just know you can use the dot to access them.
+Пока что просто знайте, что вы можете использовать точку для доступа к ним.
 
-We'll tell you which variables have sub-components and what their names are.
+Мы расскажем вам, какие переменные имеют вложенные компоненты и как они называются.
 
-In the next lessons, you'll create your own variables and do operations on them to add or remove [code]score[/code], [code]health[/code], you name it.
+В следующих уроках вы создадите свои собственные переменные и будете использовать их в операциях по добавлению или вычитанию [code]score[/code] (очков) и [code]health[/code] (здоровья).
 
-For now, let's practice accessing variables.
+А пока давайте потренируемся получать доступ к переменным.
 
-[practice id="draw-a-rectangle-at-a-precise-position" title="Draw a rectangle at a precise position"]
-[description]Use the position member variable and its sub-variables to change the rectangle's position.[/description]
+[practice id="draw-a-rectangle-at-a-precise-position" title="Нарисуйте прямоугольник в точной позиции"]
+[description]Используйте свойство position и его внутренние переменные для изменения положения прямоугольника.[/description]
 [goal]
-Draw a rectangle of 200 by 120 pixels at the X position of 120 pixels and Y position of 100 pixels.
+Нарисуйте прямоугольник размером 200 на 120 пикселей в позиции X — 120 и Y — 100 пикселей.
 
-You need to replace the numbers in the code editor to draw the correct rectangle.
+Вам нужно заменить числа в редакторе кода, чтобы нарисовать правильный прямоугольник.
 [/goal]
 [starting_code]
 func run():
@@ -125,23 +127,22 @@ func run():
 [cursor line="2" column="12"]
 [validator path="draw_rectangle_at_position/TestsDrawingRectangles.gd"]
 [script_slice path="draw_rectangle_at_position/DrawingRectangleAtPosition.gd" name="test_assignment"]
-[hint]You should set the X position to 120, and the Y position to 100.[/hint]
-[hint]You need to pass the numbers 200 and 120 respectively to draw_rectangle().[/hint]
-[docs]position.x,position.y,draw_rectangle[/docs]
+[hint]Вам следует установить позицию X равной 120, а позицию Y равной 100.[/hint]
+[hint]Вам нужно передать числа 200 и 120 соответственно в draw_rectangle().[/hint]
 [/practice]
 
-[practice id="draw-squares-at-different-positions" title="Draw squares at different positions"]
-[description]Now you can place and draw one shape, but how about drawing several? In this practice, you'll place three squares side by side to really get the hang of properties.[/description]
+[practice id="draw-squares-at-different-positions" title="Нарисуйте квадраты в разных позициях"]
+[description]Теперь вы можете разместить и нарисовать одну фигуру, но как насчет рисования нескольких? В этом упражнении вы разместите три квадрата рядом друг с другом, чтобы действительно научиться пользоваться свойствами.[/description]
 [goal]
-Draw three squares of size 100 by 100 that are 100 pixels apart on the horizontal axis. In other words, there should be a 100-pixel gap between two squares.
+Нарисуйте три квадрата размером 100 на 100, расположив их на расстоянии 100 пикселей друг от друга по горизонтальной оси. Другими словами, между двумя квадратами должен быть промежуток в 100 пикселей.
 
-You should draw the squares starting at the position (100, 100). This means you should position the first square at 100 on the X axis and 100 on the Y axis.
+Вы должны нарисовать квадраты, начиная с позиции (100, 100). Это означает, что первый квадрат должен располагаться в координатах 100 по оси X и 100 по оси Y.
 
-Remember you need to use the equal sign ([code]=[/code]) to change the value of a variable, like the turtle's position.
+Помните, что для изменения значения переменной, например положения черепахи, нужно использовать знак равенства ([code]=[/code]).
 
-Write your code inside the [code]run()[/code] function so the computer can recognize it.
+Напишите свой код внутри функции [code]run()[/code], чтобы компьютер мог его распознать.
 
-Use the provided [code]draw_rectangle()[/code] function to draw each square.
+Используйте предоставленную функцию [code]draw_rectangle()[/code] для рисования каждого квадрата.
 [/goal]
 [starting_code]
 func run():
@@ -150,9 +151,9 @@ func run():
 [cursor line="0" column="0"]
 [validator path="draw_rectangles_at_positions/TestsDrawingRectangles.gd"]
 [script_slice path="draw_rectangles_at_positions/DrawingMultipleRectangles.gd" name="run"]
-[hint]As each square is 100 pixels wide, to separate them by 100 pixels, you need to move the turtle by 200 pixels in total.[/hint]
-[hint]You need to change the turtle's X position before drawing each square.[/hint]
-[hint]To change the turtle's position to 100 pixels on the X axis, write [code]position.x = 100[/code]. You can write [code]position.y = 100[/code] to move the turtle to 100 pixels on the Y axis.[/hint]
-[docs]draw_rectangle,position.x,position.y[/docs]
+[hint]Так как ширина каждого квадрата 100 пикселей, чтобы разделить их на 100 пикселей, нужно переместить черепашку суммарно на 200 пикселей.[/hint]
+[hint]Вам нужно изменить координату X черепашки перед рисованием каждого квадрата.[/hint]
+[hint]Чтобы изменить положение черепашки на 100 пикселей по оси X, напишите [code]position.x = 100[/code]. Вы можете написать [code]position.y = 100[/code], чтобы переместить черепашку на 100 пикселей по оси Y.[/hint]
 [/practice]
+
 [/lesson]

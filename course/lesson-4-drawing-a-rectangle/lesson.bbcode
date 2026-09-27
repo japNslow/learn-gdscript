@@ -1,82 +1,84 @@
-[lesson title="Drawing a Rectangle"]
+[lesson title="Рисуем прямоугольник"]
 
-We'll use code created by others like we did in the previous lesson. This time, we'll solve a more complicated problem: drawing shapes.
+Как и в предыдущем уроке, мы будем использовать код, созданный другими программистами. На этот раз мы будем решать более сложную задачу: рисовать фигуры.
 
-[title]Meet the turtle[/title]
+[title]Познакомьтесь с черепахой[/title]
 
-We present you: the turtle! We created the turtle to teach you how to call functions.
+Представляем вам черепаху! Мы создали черепаху, чтобы научить вас вызывать функции.
 
 [visual path="visuals/TurtleHello.tscn"]
 
-The turtle is a little machine that moves forward, turns, and draws lines along its path.
+Черепашка - это маленькая машинка, которая движется вперед, поворачивает и рисует линии на своем пути.
 
-To make it draw, you give it a list of [glossary term="instructions"]instructions[/glossary]: on each code line, you call one specific function.
+Чтобы заставить её рисовать, вы даёте ей список [glossary term="instructions"]инструкций[/glossary]: на каждой строке кода вы вызываете одну конкретную функцию.
 
-We prepared several functions for you:
+Мы подготовили несколько функций для вас:
 
-- [code]move_forward(pixels)[/code] makes the turtle move forward over a given distance in [i]pixels[/i].
-- [code]turn_right(degrees)[/code] makes the turtle turn clockwise by a precise amount of [i]degrees[/i].
-- [code]turn_left(degrees)[/code] works the same as [code]turn_right(degrees)[/code], except the turtle turns counter-clockwise.
+- [code]move_forward(pixels)[/code] заставляет черепашку двигаться вперёд на заданное расстояние в [i]пикселях[/i].  
+- [code]turn_right(degrees)[/code] заставляет черепашку повернуться вправо на заданное количество [i]градусов[/i].
+- [code]turn_left(degrees)[/code] работает так же, как [code]turn_right(degrees)[/code], но поворачивает черепашку влево.
 
-You'll use these functions the same way you used [code]rotate()[/code] before.
+Вы будете использовать эти функции так же, как использовали [code]rotate()[/code] в прошлом уроке.
 
-The turtle draws a white line as it moves. We'll use this line to draw shapes.
+При движении черепашка рисует белую линию. Мы будем использовать эту линию для рисования фигур.
 
-For example, to move the turtle 200 pixels, you would write [code]move_forward(200)[/code].
+Например, чтобы переместить черепашку на 200 пикселей, нужно написать [code]move_forward(200)[/code].
 
 [visual path="visuals/ExampleMoveForward.tscn"]
 
-[title]Turning left and right[/title]
+[title]Повороты влево и вправо[/title]
 
-The functions [code]turn_left()[/code] and [code]turn_right()[/code] work the same.
+Функции [code]turn_left()[/code] и [code]turn_right()[/code] работают одинаково.
 
-To turn 45 degrees to the right, you would write [code]turn_right(45)[/code].
+Чтобы повернуть черепаху на 45 градусов вправо, нужно написать [code]turn_right(45)[/code].
 
-If we call [code]turn_right(45)[/code], the turtle turns 45 degrees to the right before moving on to the next instruction.
+При вызове [code]turn_right(45)[/code], черепаха поворачивается на 45 градусов вправо, прежде чем перейти к следующей инструкции.
 
 [visual path="visuals/ExampleRotate.tscn"]
 
-Using these instructions, we can make any two-dimensional shape we like!
+Используя эти инструкции, мы можем нарисовать любую двухмерную фигуру, какую хотим!
 
-Try to understand the example below.
+Попробуйте понять приведённый ниже пример.
 
-In the next practice, you'll use the functions we saw above to first draw a corner, then a rectangle like this one.
+В следующем практическом упражнении вы будете использовать функции, которые мы видели выше, сначала, чтобы нарисовать угол, а затем — прямоугольник, подобный этому.
 
 [visual path="visuals/ExampleRectangle.tscn"]
 
-[quiz_choice question="In the function call below, which part is the argument?" multiple="false" shuffle="true"]
+[quiz_choice question="Какая часть приведённой ниже функции является аргументом?" multiple="false" shuffle="true"]
 [code]move_forward(30)[/code]
 [option]move_forward[/option]
 [option correct]30[/option]
-[explanation]A function's arguments are all the values inside the parentheses. In this case, there's only one, but there can be multiple separated by commas.
+[explanation]
+Аргументы функции — это значения внутри круглых скобок. В примере функция имеет только один аргумент, но она могла содержать и несколько, разделённых запятыми.
 
-In this case, [code]move_forward[/code] is the function's name and [code]30[/code] is the argument.
+В приведённом случае, [code]move_forward[/code] — это имя функции, а [code]30[/code] — это аргумент.
 
-This function call will make the turtle move forward by [code]30[/code] pixels.[/explanation]
+Вызов этой функции заставит черепаху передвинуться вперёд на [code]30[/code] пикселей.
+[/explanation]
 [/quiz_choice]
 
-[title]The turtle uses code made specifically for this app![/title]
+[title]Черепаха выполняет код, написанный специально для этого приложения![/title]
 
-The turtle is a little learning tool custom-made for this course, based on a proven code learning methodology. It's designed to teach you how to use and create functions.
+Черепаха — это небольшой, сделанный специально для этого курса образовательный инструмент, основанный на известной и проверенной методологии обучения коду. Мы его сделали, чтобы научить вас использовать и создавать функции.
 
-So please don't be surprised if writing code like [code]turn_left()[/code] inside of the Godot editor doesn't work! And don't worry, once you've learned the foundations, you'll see they make it faster and easier to learn Godot functions.
+Так что не удивляйтесь, если такой код, как, например, [code]turn_left()[/code], не сработает в Godot! И не переживайте, как только разберётесь с основами, функции Godot станет учить быстрее и легче.
 
-Let's move on to practice! You'll get to play with the turtle functions to draw shapes.
+А теперь перейдем к практике! Вам предстоит поиграть с функциями черепашки, чтобы нарисовать фигуры.
 
-[practice id="drawing-a-corner" title="Drawing a Corner"]
-[description]Use the turtle to draw a square's corner. You'll then build upon it to draw a rectangle.[/description]
+[practice id="drawing-a-corner" title="Рисуем угол"]
+[description]Используйте черепашку, чтобы нарисовать прямой угол. В дальнейшем это поможет вам нарисовать прямоугольник.[/description]
 [goal]
-In this practice, we'll tell the turtle to draw a corner.
+В этом упражнении мы прикажем черепахе нарисовать угол.
 
-The corner is made up of two lines that are [code]200[/code] pixels long. The lines are connected at each end by [code]90[/code] degrees, or right-angle.
+Угол составляется из двух линий длиной в [code]200[/code] пикселей. Эти линии соединены концами под углом в [code]90[/code] градусов, другими словами, под прямым углом.
 
-The [code]move_forward()[/code] and [code]turn_right()[/code] functions to the right draw a corner, but they're missing some arguments.
+Функции [code]move_forward()[/code] и [code]turn_right()[/code] справа рисуют угол, но в них отсутствуют какие-то параметры.
 
-Add the missing arguments so the turtle moves forward [code]200[/code] pixels, turns right [code]90[/code] degrees, then moves forward again [code]200[/code] pixels.
+Добавьте недостающие параметры чтобы черепаха продвинулась на [code]200[/code] пикселей вперёд, повернулась вправо на [code]90[/code] градусов, а затем продвинулась вперёд ещё раз на [code]200[/code] пикселей.
 
-We added the first argument for you so the turtle moves forward [code]200[/code] pixels.
+Мы добавили для вас первый аргумент, чтобы черепаха двигалась вперёд на [code]200[/code] пикселей.
 
-In the following practices, we'll draw multiple corners to create rectangles.
+В дальнейших упражнениях мы будем рисовать углы, чтобы создать из них прямоугольники.
 [/goal]
 [starting_code]
 func draw_corner():
@@ -87,18 +89,17 @@ func draw_corner():
 [cursor line="3" column="13"]
 [validator path="turning_right/TestsTurningRight.gd"]
 [script_slice path="turning_right/TurningRight.gd" name="draw_corner"]
-[hint]You need to add two arguments to the [code]turn_right()[/code] and [code]move_forward()[/code] functions: [code]90[/code] and [code]200[/code].[/hint]
-[docs]move_forward,turn_right[/docs]
+[hint]Вам нужно добавить два аргумента в функции [code]turn_right()[/code] и [code]move_forward()[/code]: [code]90[/code] и [code]200[/code].[/hint]
 [/practice]
 
-[practice id="drawing-a-rectangle" title="Drawing a Rectangle"]
-[description]Based on your rectangle corner, you now need to draw a complete rectangle.[/description]
+[practice id="drawing-a-rectangle" title="Рисуем прямоугольник"]
+[description]Теперь, основываясь на созданном вами прямом угле, попробуйте нарисовать полноценный прямоугольник.[/description]
 [goal]
-Add the correct arguments to the functions [code]move_forward()[/code] and [code]turn_right()[/code] to draw a rectangle with a width of [code]200[/code] pixels, and a height of [code]120[/code] pixels.
+Дополните функции [code]move_forward()[/code] и [code]turn_right()[/code] такими параметрами, чтобы в результате их работы получился прямоугольник шириной в [code]200[/code] и высотой в [code]120[/code] пикселей.
 
-We wrote the first argument for you.
+Первый параметр мы написали за вас.
 
-In the next practice, you'll use the same functions to draw a bigger rectangle.
+В следующем практическом упражнении вы будете использовать те же функции, чтобы нарисовать более крупный прямоугольник.
 [/goal]
 [starting_code]
 func draw_rectangle():
@@ -113,22 +114,21 @@ func draw_rectangle():
 [cursor line="3" column="13"]
 [validator path="drawing_rectangle/TestsDrawingRectangle.gd"]
 [script_slice path="drawing_rectangle/DrawingRectangle.gd" name="draw_rectangle"]
-[hint]Both [code]move_forward()[/code] and [code]turn_right()[/code] take a numerical argument between the parenthesis[/hint]
-[hint][code]turn_right[/code]'s numerical argument indicates how many [i]degrees[/i] the turtle should turn.[/hint]
-[hint][code]move_forward[/code]'s numerical arguments indicates how many pixels the turtle should move.[/hint]
-[docs]move_forward,turn_right[/docs]
+[hint]Обе функции, [code]move_forward()[/code] и [code]turn_right()[/code], принимают числовой аргумент в скобках[/hint]
+[hint]Числовой аргумент [code]turn_right[/code] указывает, на сколько [i]градусов[/i] должна повернуть черепашка.[/hint]
+[hint]Числовой аргумент [code]move_forward[/code] указывает, на сколько пикселей должна переместиться черепашка.[/hint]
 [/practice]
 
-[practice id="drawing-a-bigger-rectangle" title="Drawing a Bigger Rectangle"]
-[description]At this point, you're ready to code entirely on your own. Call functions by yourself to draw a complete rectangle.[/description]
+[practice id="drawing-a-bigger-rectangle" title="Рисуем большой прямоугольник"]
+[description]С этого момента вы готовы программировать самостоятельно. Вызывайте функции чтобы нарисовать полноценный прямоугольник.[/description]
 [goal]
-Write out calls to the functions [code]move_forward()[/code] and [code]turn_right()[/code] to draw a rectangle with a width of 220 pixels, and a height of 260 pixels.
+Допишите вызовы функций [code]move_forward()[/code] и [code]turn_right()[/code], чтобы получить прямоугольник шириной в 220 пикселей и высотой в 260 пикселей.
 
-We wrote the first two lines for you.
+Мы написали две первых строки за вас.
 
-Be sure to write each instruction on a separate line.
+Обязательно удостоверьтесь, что каждая инструкция написана в отдельной строке.
 
-Every line should start with one [code]Tab[/code] character so the computer understands it's part of the [code]draw_rectangle()[/code] function.
+Каждая строка должна начинаться с символа [code]Tab[/code], чтобы компьютер понял, что содержимое строки является частью функции [code]draw_rectangle()[/code].
 [/goal]
 [starting_code]
 func draw_rectangle():
@@ -138,9 +138,9 @@ func draw_rectangle():
 [cursor line="0" column="0"]
 [validator path="drawing_bigger_rectangle/TestsDrawingBiggerRectangle.gd"]
 [script_slice path="drawing_bigger_rectangle/DrawingBiggerRectangle.gd" name="draw_rectangle"]
-[hint]Start by moving forward to create the height of the rectangle.[/hint]
-[hint][code]move_forward[/code]'s numerical arguments indicates how many pixels the turtle should move.[/hint]
-[hint][code]turn_right[/code]'s numerical argument indicates how many [i]degrees[/i] the turtle should turn.[/hint]
-[docs]move_forward,turn_right[/docs]
+[hint]Начните с перемещения вперед, чтобы создать высоту прямоугольника.[/hint]
+[hint]Числовой аргумент [code]move_forward[/code] указывает, на сколько пикселей должна переместиться черепашка.[/hint]
+[hint]Числовой аргумент [code]turn_right[/code] указывает, на сколько [i]градусов[/i] должна повернуть черепашка.[/hint]
 [/practice]
+
 [/lesson]

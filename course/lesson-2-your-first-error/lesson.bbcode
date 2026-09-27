@@ -1,57 +1,59 @@
-[lesson title="Your First Error"]
+[lesson title="Ваша первая ошибка"]
 
-When you program, you are bound to run into errors. Tons of them.
+В процессе программирования, вы обязательно столкнетесь с ошибками. С тоннами ошибок.
 
-But you shouldn't worry! On the computer, [b]errors are a good thing[/b].
+Но не стоит беспокоиться! Ошибки в компьютере — [b]это хорошо и полезно[/b].
 
-You will encounter errors, and [i]that's okay[/i]: every programmer does. Especially professionals.
+Вы будете сталкиваться с ошибками, и [i]это нормально[/i]: каждый программист с ними сталкивается. Особенно профессионалы.
 
-At school, maybe you learned that mistakes are a bad thing. When you code something, it's not the case: [b]errors help you write correct programs[/b] because they show you what is wrong in your programs.
+В школе, возможно, вас научили тому, что ошибки — это плохо. Когда вы что-то программируете, это не так: [b]ошибки помогают вам писать правильные программы[/b], показывая что именно не так в ваших программах.
 
-A code error looks like this. It's a message that tells you some bit of your code doesn't work.
+Ошибка в коде выглядит следующим образом. Это сообщение, которое говорит вам, что какой-то фрагмент вашего кода не работает.
 
 [visual path="ErrorExample.tscn"]
 
-[title]Making errors friendlier[/title]
+[title]Дружим вас с ошибками[/title]
 
-Error messages can look a bit cryptic. This is because they're designed by programmers, for trained programmers.
+Сообщения об ошибках могут выглядеть немного загадочно. Это потому, что они разработаны программистами, для подготовленных программистов.
 
-We added an error translator in this app that will help you get started.
+Мы добавили в это приложение переводчик ошибок, который поможет вам начать работу.
 
-It shows you why an error happens and what the message means. It also gives you some tips on how to fix it.
+Он показывает, почему возникает ошибка и что означает данное сообщение. Переводчик также дает вам несколько советов о том, как исправить ошибку.
 
 [visual path="ErrorTranslatorExample.tscn"]
 
-Error messages are designed on purpose by fellow programmers who came before you. They anticipated you might have specific issues and wanted to help you fix them.
+Ошибки — это сообщения, специально созданные другими программистами, работавшими до вас. Они предполагали, что у вас могут возникнуть определенные проблемы.
 
-You shouldn't think of errors as failures. They are like mentors helping you from the past. Importantly, errors won't break your computer. At least not with GDScript because it's a pretty safe language.
+Вы не должны думать об ошибках как о неудачах. Они подобны наставникам, помогающим вам из прошлого. Важно отметить, что ошибки не сломают ваш компьютер. По крайней мере, не ошибки в GDScript, потому что этот язык довольно безопасен.
 
-Ultimately, you want to fix all the errors in your program. Understanding what is causing the errors, with the help of error messages, is key to fixing them.
+В конечном итоге вы хотите исправить все ошибки в вашей программе. Понимание причин ошибок с помощью сообщений об ошибках является ключом к их исправлению.
 
-[quiz_choice question="Are error messages a good or a bad thing in code?" multiple="false" shuffle="true"]
-[option]They're bad: error messages are always bad.[/option]
-[option correct]They're good: they're here to help.[/option]
-[explanation]Yes, error messages are here to help you!
+[quiz_choice question="Ошибки в коде — это хорошо или плохо?" multiple="false" shuffle="true"]
+[option]Они плохие: ошибки — это всегда плохо.[/option]
+[option correct]Они хорошие: они здесь, чтобы помочь.[/option]
+[explanation]
+Да, ошибки здесь, чтобы помочь вам!
 
-Pay attention to them, and do your best to read and understand them. With experience, you'll learn to make your code work more reliably thanks to error messages.[/explanation]
+Обращайте на них внимание и делайте всё возможное, чтобы прочитать и понять их. С опытом вы научитесь делать так, чтобы ваш код работал более надёжно благодаря сообщениям об ошибках.
+[/explanation]
 [/quiz_choice]
 
-Okay, let's see an error in action. Once again, click the [i]Practice[/i] button below to face your first real error.
+Итак, давайте посмотрим на ошибку в действии. Еще раз нажмите кнопку [i]Практика[/i] ниже, чтобы увидеть свою первую реальную ошибку.
 
-[practice id="fix-your-first-error" title="Fix Your First Error"]
-[description]There's an error in this code. We need you to fix it![/description]
+[practice id="fix-your-first-error" title="Исправьте свою первую ошибку"]
+[description]В этом коде есть ошибка. Нам нужно, чтобы вы ее исправили![/description]
 [goal]
-This code is incorrect and will cause an error when you try to run it.
+Этот код неверен и вызовет ошибку когда вы попытаетесь его выполнить.
 
-The code defines an empty [glossary term="function"]function[/glossary] named [code]this_code_is_wrong[/code].
+Код определяет пустую [glossary term="function"]функцию[/glossary] с именем [code]this_code_is_wrong[/code].
 
-To work, the function should use the [glossary term="return"]return[/glossary] keyword. But this keyword is currently inside a comment, which the computer ignores.
+Для правильной работы эта функция должна использовать ключевое слово [glossary term="return"]return[/glossary]. Но оно в настоящее время находится внутри комментария, который компьютер игнорирует.
 
-Test the current code by pressing the [i]Run[/i] button.
+Протестируйте текущий код, нажав кнопку [i]Выполнить[/i].
 
-Then, remove the comment sign (#) to make the code valid.
+Затем удалите знак комментария (#), чтобы сделать код правильным.
 
-Be careful not to remove the spacing before [code]return[/code]! Otherwise, that'll cause another error. You may try that too, if you feel like it.
+Будьте осторожны, чтобы не удалить пробел перед [code]return[/code]! В противном случае это вызовет еще одну ошибку. Вы можете попробовать вызвать её, если вам этого хочется.
 [/goal]
 [starting_code]
 func this_code_is_wrong():
@@ -60,6 +62,7 @@ func this_code_is_wrong():
 [cursor line="2" column="3"]
 [validator path="first-error/TestsFixError.gd"]
 [script_slice path="first-error/ErrorScene.gd" name="wrong_code"]
-[hint]Remove the # sign.[/hint]
+[hint]Удалите знак #.[/hint]
 [/practice]
+
 [/lesson]

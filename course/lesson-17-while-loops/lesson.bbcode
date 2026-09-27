@@ -1,115 +1,117 @@
-[lesson title="Introduction to While Loops"]
+[lesson title="Введение в циклы while"]
 
-You've seen that you can use functions to [i]reuse[/i] code. In this lesson, you'll learn about [b]loops[/b]. Loops help you [i]repeat[/i] code.
+Вы видели, что функции можно использовать для [i]повторного использования[/i] кода. В этом уроке вы узнаете о [b]циклах[/b]. Циклы помогают вам [i]повторять[/i] выполнение кода.
 
-To illustrate how loops work, let's take a game board split into a grid.
+Чтобы проиллюстрировать работу циклов, рассмотрим игровую доску, разбитую на сетку.
 
-Our robot can move to neighboring cells by changing a [code]Vector2[/code] variable named [code]cell[/code]. It represents the current cell the robot is in.
+При изменении переменной [code]Vector2[/code] с именем [code]cell[/code], наш робот перемещается на соседние клетки. Переменная представляет текущую ячейку, в которой находится робот.
 
-When we increase [code]cell.x[/code], the robot moves to the right.
+Когда мы увеличиваем [code]cell.x[/code], робот перемещается вправо.
 
-Note that we delay the robot's movement in the app to help you visualize how it moves. The following code would normally move the robot instantly.
+Обратите внимание, что мы задерживаем движение робота в приложении, чтобы помочь вам наглядно увидеть, как он движется. Приведённый ниже код обычно перемещает робота мгновенно.
 
 [visual path="visuals/ExampleRobotMoveRight.tscn"]
 
-We can move diagonally by adding a [code]Vector2[/code] directly.
+Мы можем перемещаться по диагонали, прибавлением [code]Vector2[/code] напрямую.
 
 [visual path="visuals/ExampleRobotMoveDiagonal.tscn"]
 
-The above code works for a pre-defined board with a size of [code]Vector2(3, 3)[/code], but the [code]move_to_end()[/code] function wouldn't work if the size of the board was different.
+Приведённый выше код работает исправно для предварительно созданной доски размером [code]Vector2(3, 3)[/code], но функция [code]move_to_end()[/code] не будет работать, если размер доски будет другим.
 
-The robot would either stop before the end or go too far.
+Робот будет либо останавливаться перед концом, либо проходить слишком далеко.
 
-To implement a general solution for all board sizes, we can repeat the robot's movement until it gets to the end.
+Чтобы реализовать общее решение для досок любого размера, мы можем повторять движение робота вправо, пока он не дойдёт до конца.
 
-For code that repeats, we can use [i]loops[/i].
+Для повторяющегося кода мы используем [i]циклы[/i].
 
-[title]Using while loops to repeat code[/title]
+[title]Использование циклов while для повторения кода[/title]
 
-You can use a [code]while[/code] loop to make the computer repeat a block of code until you meet a specific condition or decide to break from the loop.
+Вы можете использовать цикл [code]while[/code], чтобы заставить компьютер повторять блок кода, пока определённое условие не будет выполнено или пока вы не решите выйти из цикла.
 
-Here's how we use a [code]while[/code] loop.
+Вот как мы используем цикл [code]while[/code].
 
 [visual path="visuals/CodeWhileLoop.tscn"]
 
-We use the variable [code]number[/code] to keep track of how many loops the [code]while[/code] loop completes.
+Мы используем переменную [code]number[/code] для того, чтобы отследить количество итераций, совершённых циклом [code]while[/code].
 
-Each time we go through the [code]while[/code] loop, we add [code]1[/code] to [code]number[/code].
+Каждый раз, когда мы проходим итерацию цикла [code]while[/code], к переменной [code]number[/code] прибавляется [code]1[/code].
 
-The [code]while[/code] loop keeps running for as long as the condition is true. In this case, it keeps running while [code]number[/code] is less than [code]4[/code].
+Цикл [code]while[/code] работает до тех пор, пока условие истинно. В примере он будет работать пока [code]number[/code] меньше чем [code]4[/code].
 
-You can see that the following code is executed four times in the console.
+В консоли вы можете увидеть, что приведённый ниже код выполнился четыре раза.
 
 [visual path="visuals/PrintWhileLoop.tscn"]
 
-Let's apply this to our [code]move_to_end()[/code] function.
+Давайте применим это к нашей функции [code]move_to_end()[/code].
 
-This time, we compare the number of loops to the board's width. We go through the loop until we reach the width of the board.
+В этот раз мы сравним порядковый номер итерации с шириной доски. Мы будем проходить через цикл до тех пор, пока не достигнем ширины доски.
 
-Note that we move the robot until its position is one less than the board's width because we are counting tiles from [code]0[/code].
+Обратите внимание, что мы выполняем на одну итерацию цикла меньше, чем ширина доски, так как робот уже находится в первой ячейке и отсчёт тайлов начинается с [code]0[/code].
 
-A board of [code]3[/code] by [code]3[/code] cells would have cell coordinates going from [code]0[/code] to [code]2[/code] on both the X and Y axes.
+Доска, с ячейками [code]3[/code] на [code]3[/code], будет иметь координаты ячеек от [code]0[/code] до [code]2[/code] как по оси X, так и по оси Y.
 
 [visual path="visuals/CodeWhileRobot.tscn"]
 
 [visual path="visuals/ExampleBoardWhile.tscn"]
 
-[title]While loops can cause issues[/title]
+[title]Циклы while могут приводить к проблемам[/title]
 
-If you're not careful, your [code]while[/code] loop can run infinitely. In that case, the application will freeze.
+Если вы будете пользоваться циклами [code]while[/code] неосторожно, то сможете застрять в бесконечном цикле. В этом случае приложение зависнет.
 
-Take a look at this code example.
+Взгляните на этот пример кода.
 
 [visual path="visuals/CodeWhileLoopInfinite.tscn"]
 
-[quiz_choice question="What would happen if the computer tried to run the code above?" multiple="false" shuffle="true"]
-[option correct]It would draw squares infinitely until the program is terminated[/option]
-[option]It would draw 10 squares[/option]
-[option]It would draw 20 squares[/option]
-[explanation]Because we don't increment [code]number[/code] within the [code]while[/code] loop, it always stays at [code]0[/code].
+[quiz_choice question="Что произойдет, если компьютер попытается выполнить приведённый выше код?" multiple="false" shuffle="true"]
+[option correct]Он будет рисовать квадраты бесконечно, пока выполнение программы не прекратится[/option]
+[option]Он нарисует 10 квадратов[/option]
+[option]Он нарисует 20 квадратов[/option]
+[explanation]
+Из-за того, что мы не увеличиваем [code]number[/code] внутри цикла [code]while[/code], он всегда будет равен [code]0[/code].
 
-As a result, the number is always lower than [code]10[/code], so we never break out of the loop.
+В результате, number всегда будет меньше [code]10[/code] и мы никогда не выйдем из цикла.
 
-Since there's no way to exit the [code]while[/code] loop, the computer will attempt to draw squares infinitely, which will freeze the program.
+По причине того, что из цикла [code]while[/code] будет невозможно выбраться, компьютер попытается рисовать квадраты бесконечно, что приведёт к полному зависанию программы.
 
-When programs stop responding on your computer, it's often due to an infinite loop![/explanation]
+Когда программы перестают отвечать на вашем компьютере, они, как правило, находятся в бесконечном цикле!
+[/explanation]
 [/quiz_choice]
 
-[title]When to use while loops[/title]
+[title]Где использовать циклы while[/title]
 
-At first, you will not need [code]while[/code] loops often. Even the code we show here has more efficient alternatives.
+Сперва циклы [code]while[/code] вам не понадобятся. Даже код, который мы здесь показываем, имеет более эффективные альтернативы.
 
-Also, there's a safer kind of loop, [code]for[/code] loops, which we'll look at in the next lesson.
+Кроме того, существует более безопасный вид цикла — цикл [code]for[/code], который мы рассмотрим в следующем уроке.
 
-Yet, [code]while[/code] loops have important intermediate to advanced-level uses, so you at least need to know they exist and how to use them.
+Тем не менее, циклы [code]while[/code] имеют важное значение для среднего и продвинутого уровней, поэтому вам, по крайней мере, нужно знать, что они существуют и как их использовать.
 
-We use [code]while[/code] loops every time we need to loop an unknown number of times.
+Мы используем циклы [code]while[/code] каждый раз, когда нам требуется выполнить цикл неизвестное количество раз.
 
-For example, games run in a loop that typically generates sixty images per second until the user closes the game. This is possible thanks to [code]while[/code] loops.
+Например, игры запускаются в цикле, который обычно генерирует шестьдесят изображений в секунду, пока пользователь не закроет игру. Это возможно благодаря циклам [code]while[/code].
 
-There are other good uses for [code]while[/code] loops:
+Есть и другие полезные способы применения циклов [code]while[/code]:
 
-- Reading and processing a file, like a text document, line by line.
-- Processing a constant stream of data, like someone recording audio with a microphone.
-- Reading code and converting it into instructions the computer understands.
-- Various intermediate to advanced-level algorithms, like finding paths around a map for AI.
+- Чтение и обработка файла, например, текстового документа, построчно.
+- Обработка постоянного потока данных, например, при записи звука с помощью микрофона.
+- Чтение кода и преобразование его в инструкции, понятные компьютеру.
+- Различные алгоритмы среднего и продвинутого уровней, такие как поиск пути на карте для ИИ.
 
 [separator]
 
-Let's practice some [code]while[/code] loops, as they're useful to know. It's also an excellent opportunity to practice 2D vectors.
+Давайте поупражняемся в использовании циклов [code]while[/code], так как их полезно знать. Также это отличная возможность попрактиковаться в работе с 2D-векторами.
 
-Then, we'll move on to the safer [code]for[/code] loops in the following lesson.
+В следующем уроке мы перейдём к более безопасным циклам [code]for[/code].
 
-[practice id="moving-to-the-end-of-a-board" title="Moving to the end of a board"]
-[description]Use a [glossary term="while loop"]while loop[/glossary] to have the robot move from the top of the board to the bottom.[/description]
+[practice id="moving-to-the-end-of-a-board" title="Движение до конца доски"]
+[description]Используйте [glossary term="while loop"]цикл while[/glossary] для перемещения робота из верхней части доски в нижнюю.[/description]
 [goal]
-The robot has decided to stand at the top of the board and your job is to move it down to the bottom row. Complete the [code]move_to_bottom()[/code] function to do this.
+Робот решил встать в верхней части игрового поля, и ваша задача — переместить его в нижний ряд. Для этого доработайте функцию [code]move_to_bottom()[/code].
 
-We store the robot's position in a variable named [code]cell[/code]. The variable starts with the value [code]Vector2(2, 0)[/code], meaning the robot is in column 2, row 0 (row 0 is the top of the board).
+Мы сохраняем положение робота в переменной с именем [code]cell[/code]. Переменная изначально имеет значение [code]Vector2(2, 0)[/code], что означает, что робот находится в столбце 2, строке 0 (строка 0 — это верхняя часть игрового поля).
 
-The board size is stored in a variable named [code]board_size[/code] that contains a [code]Vector2[/code] value.
+Размер доски хранится в переменной [code]board_size[/code], которая содержит значение [code]Vector2[/code].
 
-Use a [code]while[/code] loop to move the robot one step at a time so the function works for any board size.
+Используйте цикл [code]while[/code], чтобы перемещать робота на один шаг за раз, так чтобы функция работала для досок любого размера.
 [/goal]
 [starting_code]
 func move_to_bottom():
@@ -118,10 +120,10 @@ func move_to_bottom():
 [cursor line="0" column="0"]
 [validator path="while_move/TestPracticeBoardWhile.gd"]
 [script_slice path="while_move/PracticeBoardWhile.gd" name="move_to_end"]
-[hint]On this board, rows go from top to bottom. Think about which part of [code]cell[/code] controls the row the robot is on.[/hint]
-[hint][code]cell.y[/code] is the robot's current row. To move the robot down one row, increase [code]cell.y[/code] by 1. Your [code]while[/code] loop should do this repeatedly until the robot reaches the last row.[/hint]
-[hint]The last row is [code]board_size.y - 1[/code], because rows are counted from 0.[/hint]
-[hint]Use [code]while cell.y < board_size.y - 1:[/code] as your loop condition, and increase [code]cell.y[/code] inside the loop.[/hint]
-[docs]board_size,cell[/docs]
+[hint]На этой доске ряды идут сверху вниз. Подумайте, какая часть [code]cell[/code] управляет тем, в каком ряду находится робот.[/hint]
+[hint][code]cell.y[/code] — это текущая строка робота. Чтобы переместить робота на одну строку вниз, увеличьте значение [code]cell.y[/code] на 1. Ваш цикл [code]while[/code] должен повторять эту операцию до тех пор, пока робот не достигнет последней строки.[/hint]
+[hint]Последняя строка — [code]board_size.y - 1[/code], поскольку строки нумеруются, начиная с 0.[/hint]
+[hint]Используйте [code]while cell.y < board_size.y - 1:[/code] в качестве условия цикла и увеличивайте [code]cell.y[/code] внутри цикла.[/hint]
 [/practice]
+
 [/lesson]

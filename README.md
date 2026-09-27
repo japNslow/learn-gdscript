@@ -1,4 +1,6 @@
-# Learn GDScript From Zero
+# Learn GDScript From Zero (Изучаем GDScript с нуля)
+
+> **Русская версия / Russian Translation**: Полный перевод интерактивного курса «Learn GDScript From Zero» на русский язык. Все 27 уроков, интерактивные практические задания, база ошибок, глоссарий и интерфейс полностью переведены на русский язык с сохранением всех атрибутов, синтаксиса и совместимости с Godot.
 
 Learn GDScript From Zero is a free and open-source app for absolute beginners to learn to program with Godot's GDScript language.
 

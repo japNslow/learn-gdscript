@@ -1,105 +1,105 @@
-[lesson title="Value types"]
+[lesson title="Типы значений"]
 
-In your code, values have a particular [glossary term="type"]type[/glossary]. You have already learned about several: whole numbers, decimal numbers, strings, 2D vectors, arrays, and dictionaries.
+В вашем коде значения имеют определенный [glossary term="type"]тип[/glossary]. Вы уже узнали о нескольких из них: целые числа, десятичные дроби, строки, двумерные векторы, массивы и словари.
 
-The computer uses the type of a value to know which operations and functions you can use with them.
+Компьютер использует тип значения для того, чтобы понять, какие операции вы можете над ним осуществлять.
 
-As a result, it's essential to understand types: they are not fully compatible with one another, and misusing them will cause errors.
+Поэтому крайне важно понимать типы: они не взаимозаменяемы и неправильное их использование приведёт к ошибкам.
 
-[title]A prime example[/title]
+[title]Наглядный пример[/title]
 
-You want to display the player's health in the interface. Your code tracks health as a whole number, a value of type [code]int[/code] (short for integer).
+Вы хотите отобразить здоровье игрока в интерфейсе. В вашем коде здоровье представлено целым числом, значением типа [code]int[/code] (сокращение от integer).
 
 [visual path="visuals/CodeHealthVar.tscn"]
 
-However, to display it on the player's screen, the computer wants text: it needs a value of type [code]String[/code].
+Однако, для отображения его на экране игрока, компьютеру нужен текст — значение типа [code]String[/code].
 
-You can concatenate two strings with the [code]+[/code] operator.
+Вы можете объединить две строки с помощью оператора [code]+[/code].
 
 [visual path="visuals/ExampleHelloThere.tscn"]
 
-So the following code looks like it could work at first glance.
+Поэтому следующий код на первый взгляд выглядит рабочим..
 
 [visual path="visuals/CodeAddIntToString.tscn"]
 
-But when running the code, we get this strange error.
+Но при его выполнении мы получим эту странную ошибку.
 
 [visual path="visuals/ErrorInvalidOperands.tscn"]
 
-It tells you that you can't add values of type [code]String[/code] and [code]int[/code]: they're incompatible.
+Она говорит вам о том, что вы не можете складывать значения типов [code]String[/code] и [code]int[/code]: они несовместимы.
 
-In that case, you need to convert the [code]health[/code] number into a [code]String[/code].
+В этом случае вам нужно преобразовать число [code]health[/code] в строку ([code]String[/code]).
 
-[title]Converting values into strings[/title]
+[title]Преобразование значений в строки[/title]
 
-You can get the text representation of a value by calling the [code]str()[/code] function (short for "string"). The function returns its argument as a new [code]String[/code].
+Вы можете получить текстовую репрезентацию значения при помощи вызова функции [code]str()[/code] (сокращение от "string"). Эта функция возвращает аргумент, преобразованный в значение типа [code]String[/code].
 
-You can use this function whenever you want to turn some number or vector into text.
+Использовать эту функцию для превращения чисел или векторов в текст вы можете где угодно.
 
 [visual path="visuals/ExamplePrintHealth.tscn"]
 
-In this case, it turns the number [code]100[/code] into the string [code]"100"[/code]. Or whatever number [code]health[/code] is currently.
+В нашем случае, он превращает число [code]100[/code] в строку [code]"100"[/code]. Или любое другое число, которому равно [code]health[/code] в текущий момент.
 
-[title]Converting strings into numbers[/title]
+[title]Преобразование строк в числа[/title]
 
-You can also convert strings into whole numbers or decimal numbers using respectively the [code]int()[/code] and [code]float()[/code] functions.
+Также вы можете преобразовывать строки в целые числа или десятичные дроби, при помощи функций [code]int()[/code] и [code]float()[/code] соответственно.
 
-Those functions can convert what the player writes in a text field into a number. For example, the number of potions to sell at once in a shop.
+Эти функции могут преобразовать текст, написанный игроком в текстовом поле. Например, число зелий для продажи за раз в магазине.
 
 [visual path="visuals/CodeStringToInt.tscn"]
 
-[title]Some types are partially compatible[/title]
+[title]Некоторые типы частично совместимы[/title]
 
-Most types are incompatible. For example, you can't directly add or multiply an array with a number.
+Большинство типов несовместимы. Например, вы не можете прямо добавить или умножить массив на число.
 
-However, some types are [i]partially[/i] compatible. For example, you can multiply or divide a vector by a number.
+При этом, некоторые типы [i]частично[/i] совместимы. Например, вы можете умножить или разделить вектор на число.
 
 [visual path="visuals/ExamplePrintVectorMult.tscn"]
 
-It is possible because other developers defined that operation for you under the hood.
+Это возможно благодаря тому, что другие разработчики определили эту операцию для вас под капотом.
 
-However, you cannot directly add or subtract a number to a vector. You'll get an error. That's why, in earlier lessons, you had to access the sub-variables of [code]position[/code] to add numbers to them.
+В любом случае, вы не можете напрямую вычитать число из вектора. При попытке вы получите ошибку. Именно поэтому в предыдущих уроках вы сначала получали внутренние переменные из [code]position[/code], а потом уже добавляли числа к ним.
 
-[title]A surprising result[/title]
+[title]Неожиданный результат[/title]
 
-Take the following division: [code]3/2[/code]. What result would you expect to get? [code]1.5[/code]?
+Попробуйте выполнить деление [code]3/2[/code]. Какой результат вы ожидаете получить? [code]1.5[/code]?
 
 [visual path="visuals/ExamplePrintIntDivision.tscn"]
 
-Well, for the computer, the result of [code]3/2[/code] is [code]1[/code].
+А для компьютера, результатом деления [code]3/2[/code] будет [code]1[/code].
 
-Wait, what?!
+Подождите, что?!
 
-That's because, for the computer, the division of two whole numbers should always result in a whole number.
+Всё потому, что для компьютера, результатом деления двух целых чисел будет являться целое число.
 
-When you divide decimal numbers instead, you will get a decimal number as a result.
+А при делении десятичных дробей, в результате вы получите десятичную дробь.
 
 [visual path="visuals/ExamplePrintFloatDivision.tscn"]
 
-Even if it's just a [code]0[/code], adding a decimal place tells the computer we want decimal numbers.
+Даже при использовании числа [code]0[/code], добавление десятичной части сообщит компьютеру, что мы хотим использовать десятичные дроби.
 
-This shows you how mindful you need to be with types. Otherwise, you will get unexpected results. It can get pretty serious: number errors can lead to bugs like controls not working as intended or charging the wrong price to players.
+Поэтому работать с типами нужно очень внимательно. В противном случае результаты будут неожиданными. Последствия могут быть довольно серьёзными: ошибки в числах могут привести к ошибочному поведению программы, например, неправильной работе управления или неправильной цене для игроков.
 
-[title]Understanding and mastering types is a key skill for developers[/title]
+[title]Понимание и освоение типов — ключевой навык для разработчиков[/title]
 
-Programming beginners often struggle due to the lack of understanding of types.
+Начинающие программисты часто испытывают трудности из-за недостаточного понимания типов.
 
-Languages like GDScript hide the types from you by default. As a result, if you don't understand that some are incompatible, you can get stuck when facing type-related errors.
+Языки, такие как GDScript, по умолчанию скрывают от вас типы. В результате, непонимание того, что некоторые из них несовместимы, может привести вас в тупик, при столкновении с ошибками, связанными с неправильным их использованием.
 
-You'll want to keep that in mind in your learning journey. When writing code, you will need to understand everything that's happening.
+Вам следует помнить об этом в процессе обучения. При написании кода необходимо чётко понимать всё, что происходит.
 
-That said, let's practice some type conversions.
+Поэтому, давайте поупражняемся в преобразовании типов.
 
-[practice id="displaying-the-player-health-and-energy" title="Displaying the player's health and energy"]
-[description]We want to display the player's energy in the interface but face a type error. Use your new knowledge to fix it.[/description]
+[practice id="displaying-the-player-health-and-energy" title="Отображение энергии игрока"]
+[description]Мы хотим отобразить энергию игрока в интерфейсе, но ошибка мешает нам это сделать. Используйте свои знания, чтобы её исправить.[/description]
 [goal]
-We want to display the player's energy in the user interface.
+Мы хотим отобразить энергию игрока в интерфейсе пользователя.
 
-Currently, our code has a type error. We're trying to display a whole number while the [code]display_energy()[/code] function expects a string.
+Сейчас наш код содержит ошибки типов. Мы пытаемся отобразить целое число, а функция [code]display_energy()[/code] ожидает строку в качестве аргумента.
 
-Using the [code]str()[/code] function, clear the type error and make the energy amount display on the interface.
+Избавьтесь от ошибки и отобразите количество энергии в интерфейсе при помощи функции [code]str()[/code].
 
-You can't change the [code]energy[/code] variable definition: setting it to [code]"80"[/code] would break the rest of the game's code. You must convert the value when calling [code]display_energy()[/code].
+Изменять значение переменной [code]energy[/code] на [code]"80"[/code] нельзя, это приведёт к неисправностям в других частях игрового кода. Вы должны преобразовать значение при передаче его в функцию [code]display_energy()[/code].
 [/goal]
 [starting_code]
 var energy = 80
@@ -110,19 +110,18 @@ func run():
 [cursor line="0" column="0"]
 [validator path="display-energy/TestDisplayingEnergy.gd"]
 [script_slice path="display-energy/DisplayingEnergy.gd" name="run"]
-[docs]str,display_energy[/docs]
 [/practice]
 
-[practice id="letting-the-player-type-numbers" title="Letting the player type numbers"]
-[description]We want the player to choose the number of items they buy or sell in our game's shops. But right now, all we get are type errors.[/description]
+[practice id="letting-the-player-type-numbers" title="Позволяем игроку писать числа"]
+[description]Мы хотим позволить игроку выбирать количество предметов для продажи или покупки в нашем игровом магазине. Но сейчас это приводит к ошибкам типов.[/description]
 [goal]
-In our game's shops, we want to let the player type numbers to select the number of items they want to buy or sell.
+В магазинах нашей игры мы хотим позволить игроку печатать числа для выбора количества предметов для продажи или покупки.
 
-We need to know the number of items as an [code]int[/code], but the computer reads the player's input as a [code]String[/code].
+Нам нужно знать число предметов в виде [code]int[/code], но компьютер считывает пользовательский ввод, как [code]String[/code].
 
-Your task is to convert the player's input into numbers for the shop's code to work.
+Ваша задача — преобразовать пользовательский ввод в числа, для того, чтобы код магазина мог работать правильно.
 
-Using the [code]int()[/code] function, convert the player's input into a whole number and store the result in the [code]item_count[/code] variable.
+При помощи функции [code]int()[/code], преобразуйте пользовательский ввод в целое число и сохраните результат в переменной [code]item_count[/code].
 [/goal]
 [starting_code]
 var player_input = ""
@@ -135,6 +134,6 @@ func buy_selected_item():
 [cursor line="0" column="0"]
 [validator path="player-input/TestPlayerInput.gd"]
 [script_slice path="player-input/PlayerInput.gd" name="run"]
-[docs]int[/docs]
 [/practice]
+
 [/lesson]

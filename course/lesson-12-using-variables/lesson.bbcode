@@ -1,95 +1,97 @@
-[lesson title="Using Variables to Make Code Easier to Read"]
+[lesson title="Использование переменных для улучшения читабельности кода"]
 
-In this lesson, we'll make our code easier to follow and understand at a glance.
+В этом уроке мы сделаем наш код более простым и понятным с первого взгляда.
 
-Take a look at this example.
+Взгляните на этот пример.
 
 [visual path="visuals/ExampleUnclear.tscn"]
 
-[quiz_choice question="In the above example, what does the number 4 mean?" multiple="false" shuffle="true"]
-[option correct]It's how fast the character rotates.[/option]
-[option]It's how far the character moves in pixels.[/option]
-[option]It's how long the rotation takes.[/option]
-[explanation]The code above rotates the character [code]4[/code] radians per second.[/explanation]
+[quiz_choice question="Что в приведённом выше примере означает число 4?" multiple="false" shuffle="true"]
+[option correct]Это насколько быстро вращается персонаж.[/option]
+[option]Это расстояние, на которое перемещается персонаж в пикселях.[/option]
+[option]Это время, которое занимает вращение.[/option]
+[explanation]Код приведённый выше вращает персонажа со скоростью [code]4[/code] радиана в секунду.[/explanation]
 [/quiz_choice]
 
-We can guess what a number represents by looking at the function names, but it's harder to recall what this number does by quickly looking at the code.
+Мы можем догадаться, что представляет собой число, по названию функций, но при беглом осмотре кода понять его назначение будет сложно.
 
-We've seen how different functions have their own names. Using these names communicates to developers what the functions do.
+Мы уже видели названия различных функций. Правильно подобранное название даёт разработчикам информацию о том, что именно делает функция.
 
 [visual path="visuals/ExampleFunctions.tscn"]
 
-As we learned in lesson 8, we can also assign labels to numbers to help us remember what they do.
+В уроке 8 мы узнали, что мы также можем присвоить метки числам, чтобы запомнить, для чего они нужны.
 
-We call these labels [i]variables[/i].
+Мы называем эти метки [i]переменными[/i].
 
-[b]A variable is a label for a value we can save, change, and read later.[/b]
+[b]Переменная — это метка для значения, дающая возможность сохранить, изменить и прочитать его позже.[/b]
 
-Let's recap how to define a variable.
+Давайте вспомним как определить переменную.
 
 [visual path="visuals/VariableDefinition.tscn"]
 
-We improve the first example to make it clear what the number [code]4[/code] does.
+Мы улучшим первый пример, чтобы предназначение числа [code]4[/code] стало более очевидным.
 
 [visual path="visuals/ExampleUnclearImproved.tscn"]
 
-Labeling a value makes the code easier for us to read now [i]and[/i] in the future.
+Маркировка значения делает код более лёгким для чтения сейчас [i]и[/i] в будущем.
 
-[quiz_choice question="In the above example, which line defines the angular speed variable?" multiple="false" shuffle="true"]
+[quiz_choice question="Какая строка определяет переменную угловой скорости в приведённом выше примере?" multiple="false" shuffle="true"]
 [option correct]var angular_speed = 4[/option]
 [option]func _process(delta):[/option]
 [option]rotate(angular_speed * delta)[/option]
-[explanation]We create the [code]angular_speed[/code] variable, then assign it the value of [code]4[/code].[/explanation]
+[explanation]Мы создаём переменную [code]angular_speed[/code], а затем присваиваем ей значение [code]4[/code].[/explanation]
 [/quiz_choice]
 
-If we define variables outside of functions, we can re-use them in different functions.
+Определение переменных снаружи функций позволяет нам использовать их в разных функциях.
 
-Because any function can use variables we define outside of them, we call these variables [b]script-wide[/b].
+Поскольку любая функция может использовать переменные определённые снаружи, мы называем эти переменные [b]переменными скрипта[/b].
 
-Here we use the [code]angular_speed[/code] script-wide variable in both the [code]_process()[/code] function and the [code]set_angular_speed()[/code] function.
+Здесь мы используем переменную скрипта [code]angular_speed[/code] в обеих функциях: функции [code]_process()[/code] и функции [code]set_angular_speed()[/code].
 
 [visual path="visuals/ExampleScriptWide.tscn"]
 
-We can also define variables inside of functions.
+Также мы может определять переменные внутри функций.
 
-We align the variable assignment by indenting to make it part of the function body. Make sure to create the variable before using it!
+При помощи отступов мы помечаем, что место использования переменной является частью тела функции. Убедитесь что создали переменную перед её использованием!
 
-If we define a variable inside of a function, only that function can use it.
+Если мы определим переменную внутри функции, только эта функция сможет её использовать.
 
 [visual path="visuals/ExampleInFunction.tscn"]
 
-The [code]angular_speed[/code] variable only exists inside [code]_process()[/code], because we defined it there. The [code]set_angular_speed()[/code] function can't use it.
+Переменная [code]angular_speed[/code] существует только внутри [code]_process()[/code], потому что она определена внутри этой функции. Функция [code]set_angular_speed()[/code] не может её использовать.
 
-Trying to use it there will result in an error.
+Попытка использовать переменную в ней приведёт к ошибке.
 
-Here's what this error might look like.
+Вот как может выглядеть эта ошибка.
 
 [visual path="visuals/ErrorAccess.tscn"]
 
-[quiz_choice question="Where can we define variables?" multiple="true" shuffle="true"]
-[option correct]Outside of functions.[/option]
-[option correct]Inside of functions.[/option]
-[explanation]Functions can use any variables defined outside of functions. These variables are [b]script-wide[/b].
+[quiz_choice question="Где мы можем определять переменные?" multiple="true" shuffle="true"]
+[option correct]За пределами функций.[/option]
+[option correct]Внутри функций.[/option]
+[explanation]
+Функции могут использовать любые переменные определённые снаружи функций. Эти переменные называются [b]переменными скрипта[/b].
 
-If we define a variable inside of a function, only that function can use it.[/explanation]
+Если мы определим переменную внутри функции, только эта функция сможет её использовать.
+[/explanation]
 [/quiz_choice]
 
-Variables are also great at grouping values that control how a character behaves.
+Также переменные отлично подходят для группировки значений, управляющих поведением персонажа.
 
-Grouping them in this way allows us to easily change them.
+Такая группировка позволит нам легко изменять их.
 
 [visual path="visuals/ExampleVariableGrouping.tscn"]
 
-In the following practices, we'll define variables and use them with some familiar functions to make our code more readable.
+В последующих упражнениях мы будем определять переменные и использовать их в некоторых знакомых функциях, чтобы сделать наш код более читабельным.
 
-[practice id="clarifying-code-using-variables" title="Clarifying Code Using Variables"]
-[description]Using variables to store number values makes code easier to read. Tidy up this function by storing a value in a variable.[/description]
+[practice id="clarifying-code-using-variables" title="Улучшаем читабельность кода с помощью переменных"]
+[description]Использование переменных для хранения чисел делает код более читабельным. Приведите функцию в порядок при помощи сохранения значений в переменные.[/description]
 [goal]
-Let's give the [code]4[/code] here a label so we know what it does.
+Давайте дадим значению [code]4[/code] метку, чтобы мы знали что оно обозначает.
 
-Create a variable called [code]angular_speed[/code] outside of the [code]_process()[/code] function to make it script-wide. This allows us to use it in other functions too.
+Создайте переменную [code]angular_speed[/code] снаружи функции [code]_process()[/code] чтобы сделать её переменной скрипта. Это позволит нам использовать её в других функциях тоже.
 
-Then, replace the [code]4[/code] with [code]angular_speed[/code].
+После, замените цифру [code]4[/code] именем переменной [code]angular_speed[/code].
 [/goal]
 [starting_code]
 func _process(delta):
@@ -98,20 +100,19 @@ func _process(delta):
 [cursor line="0" column="0"]
 [validator path="clarify/TestClarifyCode.gd"]
 [script_slice path="clarify/ClarifyCode.gd" name="clarify"]
-[hint]Define the [code]angular_speed[/code] variable at the top of the script to make it script-wide[/hint]
-[hint]Don't forget to use it in the [code]rotate()[/code] function[/hint]
-[hint]To define the variable, use [code]var angular_speed = 4[/code][/hint]
-[docs]rotate,_process[/docs]
+[hint]Определите переменную [code]angular_speed[/code] в начале скрипта, чтобы сделать её доступной для всего скрипта[/hint]
+[hint]Не забудьте использовать её в функции [code]rotate()[/code][/hint]
+[hint]Для объявления переменной используйте [code]var angular_speed = 4[/code][/hint]
 [/practice]
 
-[practice id="fixing-an-out-of-scope-error" title="Fixing an Out of Scope Error"]
-[description]Uh oh! There's something wrong here. Can you fix it?[/description]
+[practice id="fixing-an-out-of-scope-error" title="Исправьте ошибку «Out of Scope»"]
+[description]Ой-ёй! Здесь что-то не так. Можете это исправить?[/description]
 [goal]
-There's something wrong with the code here. Can you see what it is?
+В этом коде что-то не так. Видите ли вы, что именно?
 
-Run the code and read the error.
+Запустите код и прочитайте текст ошибки.
 
-Correct the code so it works as intended.
+Скорректируйте код, чтобы он стал работать, как задумано.
 [/goal]
 [starting_code]
 func _process(delta):
@@ -124,8 +125,8 @@ func set_angular_speed(new_angular_speed):
 [cursor line="0" column="0"]
 [validator path="fixing_error/TestFixingError.gd"]
 [script_slice path="fixing_error/FixingError.gd" name="clarify"]
-[hint]You need to make [code]angular_speed[/code] script-wide so it's available to all functions[/hint]
-[hint]Define [code]angular_speed[/code] at the top of the script instead[/hint]
-[docs]rotate,_process[/docs]
+[hint]Вам нужно сделать [code]angular_speed[/code] переменной уровня скрипта, чтобы она была доступна во всех функциях[/hint]
+[hint]Вместо этого объявите [code]angular_speed[/code] в самом верху скрипта[/hint]
 [/practice]
+
 [/lesson]

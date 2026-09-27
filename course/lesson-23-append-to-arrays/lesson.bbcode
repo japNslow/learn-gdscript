@@ -1,91 +1,90 @@
-[lesson title="Appending and popping values from arrays"]
+[lesson title="Добавление и удаление значений из массивов"]
 
-In previous lessons, you learned how to create arrays to store lists of values and how to loop over them. That's useful, but arrays can do much more.
+В предыдущих уроках вы узнали, как создавать массивы для хранения списков значений и как перебирать их в цикле. Это полезно, но массивы могут делать гораздо больше.
 
-The real strength of GDScript arrays is that you can add and remove values from them at any time. This lets you build waiting lines of data or piles of data. We call these [i]queues[/i] and [i]stacks[/i], respectively. We'll see what that means in this lesson.
+Настоящая сила массивов в GDScript заключается в том, что вы можете добавлять и удалять из них значения в любое время. Это позволяет вам создавать очереди или стопки данных. Мы называем их [i]queues[/i] (очереди) и [i]stacks[/i] (стеки) соответственно. В этом уроке мы увидим, что это значит.
 
-Let's look at a concrete example.
+Давайте рассмотрим конкретный пример.
 
-[title]Tracking orders in a restaurant management game[/title]
+[title]Отслеживание заказов в игре по управлению рестораном[/title]
 
-You're making a restaurant management game where customers place orders, and you need to handle them one by one.
+Вы делаете игру про управление рестораном, в которой клиенты делают заказы, а вам нужно обрабатывать их один за другим.
 
-In the example below, customers order meals that end up in a waiting line (a queue). You need to prepare them in the kitchen. We simulate orders arriving and getting completed over time.
+В примере ниже клиенты заказывают блюда, которые попадают в очередь ожидания. Вам нужно приготовить их на кухне. Мы симулируем появление новых заказов и их выполнение со временем.
 
 [visual path="visuals/ExampleRestaurantOrders.tscn"]
 
-How do you keep track of pending and completed orders? With an array!
+Как отследить выполненные и невыполненные заказы? С помощью массива!
 
-When a customer purchases a meal, you want to [i]append[/i] (add) it to the array. Then, as you complete a meal in the kitchen and serve it, you want to remove it from the array.
+Когда клиент покупает блюдо, вам нужно добавить ([i]append[/i]) его в массив. Затем, когда вы приготовите блюдо на кухне и подадите его, вам нужно удалить его из массива.
 
-You can use the [code]append()[/code] function to add values at the end of an array. To remove values from the start, you can use the [code]pop_front()[/code] function. We call it "pop" because the value jumps out of the array.
+Вы можете использовать функцию [code]append()[/code], чтобы добавлять значения в конец массива. Чтобы удалять значения из начала, вы можете использовать функцию [code]pop_front()[/code]. Мы называем это «выталкиванием» (pop), потому что значение как бы выпрыгивает из массива.
 
-Try to read the code below before moving on. Don't worry if not everything makes sense, as we'll break it all down.
+Попробуйте прочитать код, приведённый ниже, прежде чем продвинетесь дальше. Не беспокойтесь, если не всё понятно, дальше мы детально его разберём.
 
 [visual path="visuals/CodeOrderMeals.tscn"]
 
-Notice how we call some functions by writing a dot after a variable name. Just like some values have variables you can access with a dot (like the [code]x[/code] variable in [code]position.x[/code]), they can also have their own functions.
+Обратите внимание, как мы вызываем некоторые функции, записывая точку после имени переменной. Точно так же, как у некоторых значений есть переменные, к которым можно получить доступ через точку (например, переменная [code]x[/code] в [code]position.x[/code]), у них также могут быть свои собственные функции.
 
-Functions like [code]append()[/code] and [code]pop_front()[/code] only exist on arrays. To call them, we need to write the array name, then a dot, then the function: [code]array_name.append()[/code].
+Функции вроде [code]append()[/code] и [code]pop_front()[/code] существуют только у массивов. Чтобы вызвать их, нам нужно написать имя массива, затем точку, а затем саму функцию: [code]array_name.append()[/code].
 
 [separator]
 
-Let's break down the code. We add orders to the [code]waiting_orders[/code] array by appending them.
+Давайте разберём код. Мы добавляем заказы в массив [code]waiting_orders[/code] путём их добавления в конец.
 
 [visual path="visuals/CodeAppendMeal.tscn"]
 
-We can use a string to represent a meal when calling the [code]add_order()[/code] function.
+Можно использовать строку для представления блюда при вызове функции [code]add_order()[/code].
 
 [visual path="visuals/CodeAddOrder.tscn"]
 
-When completing an order, we remove it from the [code]waiting_orders[/code] array by calling its [code]pop_front()[/code] function. This function gives us the order back, which allows us to assign it to a temporary variable.
+При завершении заказа мы удаляем его из массива [code]waiting_orders[/code] при помощи вызова его функции [code]pop_front()[/code]. После выполнения эта функция возвращает нам удалённый элемент массива, что позволяет записать его во временную переменную.
 
 [visual path="visuals/CodePopOrder.tscn"]
 
-We can then append the order to our [code]completed_orders[/code] array.
+Мы можем добавлять заказы в наш массив [code]completed_orders[/code].
 
 [visual path="visuals/CodeAppendToComplete.tscn"]
 
-When we use an array this way, we call it a [i]queue[/i]: the first element we add to the array is the first one we remove. It's like a waiting line at a store.
+Когда мы используем массив таким образом, мы называем его [i]очередью[/i] (queue): первый элемент, который мы добавляем в массив, удаляется первым. Это похоже на очередь в магазине.
 
-[note title="What does #... mean?"]
-We write [code]#...[/code] to show that there is more code here. The three dots mean "we are not showing all the code." We use this to break down code examples and make them easier to learn from.
-
-The hash sign ([code]#[/code]) marks the start of a code comment. It's a line the computer will ignore, which is why it typically appears in grey.
+[note title="Что значит #..?"]
+Мы пишем [code]#...[/code], чтобы показать, что здесь есть ещё код. Три точки означают «мы показываем код не полностью». Мы используем это, чтобы разбивать примеры кода на части и делать их более понятными для изучения.
+Знак решётки ([code]#[/code]) отмечает начало комментария в коде. Эту строку компьютер будет игнорировать, вот почему она обычно отображается серым цветом.
 [/note]
 
-[title]Using arrays as stacks[/title]
+[title]Использование массивов в качестве стека[/title]
 
-Another common use of arrays is [i]stacks[/i] of data.
+Другой типичный пример использования массивов — [i]стеки[/i] данных.
 
-Take a factory management game where you need to retrieve materials from stacks of crates. They arrive at the factory piled up vertically, and you need to take them from top to bottom.
+Рассмотрим игру про управление заводом, где вам нужно использовать материалы, сложенные в сундуки. Материалы складываются в сундук сверху и брать их из сундука вы можете только сверху.
 
 [visual path="visuals/ExampleCrateStack.tscn"]
 
-To take a crate from the back of the array, this time, we use the [code]pop_back()[/code] array function.
+Для создания сундука из массива, в этот раз мы будем использовать функцию массива [code]pop_back()[/code].
 
-This function removes (pops) the last value from the array and returns it to you.
+Эта функция удаляет последний элемент из массива и возвращает его вам.
 
-Here we pop the last value of the array and print what's left of the array to demonstrate how the array gets smaller.
+Здесь мы удаляем последнее значение из массива и выводим количество оставшихся элементов для демонстрации того, как он уменьшается.
 
 [visual path="visuals/ExamplePrintArrayPop.tscn"]
 
-Like [code]pop_front()[/code], the function returns the value removed from the array. You will often store that value in a variable. This value could be the crate's content, which you can then use to give resources to the player.
+Как и [code]pop_front()[/code], функция возвращает значение, удалённое из массива. Часто вы будете сохранять это значение в переменной. Этим значением может быть содержимое ящика, которое вы затем сможете использовать, чтобы дать ресурсы игроку.
 
-When we use an array this way, we call it a [i]stack[/i]: the last element we add is the first one we remove. It's like a pile of plates where you take from the top.
+Когда мы используем массив таким образом, мы называем его [i]стеком[/i] (stack): последний элемент, который мы добавляем, удаляется первым. Это похоже на стопку тарелок, где вы берёте верхнюю.
 
-In the following practices, you will use the [code]append()[/code], [code]pop_front()[/code], and [code]pop_back()[/code] array functions.
+В следующих упражнениях вы будете использовать функции массива: [code]append()[/code], [code]pop_front()[/code] и [code]pop_back()[/code].
 
-[practice id="completing-orders" title="Completing orders"]
-[description]Orders are piling up in the kitchen, and we need to clear them fast using the array's [code]pop_front()[/code] function.[/description]
+[practice id="completing-orders" title="Выполнение заказов"]
+[description]Заказы накапливаются на кухне и нам нужно быстро выполнять их с помощью функции массива [code]pop_front()[/code].[/description]
 [goal]
-The [code]waiting_orders[/code] array starts with four orders waiting to be prepared.
+Массив [code]waiting_orders[/code] будет заполняться постепенно.
 
-Your job is to move orders from the waiting list to the [code]completed_orders[/code] list using the array's [code]append()[/code] and [code]pop_front()[/code] functions.
+Ваша задача — перемещать заказы из списка ожидания в список [code]completed_orders[/code] при помощи функций массива [code]append()[/code] и [code]pop_front()[/code].
 
-I will call the [code]complete_current_order()[/code] function once for each order. It means the function will run four times in total, once per order.
+Функция [code]complete_current_order()[/code] будет вызвана по одному разу для каждого заказа. Это значит, что функция выполнится всего четыре раза, по разу на заказ.
 
-Remember that the array's [code]pop_front()[/code] function returns the popped value, which allows you to store it in a variable and then pass it to another function.
+Помните, что функция [code]pop_front()[/code] возвращает удалённое из массива значение, что позволяет вам сохранить его в переменную и передать в другую функцию.
 [/goal]
 [starting_code]
 var waiting_orders = [
@@ -102,23 +101,22 @@ func complete_current_order():
 [cursor line="0" column="0"]
 [validator path="clearing-meals/TestClearingMeals.gd"]
 [script_slice path="clearing-meals/ClearingMeals.gd" name="complete"]
-[hint]You first need to pop the first value from the pending orders array. To pop a value from the front of an array, you call [code]array.pop_front()[/code].[/hint]
-[hint]You then need to append the popped value to the completed_orders array. To append a value to an array, you can call [code]array.append()[/code].[/hint]
-[docs]array.pop_front,array.append[/docs]
+[hint]Сначала вам нужно извлечь первое значение из массива ожидающих заказов. Чтобы извлечь значение из начала массива, нужно вызвать [code]array.pop_front()[/code].[/hint]
+[hint]Затем вам нужно добавить извлечённое значение в массив [code]completed_orders[/code]. Чтобы добавить значение в массив, можно вызвать [code]array.append()[/code].[/hint]
 [/practice]
 
-[practice id="clearing-up-the-crates" title="Clearing up the crates"]
-[description]Crates are piling up on the platform. Move them out of the way by popping them from their array.[/description]
+[practice id="clearing-up-the-crates" title="Очистка ящиков"]
+[description]На платформе скапливаются ящики. Уберите их с дороги, удалив из массива.[/description]
 [goal]
-Crates are piling up on the platform. Move them out of the way by popping them from the [code]crates[/code] array.
+На платформе скопились ящики. Уберите ящики с дороги, удалив их из массива [code]crates[/code].
 
-You need to remove them from top to bottom using the array's [code]pop_back()[/code] function.
+Убирать ящики нужно сверху вниз, при помощи функции [code]pop_back()[/code].
 
-Your code should remove all the crates in the array using a while loop.
+Для удаления ящиков обязательно используйте цикл while.
 
-[b]Careful![/b] If you write the while loop incorrectly, you can freeze the program.
+[b]Осторожно![/b] Если вы напишете цикл while неправильно, у вас может зависнуть программа.
 
-You can check if the [code]crates[/code] array still has values by writing [code]while crates:[/code]. This works because an empty array counts as [code]false[/code], and an array with items counts as [code]true[/code].
+Вы можете проверить, есть ли ещё значения в массиве [code]crates[/code], написав [code]while crates:[/code]. Это работает, потому что пустой массив считается за [code]false[/code], а массив с элементами — за [code]true[/code].
 [/goal]
 [starting_code]
 var crates = [
@@ -134,9 +132,9 @@ func run():
 [cursor line="0" column="0"]
 [validator path="popping-crates/TestPoppingCrates.gd"]
 [script_slice path="popping-crates/PoppingCrates.gd" name="run"]
-[hint]Think about how [code]while[/code] loops work.[/hint]
-[hint]Every time you [code]pop[/code] an item, the array's [code]size[/code] gets smaller.[/hint]
-[hint]You can write [code]while crates:[/code] to run code in a loop while there are values in the [code]crates[/code] array.[/hint]
-[docs]array.pop_back[/docs]
+[hint]Подумайте, как работают циклы [code]while[/code].[/hint]
+[hint]Каждый раз, когда вы удаляете элемент с помощью [code]pop[/code], размер массива [code]size[/code] уменьшается.[/hint]
+[hint]Вы можете написать [code]while crates:[/code], чтобы запускать код в цикле, пока в массиве [code]crates[/code] есть значения.[/hint]
 [/practice]
+
 [/lesson]

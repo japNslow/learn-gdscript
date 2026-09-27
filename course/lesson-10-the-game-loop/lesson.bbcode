@@ -1,74 +1,80 @@
-[lesson title="The Game Loop"]
+[lesson title="Игровой цикл"]
 
-As we've seen, Godot has functions that do certain actions. For example, the [code]show()[/code] and [code]hide()[/code] functions change the visibility of things.
+Как мы уже видели, в Godot есть функции, которые выполняют определенные действия. Например, [code]show()[/code] и [code]hide()[/code] изменяют видимость объектов.
 
-We can also create our own functions to make custom effects like adding or removing health to a character.
+Также мы можем создавать собственные функции, оказывающие нужные нам эффекты, например, снижающие или восстанавливающие здоровье персонажа.
 
-Godot also has special functions we can customize or add to.
+В Godot также есть специальные функции, которые мы можем настраивать и использовать в наших скриптах.
 
-Take the [code]_process()[/code] function.
+Рассмотрим функцию [code]_process()[/code].
 
 [visual path="visuals/ExampleProcessFunction.tscn"]
 
-The [code]_process()[/code] function gets its name because it does calculations or continuous actions.
+Функция [code]_process()[/code] получила свое название потому, что она выполняет вычисления или непрерывные действия.
 
-It's like a juice factory that [b]processes[/b] juice bottles: the bottles are always moving along a conveyor belt, while different machines operate on them.
+Она похожа на фабрику сока, выполняющую [b]процесс обработки[/b] бутылок сока: бутылки постоянно движутся по конвейеру, а различные машины совершают операции над ними.
 
-It's similar in Godot, but this function can run [b]hundreds of times a second[/b].
+В Godot происходит нечто похожее, но эта функция может выполняться [b]сотни раз в секунду[/b].
 
-[quiz_choice question="How many parameters does this function take?" multiple="false" shuffle="true"]
+[quiz_choice question="Сколько параметров принимает эта функция?" multiple="false" shuffle="true"]
 [code]
 func _process(delta):
 [/code]
 [option correct]1[/option]
 [option]2[/option]
-[explanation]The [code]_process()[/code] function takes one parameter: [code]delta[/code].
+[explanation]
+Функция [code]_process()[/code] принимает один параметр: [code]delta[/code].
 
-We'll look at what [code]delta[/code] is in the next lesson, as well as show how to use it.[/explanation]
+Мы рассмотрим, что такое [code]delta[/code] в следующем уроке, а также покажем, как этот параметр использовать.
+[/explanation]
 [/quiz_choice]
 
-The [code]_process()[/code] function won't do anything until we add something to it.
+Функция [code]_process()[/code] не будет ничего делать, пока мы не добавим в неё что-нибудь.
 
-You might notice the underscore [code]_[/code] in front of the function name. This is a convention programmers use to coordinate work, and it'll only make sense once you have experience coding in Godot.
+Вы можете заметить подчеркивание [code]_[/code] перед именем функции. Этот символ является частью соглашения принятого разработчиками для координации работ, он станет значим для вас после того, как вы наберётесь опыта в программировании в Godot.
 
-For now, all you need to know is that if the function exists in your code, and it is called precisely [code]_process[/code], then Godot will automatically run it every [i]frame[/i].
+Всё что вам нужно знать сейчас — если в вашем в коде существует функция [code]_process[/code], то Godot будет автоматически запускать её каждый [i]кадр[/i].
 
-When Godot draws on the screen, we call that a frame.
+Когда Godot рисует на экране, мы называем это кадром.
 
-[note title="Is this the same for other engines?"]
-Other game engines might use different names like [code]_update()[/code].
+[note title="На других движках то же самое?"]
+Другие игровые движки для тех же целей могут использовать функции с другими названиями, например [code]_update()[/code].
 [/note]
 
-[title]Why is the _process() function useful?[/title]
+[title]Чем полезна функция _process()?[/title]
 
-It's perhaps better to see the [code]_process()[/code] function in action.
+Чтобы ответить на этот вопрос, давайте посмотрим на функцию [code]_process()[/code] в действии.
 
-Take the following example.
+Рассмотрим следующий пример.
 
 [visual path="visuals/ExampleRotatingSprite.tscn"]
 
-When you click the button [code]set_process(true)[/code], you activate processing on the robot.
+Нажатием кнопки [code]set_process(true)[/code] вы активируете дальнейшее выполнение процесса на роботе.
 
-From there, every frame, Godot runs the [code]_process()[/code] function.
+После этого каждый кадр Godot запускает функцию [code]_process()[/code].
 
-Since we wrote a [code]rotate()[/code] instruction, Godot is rotating the character by [code]0.05[/code] [glossary term="radians"]radians[/glossary] [b]many[/b] times a second.
+Поскольку мы написали инструкцию [code]rotate()[/code], Godot поворачивает персонажа на [code]0.05[/code] [glossary term="radians"]радиан[/glossary] [b]много[/b] раз в секунду.
 
-[quiz_choice question="How often does the _process() function run?" multiple="false" shuffle="true"]
-[option]Once a second.[/option]
-[option correct]Multiple times a second.[/option]
-[explanation]The faster your computer, the more times [code]_process()[/code] will run.
+[quiz_choice question="Как часто выполняется функция _process()?" multiple="false" shuffle="true"]
+[option]Раз в секунду.[/option]
+[option correct]Несколько раз в секунду.[/option]
+[explanation]
+Чем быстрее ваш компьютер, тем чаще будет выполняться [code]_process()[/code].
 
-Godot will try and run [code]_process()[/code] as quickly as it can. This makes sure any movement or animations look smooth and fluid.[/explanation]
+Godot постарается выполнить [code]_process()[/code] так быстро, как только сможет. Благодаря этому любое движение или анимация выглядят плавными и текучими.
+[/explanation]
 [/quiz_choice]
 
-In the practice, you'll learn how to use the process function to rotate and move a character yourself.
+В упражнении вы самостоятельно научитесь использовать функцию process для вращения и перемещения персонажа.
 
-[practice id="rotating-a-character-continuously" title="Rotating a Character Continuously"]
-[description][/description]
+[practice id="rotating-a-character-continuously" title="Непрерывное вращение персонажа"]
+[description]
+
+[/description]
 [goal]
-Make the robot rotate slowly by adding to the [code]_process()[/code] function.
+Заставьте робота медленно вращаться, изменив функцию [code]_process()[/code].
 
-A rotation speed of about [code]0.05[/code] each frame should do.
+Скорости вращения в [code]0.05[/code] радиан за кадр будет достаточно.
 [/goal]
 [starting_code]
 func _process(delta):
@@ -77,19 +83,20 @@ func _process(delta):
 [cursor line="0" column="0"]
 [validator path="rotating-sprite/TestsRotating.gd"]
 [script_slice path="rotating-sprite/RotatingSprite.gd" name="move_and_rotate"]
-[hint]Call the [code]rotate()[/code] function[/hint]
-[hint]The [code]rotate()[/code] function takes one parameter[/hint]
-[docs]rotate[/docs]
+[hint]Вызовите функцию [code]rotate()[/code][/hint]
+[hint]Функция [code]rotate()[/code] принимает один параметр[/hint]
 [/practice]
 
-[practice id="creating-circular-movement" title="Creating Circular Movement"]
-[description][/description]
+[practice id="creating-circular-movement" title="Создание кругового движения"]
+[description]
+
+[/description]
 [goal]
-Make the robot move in a large circle slowly by rotating it and simultaneously moving it along its x direction.
+Заставьте робота медленно двигаться по большому кругу, вращая его и одновременно перемещая вдоль направления x.
 
-To do this, add the [code]rotate()[/code] and [code]move_local_x()[/code] functions to [code]_process()[/code].
+Для этого добавьте функции [code]rotate()[/code] и [code]move_local_x()[/code] в [code]_process()[/code].
 
-Use a rotation speed of [code]0.05[/code] radians per frame, and move the robot [code]5[/code] pixels per frame.
+Используйте скорость вращения [code]0.05[/code] радиан за кадр и перемещайте робота на [code]5[/code] пикселей каждый кадр.
 [/goal]
 [starting_code]
 func _process(delta):
@@ -98,7 +105,7 @@ func _process(delta):
 [cursor line="0" column="0"]
 [validator path="rotating-and-moving/TestsRotatingAndMoving.gd"]
 [script_slice path="rotating-and-moving/RotateAndMoveSprite.gd" name="move_and_rotate"]
-[hint]Call the [code]rotate()[/code] and [code]move_local_x()[/code] functions[/hint]
-[docs]rotate,move_local_x[/docs]
+[hint]Вызовите функции [code]rotate()[/code] и [code]move_local_x()[/code][/hint]
 [/practice]
+
 [/lesson]

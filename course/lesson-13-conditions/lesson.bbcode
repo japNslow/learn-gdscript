@@ -1,126 +1,122 @@
-[lesson title="Conditions"]
+[lesson title="Условия"]
 
-In previous lessons, we decreased and increased a character's health, but there was no limit to how much health they could have.
+В предыдущих уроках мы уменьшали и увеличивали здоровье персонажа, но никакого предела того, сколько здоровья может быть у персонажа, не было.
 
 [visual path="visuals/ExampleHealthFunctions.tscn"]
 
-As a result, the player could increase their character's health indefinitely, which we do not want.
+В результате игрок мог бесконечно увеличивать уровень здоровья своего персонажа, чего мы не хотим.
 
 [visual path="visuals/ExampleHeal.tscn"]
 
-[quiz_choice question="What happens to health when we damage our character?" multiple="false" shuffle="true"]
-Suppose our character has [code]100[/code] health.
-
-What would the value of health be if we called [code]take_damage(25)[/code] [b]five times[/b]?
+[quiz_choice question="Что происходит со здоровьем, когда мы наносим урон нашему персонажу?" multiple="false" shuffle="true"]
+Предположим, наш персонаж имеет [code]100[/code] здоровья.
+Сколько здоровья будет у персонажа, если мы вызовем [code]take_damage(25)[/code] [b]пять раз[/b]?
 [option correct]-25[/option]
 [option]25[/option]
 [option]0[/option]
-[explanation]Calling [code]take_damage(25)[/code] five times would subtract a total of [code]125[/code] from [code]100[/code].
+[explanation]
+Пятикратный вызов [code]take_damage(25)[/code] суммарно вычтет [code]125[/code] из [code]100[/code].
 
 100
 75
 50
 25
 0
--25[/explanation]
+-25
+[/explanation]
 [/quiz_choice]
 
-We can use conditions to run actions [b]selectively[/b].
+Мы можем использовать условия для выполнения действий [b]выборочно[/b].
 
-Conditions make your code branch into two paths: if the condition is met, the computer will run the corresponding instructions. Otherwise, those instructions will not run at all.
+Условия создадут в вашем коде разветвление на два пути: если условие выполнено, компьютер выполнит соответствующие ему инструкции. Иначе, эти инструкции не выполнятся.
 
-Video games and other computer programs are full of conditions. For example, game input largely relies on conditions: [i]if[/i] the player presses the button on a gamepad, the character jumps.
+Видеоигры и другие компьютерные программы полны условий. Например, пользовательский ввод в игре очень сильно зависит от условий: [i]если[/i] игрок нажал кнопку на геймпаде — персонаж подпрыгивает.
 
 [visual path="visuals/ExampleJump.tscn"]
 
-When the computer checks a condition, this is called [b]to evaluate[/b] a condition. All conditions [b]evaluate[/b] to either [code]true[/code] or [code]false[/code].
+Процесс проверки условий компьютером называется [b]оценкой[/b] условий. Все условия [b]оцениваются[/b] как истинные ([code]true[/code]) либо как ложные ([code]false[/code]).
 
-Either the player is pressing the button, or not. Either the character is touching an enemy, or not.
+Нажал ли игрок на кнопку или нет. Соприкасается ли игрок с противником или нет.
 
-In our case, [i]if[/i] the health goes over a maximum value, we want to reset it to the maximum.
+В нашем случае, [i]если[/i] здоровье превышает максимальное значение, мы хотим сбросить его до максимального.
 
-To define a condition, we use the [code]if[/code] keyword. We write a line starting with [code]if[/code], type the condition to evaluate, and end the line with a colon.
+Чтобы определить условие мы используем ключевое слово [code]if[/code]. Мы начинаем строку с [code]if[/code], затем пишем условие для оценки и заканчиваем строку двоеточием.
 
 [visual path="visuals/ExampleHealthLimitUpper.tscn"]
 
-Notice the [code]>[/code] comparison sign. We read this symbol as "greater than".
+Обратите внимание на знак сравнения [code]>[/code]. Мы читаем этот символ как «больше чем».
 
-We've seen how function definitions use a colon at the end of the first line and nest content inside.
+Мы видели, как определения функций используют двоеточие в конце первой строки и вкладывают содержимое внутрь.
 
-In GDScript, this syntax is a recurring pattern for all code blocks.
+В GDScript этот синтаксис является повторяющимся шаблоном для всех блоков кода.
 
-The computer knows which instructions belong to the condition because they are indented.
+Компьютер понимает, какие инструкции относятся к условию, потому что они помечены отступом.
 
 [visual path="visuals/ExampleHealLimited.tscn"]
 
-[title]Comparisons[/title]
+[title]Сравнения[/title]
 
-In the above example, we used the [code]>[/code] syntax to mean "greater than".
+В примере выше мы использовали символ [code]>[/code] означающий «больше чем».
 
-We can compare numbers in other ways too.
+Мы можем сравнить числа и другими способами.
 
-[code]>[/code] means "greater than"
-[code]<[/code] means "less than"
-[code]==[/code] means "equal to"
-[code]!=[/code] means "not equal to"
+[code]>[/code] означает «больше чем»
+[code]<[/code] означает «меньше чем»
+[code]==[/code] означает «равно»
+[code]!=[/code] означает «не равно»
 
-Here's how we might use these in [code]if[/code] statements.
+Вот примеры того, как мы можем использовать эти способы в условии [code]if[/code].
 
 [visual path="visuals/ExampleComparisons.tscn"]
 
-[note title="What does \"pass\" do in the code?"]
-The [code]pass[/code] keyword prevents errors in our code when a line cannot be empty.
-
-For example, we must have a line of code after a function definition or an [code]if[/code] block. When you don't know what to write yet, you can use the [code]pass[/code] keyword as a placeholder, and Godot won't give any errors.
-
-In the previous example, if there was nothing below the [code]if[/code] lines, Godot would give us an "Expected an indented block after 'if' " error.
+[note title="Что означает \"pass\" в коде?"]
+Ключевое слово [code]pass[/code] предотвращает ошибки в нашем коде, когда строка не может быть пустой.
+Например, после определения функции или блока [code]if[/code] должна быть строка кода. Если вы еще не знаете, что писать, вы можете использовать ключевое слово [code]pass[/code] в качестве заглушки, и Godot не выдаст никаких ошибок.
+В предыдущем примере, если бы под строками [code]if[/code] ничего не было, Godot выдал бы нам ошибку «Ожидается блок с отступом после 'if'».
 [/note]
 
-[quiz_choice question="Which of these statements are true?" multiple="true" shuffle="true"]
+[quiz_choice question="Какое из этих условий истинно?" multiple="true" shuffle="true"]
 [option correct]3 > 1[/option]
 [option]2 == 1[/option]
 [option correct]2 < 3[/option]
 [option correct]1 != 3[/option]
 [option]3 < 1[/option]
-[explanation]The comparison [code]3 > 1[/code] means "three is greater than one" which is [b]true[/b].
-The comparison [code]2 < 3[/code] means "two is less than three" which is [b]true[/b].
-The comparison [code]1 != 3[/code] means "one is not equal to three" which is [b]true[/b].
+[explanation]
+Сравнение [code]3 > 1[/code] означает «три больше чем один», что [b]истинно[/b].
+Сравнение [code]2 < 3[/code] означает «два меньше чем три», что [b]истинно[/b].
+Сравнение [code]1 != 3[/code] означает «один не равно трём», что [b]истинно[/b].
 
-The comparison [code]2 == 1[/code] means "two is equal to one" which is [b]false[/b].
-The comparison [code]3 < 1[/code] means "three is less than one" which is [b]false[/b].[/explanation]
+Сравнение [code]2 == 1[/code] означает «два равно одному», что [b]ложно[/b].
+Сравнение [code]3 < 1[/code] означает «три меньше чем один», что [b]ложно[/b].
+[/explanation]
 [/quiz_choice]
 
-[title]Or else...[/title]
+[title]Иначе...[/title]
 
-The [code]if[/code] keyword comes with a complementary [code]else[/code] keyword.
+Ключевое слово [code]if[/code] имеет вспомогательное ключевое слово [code]else[/code].
 
-You can write an [code]else[/code] block after an [code]if[/code] block, like so.
+Вы можете написать блок [code]else[/code] после блока [code]if[/code] вот так.
 
 [visual path="visuals/ExampleElse.tscn"]
 
-The [code]else[/code] block will run whenever the condition above it isn't met.
+Блок [code]else[/code] выполнится в том случае, если условие над ним ложно.
 
 [separator]
 
-In the following practices, we'll use conditions and improve the way our character's health changes so it has limits.
+В следующих упражнениях мы используем условия для улучшения способа изменения здоровья персонажа, чтобы оно имело ограничения.
 
-[practice id="using-comparisons" title="Using Comparisons"]
-[description]Comparing values allows us to make decisions in code. But there's something wrong with these statements...[/description]
+[practice id="using-comparisons" title="Использование условий"]
+[description]Сравнение значений позволяет нам принимать решения в коде. Но тут с условиями что-то не так..[/description]
 [goal]
-Each [code]if[/code] statement below has a wrong comparison sign. Fix the comparison signs so every condition is [code]true[/code] and every [code]print()[/code] message runs.
+В каждом выражении [code]if[/code] ниже указан неверный знак сравнения. Исправьте знаки сравнения так, чтобы каждое условие было [code]true[/code] и выводились все сообщения [code]print()[/code].
 
-Only change the comparison signs ([code]>[/code], [code]<[/code], [code]==[/code], [code]!=[/code]). Do not change the values or the messages.
+Изменяйте только знаки сравнения ([code]>[/code], [code]<[/code], [code]==[/code], [code]!=[/code]). Не меняйте значения и сами сообщения.
 
-Here are the four comparison signs and what they mean:
+Вот четыре знака сравнения и то, что они означают:
 
-[ul]
-[code]>[/code]  Greater than
-[code]<[/code]  Less than
-[code]==[/code] Equal to
-[code]!=[/code] Not equal to
-[/ul]
+[ul] [code]>[/code] Больше [code]<[/code] Меньше [code]==[/code] Равно [code]!=[/code] Не равно [/ul]
 
-For example, if [code]health[/code] is equal to [code]100[/code] and the message says "health is greater than five," the correct comparison is [code]health > 5[/code], because 100 is greater than 5. That makes the condition evaluate to [code]true[/code] and print the message.
+Например, если [code]health[/code] равно [code]100[/code], а в сообщении говорится «health is greater than five», правильным сравнением будет [code]health > 5[/code], так как 100 больше 5. Это сделает условие истинным ([code]true[/code]) и выведет сообщение.
 [/goal]
 [starting_code]
 func run():
@@ -141,24 +137,23 @@ func run():
 [cursor line="0" column="0"]
 [validator path="using_conditions/TestUsingConditions.gd"]
 [script_slice path="using_conditions/UsingConditions.gd" name="conditions"]
-[hint]Read each [code]print()[/code] message carefully. The message tells you what the comparison should mean. Then pick the sign that matches best.[/hint]
-[hint]Remember: you only need to change the [code]>[/code], [code]<[/code], [code]==[/code], or [code]!=[/code] symbols. Do not change numbers or the [code]print()[/code] calls![/hint]
-[hint]For the last line, "not equal to seven" means you need the [code]!=[/code] sign: [code]health != 7[/code].[/hint]
+[hint]Внимательно прочитайте каждое сообщение [code]print()[/code]. Сообщение подсказывает, каким должно быть сравнение. Затем выберите подходящий знак.[/hint]
+[hint]Помните: нужно изменить только символы [code]>[/code], [code]<[/code], [code]==[/code] или [code]!=[/code]. Не меняйте числа или вызовы [code]print()[/code]![/hint]
+[hint]Для последней строки «not equal to seven» означает, что вам нужен знак [code]!=[/code]: [code]health != 7[/code].[/hint]
 [/practice]
 
-[practice id="limiting-healing" title="Limiting Healing"]
-[description]As much as we might like, we don't want our robot to have too much health. Limit how much healing the robot can take.[/description]
+[practice id="limiting-healing" title="Ограничиваем исцеление"]
+[description]Как бы нам ни хотелось, наш робот не должен иметь слишком много здоровья. Ограничьте количество здоровья, которое может иметь робот.[/description]
 [goal]
-The [code]heal()[/code] function adds [code]amount[/code] to [code]health[/code]. But right now, health can increase forever, without limit! We want to stop it at [code]80[/code].
+Функция [code]heal()[/code] прибавляет [code]amount[/code] к [code]health[/code]. Но сейчас здоровье может расти бесконечно! Мы хотим ограничить его значением [code]80[/code].
 
-I've defined a [code]health[/code] variable for you with a starting value of [code]20[/code]. Your task is to add a condition inside [code]heal()[/code] so that health is never greater than [code]80[/code].
+Мы уже объявили для вас переменную [code]health[/code] с начальным значением [code]20[/code]. Ваша задача — добавить условие внутри [code]heal()[/code], чтобы здоровье никогда не превышало [code]80[/code].
 
-To check your code, I will call the [code]heal()[/code] function twice, like this:
+Чтобы проверить твой код, я вызову функцию [code]heal()[/code] дважды, вот так:
 
-[code]heal(40)[/code]
-[code]heal(40)[/code]
+[code]heal(40)[/code] [code]heal(40)[/code]
 
-After those two calls, [code]health[/code] should be equal to [code]80[/code].
+После этих двух вызовов [code]health[/code] должно быть равно [code]80[/code].
 [/goal]
 [starting_code]
 var health = 20
@@ -169,29 +164,25 @@ func heal(amount):
 [cursor line="0" column="0"]
 [validator path="limiting_health/TestLimitingHealth.gd"]
 [script_slice path="limiting_health/LimitingHealth.gd" name="heal"]
-[hint]The starting code already adds the amount to the [code]health[/code] variable: [code]health += amount[/code] is already there. You need to add a check [b]after[/b] it, otherwise the health will overshoot your limit.[/hint]
-[hint]Use [code]if health > 80:[/code] to detect when health went too high.[/hint]
-[hint]Inside that [code]if[/code] block, set health back to the limit: [code]health = 80[/code]. That's how you limit the value.[/hint]
-[docs]heal[/docs]
+[hint]Начальный код уже прибавляет значение к переменной [code]health[/code]: строка [code]health += amount[/code] уже есть. Вам нужно добавить проверку [b]после[/b] неё, иначе здоровье может превысить ограничение.[/hint]
+[hint]Используйте [code]if health > 80:[/code], чтобы определить, когда здоровье стало слишком высоким.[/hint]
+[hint]Внутри блока [code]if[/code] верните здоровье к пределу: [code]health = 80[/code]. Именно так можно ограничить значение.[/hint]
 [/practice]
 
-[practice id="preventing-health-from-going-below-zero" title="Preventing Health from Going Below Zero"]
-[description]Having a negative health value doesn't make a lot of sense. Make sure the robot's health can't go below zero.[/description]
+[practice id="preventing-health-from-going-below-zero" title="Запрещаем здоровью опускаться ниже нуля"]
+[description]Наличие отрицательного значения здоровья не имеет особого смысла. Убедитесь, что здоровье робота не может опуститься ниже нуля.[/description]
 [goal]
-We want to display the health number on screen, like in many RPGs. But currently, the health can go below 0, which does not make sense. We want to stop at [code]0[/code].
+Мы хотим отображать число здоровья на экране, как во многих RPG. Но сейчас здоровье может уйти в минус, что не имеет смысла. Мы хотим остановиться на [code]0[/code].
 
-Complete the [code]take_damage()[/code] function so it does two things:
+Дополните функцию [code]take_damage()[/code] так, чтобы она делала две вещи:
 
-1. Subtract [code]amount[/code] from [code]health[/code].
-2. If [code]health[/code] is below [code]0[/code] after that, set it back to [code]0[/code].
+1. Вычтите [code]amount[/code] из [code]health[/code].n2. Если после этого [code]health[/code] станет меньше [code]0[/code], установите его обратно в [code]0[/code].
 
-To check your code, I will call your [code]take_damage()[/code] function three times, like this:
+Чтобы проверить твой код, я вызову функцию [code]take_damage()[/code] три раза, вот так:
 
 [code]take_damage(10)[/code]
-[code]take_damage(10)[/code]
-[code]take_damage(10)[/code]
 
-After those three calls, [code]health[/code] should equal [code]0[/code], and not [code]-10[/code] or another value.
+После этих трёх вызовов [code]health[/code] должно быть равно [code]0[/code], а не [code]-10[/code] или другому значению.
 [/goal]
 [starting_code]
 var health = 20
@@ -202,10 +193,10 @@ func take_damage(amount):
 [cursor line="0" column="0"]
 [validator path="prevent_zero_health/TestPreventZeroHealth.gd"]
 [script_slice path="prevent_zero_health/PreventZeroHealth.gd" name="damage"]
-[hint]Start by subtracting the damage: [code]health -= amount[/code]. This is how you apply damage.[/hint]
-[hint]To limit the health, after subtracting the amount, you need to add a condition and reset the health.[/hint]
-[hint]Here's how to write a condition to check if health went below zero: [code]if health < 0:[/code].[/hint]
-[hint]Inside the [code]if[/code] block, you can reset the health like this: [code]health = 0[/code].[/hint]
-[docs]take_damage[/docs]
+[hint]Начните с вычитания урона: [code]health -= amount[/code]. Так наносится урон.[/hint]
+[hint]Чтобы ограничить здоровье, после вычитания значения нужно добавить условие и сбросить здоровье.[/hint]
+[hint]Вот как написать условие для проверки, опустилось ли здоровье ниже нуля: [code]if health < 0:[/code].[/hint]
+[hint]Внутри блока [code]if[/code] можно сбросить здоровье следующим образом: [code]health = 0[/code].[/hint]
 [/practice]
+
 [/lesson]

@@ -1,93 +1,95 @@
-[lesson title="Looping over arrays"]
+[lesson title="Обход массивов в цикле"]
 
-We used the [code]range()[/code] function in combination with [code]for[/code] loops.
+Мы использовали функцию [code]range()[/code] в сочетании с циклами [code]for[/code].
 
 [visual path="res://course/lesson-19-creating-arrays/visuals/ExamplePrint.tscn"]
 
-The [code]range()[/code] function produced an array that the [code]for[/code] keyword could loop over.
+Функция [code]range()[/code] создавала массив, элементы которого мы могли перебрать по очереди при помощи ключевого слова [code]for[/code].
 
-We can give [code]for[/code] loops [i]any[/i] array, and they will loop over them just the same.
+Мы можем дать циклам [code]for[/code] [i]любой[/i] массив, и они точно так же будут его перебирать.
 
-Instead of using the [code]range()[/code] function, we could manually write the numbers and get the same result.
+Вместо того чтобы использовать функцию [code]range()[/code], мы можем вручную создать массив чисел и получить тот же результат.
 
 [visual path="visuals/ExamplePrintArray.tscn"]
 
-For each element inside the array, the [code]for[/code] loop extracts it, stores it in the temporary variable named [code]number[/code], and executes the loop's code once.
+Для каждого элемента в массиве, цикл [code]for[/code] извлечёт его, сохранит во временной переменной [code]number[/code] и выполнит код цикла один раз.
 
-Inside the loop, you can access the [code]number[/code] variable, which changes on each [i][glossary term="iteration"]iteration[/glossary][/i].
+Внутри цикла вы можете обращаться к переменной [code]number[/code], которая меняется на каждой [i][glossary term="iteration"]итерации[/glossary][/i].
 
-The code works regardless of the array or where you store it. Often, you will store arrays in variables for easy access.
+Код работает независимо от состава массива или места его хранения. Часто вы будете хранить массивы в переменных для упрощения их использования.
 
 [visual path="visuals/CodeStoreArrayInVar.tscn"]
 
-[quiz_choice question="What will this code print?" multiple="false" shuffle="true"]
+[quiz_choice question="Что выведет этот код?" multiple="false" shuffle="true"]
 [code]var numbers = [0, 1, 2]
 for number in numbers:
 	print(number)
 [/code]
-[option correct]0, 1, and 2[/option]
-[option]1, 2, and 3[/option]
-[option]0, 0, and 0[/option]
-[explanation]Compared to previous examples, we store the array in the [code]numbers[/code] variable. Using the [code]numbers[/code] variable in our [code]for[/code] loop allows the computer to access the array of numbers like before.
+[option correct]0, 1, и 2[/option]
+[option]1, 2, и 3[/option]
+[option]0, 0, и 0[/option]
+[explanation]
+По сравнению с предыдущими примерами, мы храним массив в переменной [code]numbers[/code]. Использование переменной [code]numbers[/code] в цикле [code]for[/code] позволяет компьютеру обращаться к массиву чисел, как и раньше.
 
-We have three numbers in the array: [code]0[/code], [code]1[/code], and [code]2[/code].
+В нашем массиве есть три числа: [code]0[/code], [code]1[/code], и [code]2[/code].
 
-The loop extracts each of them sequentially and assigns it to the [code]number[/code] temporary variable. As the loop processes each number, the output will print [code]0[/code], then [code]1[/code], then [code]2[/code], each on a separate line.[/explanation]
+Цикл последовательно извлекает каждое из них и присваивает его временной переменной [code]number[/code]. По мере обработки каждого числа, в окне вывода появляются [code]0[/code], затем [code]1[/code], затем [code]2[/code], каждое на отдельной линии.
+[/explanation]
 [/quiz_choice]
 
-[title]Making the turtle walk, with a loop[/title]
+[title]Заставляем черепаху ходить, при помощи цикла[/title]
 
-In the previous lesson, you made a turtle walk along a path by writing [code]Vector2[/code] coordinates in an array.
+В предыдущем уроке вы заставили черепаху двигаться по пути, при помощи написания массива координат типа [code]Vector2[/code].
 
 [visual path="res://course/lesson-19-creating-arrays/visuals/ExampleTurtleRobotPath.tscn"]
 
-It's a [code]for[/code] loop that makes the turtle walk along the path.
+Именно цикл [code]for[/code] позволяет черепахе двигаться по пути.
 
-The loop works like this: for each coordinate in the array, it moves the turtle once to that cell.
+Цикл работает так: для каждой координаты в массиве он передвигает черепаху в ячейку, соответствующую этой координате.
 
 [visual path="visuals/CodeTurtleMove.tscn"]
 
 [separator]
 
-It's the same principle with unit selection.
+Тот же принцип использовался при выборе юнитов.
 
 [visual path="visuals/ExampleSelectUnits.tscn"]
 
-For each coordinate in an array named [code]selected_units[/code], we check if there is a unit in that cell. If so, we select it.
+Для каждой координаты в массиве с именем [code]selected_units[/code] мы проверяем, есть ли юнит в этой ячейке. Если да, то выбираем его.
 
-In that case, we use an array, a loop, and a condition together.
+В этом случае мы используем массив, цикл и условие вместе.
 
 [visual path="visuals/CodeSelectUnits.tscn"]
 
-The code above uses several features you haven't learned yet:
+В приведённом выше коде есть несколько особенностей, с которыми вы ещё не знакомы:
 
-- In a condition, the [code]in[/code] keyword allows you to check if a value exists [i]in[/i] an array.
-- The array's [code]append()[/code] function appends a new value at the end of the array.
+- В условии, ключевое слово [code]in[/code] (в) позволяет вам проверить, существует ли конкретное значение [i]в[/i] массиве.
+- Функция массива [code]append()[/code] добавляет новое значение в конец массива.
 
-Notice the use of a period after the [code]selected_units[/code] variable, to call the [code]append()[/code] function. It's because this function exists only on arrays.
+Обратите внимание на использование точки после имени переменной [code]selected_units[/code] для вызова функции [code]append()[/code]. Точка необходима, так как эта функция существует только в массивах.
 
-When functions exist only on a specific value type, you write a dot after the value to call the function on it.
+Когда функция существует только в определённом типе значений, вы должны использовать точку после значения для вызова функции для него.
 
-We'll revisit those two features again in the following lessons.
+Мы ещё встретимся с этими особенностями в последующих уроках.
 
 [separator]
 
-The beauty of loops is that they work regardless of the size of your arrays.
+Циклы прекрасны тем, что они работают независимо от размера ваших массивов.
 
-The code just works whether you have one or ten thousand units to select. It is all accomplished with only a couple lines of code.
+Код будет работать одинаково при выборе одного или десяти тысяч юнитов. Всё это делается в несколько строчек кода.
 
-That's the power of computer programming.
+В этом и заключается сила компьютерного программирования.
 
-In the following practices, you will use arrays combined with [code]for[/code] loops to achieve similar results.
+В следующих упражнениях вы будете использовать массивы в сочетании с циклами [code]for[/code] для достижения подобных результатов.
 
-[practice id="move-the-robot-along-the-path" title="Move the robot along the path"]
-[description]Our AI pathfinding algorithm is giving us a path to move the robot. Now, you need to make the turtle move along the path.[/description]
+[practice id="move-the-robot-along-the-path" title="Перемещаем робота по пути"]
+[description]Алгоритм поиска пути нашего ИИ предоставил нам путь по которому должен двигаться робот. Теперь вам нужно заставить робота двигаться по нему.[/description]
 [goal]
-Our AI pathfinding algorithm provided a path for the robot to move to the right edge of the grid. Your task is to use a [code]for[/code] loop to make the robot move.
+Алгоритм поиска пути нашего ИИ предоставил путь, по которому робот может переместиться в правый угол сетки. Ваша задача — использовать цикл [code]for[/code], чтобы заставить робота двигаться.
 
-To move the robot, call [i]its[/i] [code]move_to()[/code] function, like so: [code]robot.move_to()[/code].
+Для перемещения робота, вызовите [i]его[/i] функцию [code]move_to()[/code], как в этом примере: [code]robot.move_to()[/code].
 
-The [code]move_to()[/code] function only exists on the robot, which is why you need to access it this way.
+Функция [code]move_to()[/code] существует только в роботе, поэтому получить к ней доступ вы можете только таким образом.
 [/goal]
 [starting_code]
 var robot_path = [
@@ -106,23 +108,22 @@ func run():
 [cursor line="0" column="0"]
 [validator path="robot-path/TestRobotPath.gd"]
 [script_slice path="robot-path/RobotPath.gd" name="run"]
-[hint]You should start with a for loop that iterates over every cell in [code]robot_path[/code].[/hint]
-[hint]You need to pass the cell position to the robot's [code]move_to()[/code] function in the loop.[/hint]
-[docs]robot.move_to[/docs]
+[hint]Начните с цикла for, который проходит по каждой ячейке массива [code]robot_path[/code].[/hint]
+[hint]Вам нужно передать позицию клетки в функцию [code]move_to()[/code] робота внутри цикла.[/hint]
 [/practice]
 
-[practice id="back-to-the-drawing-board" title="Back to the drawing board"]
-[description]The drawing turtle makes its comeback. Fear not! Armed with loops, you'll make it draw faster than ever before.[/description]
+[practice id="back-to-the-drawing-board" title="Возвращаемся к доске для рисования"]
+[description]Рисующая черепаха возвращается. Не бойтесь! Вооружённые циклами, вы сделаете процесс рисования быстрым, как никогда.[/description]
 [goal]
-We want to draw many rectangles, something surprisingly common in games.
+Мы хотим нарисовать много прямоугольников, что на удивление часто встречается в играх.
 
-However, writing this code by hand can get tedious. Instead, you could store the size of your shapes in arrays and use a loop to draw them all in batches.
+Однако, писать код вручную было бы утомительно. Вместо этого вы можете записать размер всех фигур в массив и использовать цикл для рисования всех их разом.
 
-That's what you'll do in this practice.
+Это именно то, что вы будете делать в этом упражнении.
 
-Use a [code]for[/code] loop to draw every rectangle in the [code]rectangle_sizes[/code] array with the [code]draw_rectangle()[/code] function.
+Используйте цикл [code]for[/code] для рисования каждого прямоугольника из массива [code]rectangle_sizes[/code] при помощи функции [code]draw_rectangle()[/code].
 
-The rectangles shouldn't overlap or cross each other. To avoid that, you'll need to call the [code]jump()[/code] function.
+Прямоугольники не должны перекрывать или пересекать друг друга. Чтобы избежать этого, вам нужно использовать функцию [code]jump()[/code].
 [/goal]
 [starting_code]
 var rectangle_sizes = [Vector2(200, 120), Vector2(140, 80), Vector2(80, 140), Vector2(200, 140)]
@@ -133,9 +134,9 @@ func run():
 [cursor line="0" column="0"]
 [validator path="drawing-in-loops/TestsDrawingInLoops.gd"]
 [script_slice path="drawing-in-loops/DrawingInLoops.gd" name="draw"]
-[hint]Each value in the [code]rectangle_sizes[/code] array is a [code]Vector2[/code]. You'll need to access its [code]x[/code] and [code]y[/code] sub-components to draw rectangles.[/hint]
-[hint]In the loop, you first need to call [code]draw_rectangle()[/code], and then [code]jump()[/code]. Otherwise, at least two rectangles will overlap.[/hint]
-[hint]The arguments when calling [code]jump()[/code] can just be large enough to space out the rectangles. For example, [code]jump(300, 0)[/code][/hint]
-[docs]draw_rectangle,jump[/docs]
+[hint]Каждое значение в массиве [code]rectangle_sizes[/code] представляет собой [code]Vector2[/code]. Вам понадобится получить доступ к его подкомпонентам [code]x[/code] и [code]y[/code], чтобы нарисовать прямоугольники.[/hint]
+[hint]В цикле сначала нужно вызвать [code]draw_rectangle()[/code], а затем [code]jump()[/code]. В противном случае как минимум два прямоугольника будут пересекаться.[/hint]
+[hint]Аргументы при вызове [code]jump()[/code] могут быть достаточно большими, чтобы распределить прямоугольники по пространству. Например, [code]jump(300, 0)[/code][/hint]
 [/practice]
+
 [/lesson]

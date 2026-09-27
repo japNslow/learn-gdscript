@@ -1,60 +1,60 @@
-[lesson title="Adding and Subtracting"]
+[lesson title="Сложение и вычитание"]
 
-Our character in our game will have health by defining the [code]health[/code] variable. The higher the character's health, the further away the player is from losing the game.
+Здоровье главного героя нашей игры будет определено переменной [code]health[/code]. Чем выше здоровье персонажа, тем дальше игрок от поражения.
 
-Health that changes adds tension to the game, especially if the player is fighting with low health! It's a resource that the player should manage carefully.
+Здоровье добавляет игре напряжения, особенно если игрок сражается на низком его уровне! Здоровье — это ресурс, которым игрок должен распоряжаться осторожно.
 
-The character's health might get low if an enemy attacks them or they fall into a hole.
+Здоровье персонажа уменьшается, если он падает в пропасть или его атакует противник.
 
-We can create a function to represent damage in these cases.
+Мы можем создать функцию, наносящую повреждения в этих случаях.
 
 [visual path="visuals/ExampleDamage.tscn"]
 
-We pass the amount of damage the robot should take as a parameter.
+Мы передаём количество урона, которое робот должен получить, в виде параметра.
 
-Line 2 subtracts [code]amount[/code] from [code]health[/code].
+Строка 2 вычитает [code]amount[/code] из [code]health[/code].
 
-Note the [code]-=[/code] syntax which achieves this. It's a shorthand we often use.
+Обратите внимание, что вычитание производится при помощи синтаксиса [code]-=[/code]. Это сокращение, которое мы часто используем.
 
-You can also use a longer form. Both of these lines have the same effect. They both subtract the value of [code]amount[/code] from the [code]health[/code] variable:
+Также вы можете использовать более длинную форму. Обе строки, приведённые ниже, имеют одинаковый эффект. Они обе вычитают [code]amount[/code] из переменной [code]health[/code]:
 
 [code]health -= amount[/code]
 [code]health = health - amount[/code]
 
-You may notice that the health of the robot can go below [code]0[/code]. We'll see how to manage this in a future lesson using [i]conditions[/i].
+Вы можете заметить, что здоровье робота может упасть ниже [code]0[/code]. В следующих уроках мы разберём, как с этим справляться с помощью [i]условий[/i].
 
 [separator]
 
-The robot's health could increase instead if the player picks up an item that heals them, or if they use a healing item.
+Здоровье робота может увеличиться, если игрок подберёт или использует исцеляющий предмет.
 
 [visual path="visuals/ExampleHeal.tscn"]
 
-Here again, the health can go beyond [code]100[/code].
+Также, здоровье может превысить [code]100[/code].
 
-Also, once more, the short line [code]health += amount[/code] is equivalent to the longer form [code]health = health + amount[/code].
+Здесь, как и в предыдущем примере, мы используем сокращение [code]health += amount[/code] эквивалентное длинной форме [code]health = health + amount[/code].
 
-[quiz_choice question="Assuming amount is a positive number, which of these would increase the health of the robot?" multiple="true" shuffle="true"]
+[quiz_choice question="Какое из этих выражений увеличит здоровье робота?" multiple="true" shuffle="true"]
 [option]health -= amount[/option]
 [option correct]health += amount[/option]
 [option correct]health = health + amount[/option]
 [option]health = health - amount[/option]
-[explanation]Both of these lines increase the [code]health[/code] of the robot by [code]amount[/code].
+[explanation]Оба выражения увеличат [code]health[/code] робота на [code]amount[/code].
 [code]
 health += amount
 health = health + amount
 [/code][/explanation]
 [/quiz_choice]
 
-In the following practices, you'll code the [code]take_damage()[/code] and [code]heal()[/code] functions so the robot's health can decrease and increase.
+В следующих упражнениях вы создадите функции [code]take_damage()[/code] и [code]heal()[/code], позволяющие уменьшать и увеличивать здоровье робота.
 
-[practice id="damaging-the-robot" title="Damaging the Robot"]
-[description]Learn how to deal damage to entities like our robot.[/description]
+[practice id="damaging-the-robot" title="Нанесение урона роботу"]
+[description]Научитесь наносить урон объектам вроде робота.[/description]
 [goal]
-In our game, the main character has a certain amount of [code]health[/code]. When it gets hit, the health should go down by a varying [code]amount[/code] of damage.
+В нашей игре у главного героя есть определённое количество здоровья ([code]health[/code]). Когда персонаж получает удар, его здоровье должно уменьшиться на определённое количество ([code]amount[/code]) очков.
 
-Add to the [code]take_damage()[/code] function so it subtracts the [code]amount[/code] to the predefined [code]health[/code] variable.
+Доработайте функцию [code]take_damage()[/code] таким образом, чтобы при её вызове, значение заранее объявленной переменной [code]health[/code] уменьшалось на [code]amount[/code].
 
-The robot starts with 100 health and will take 50 damage.
+Робот должен начать со 100 очками здоровья и получить 50 единиц урона.
 [/goal]
 [starting_code]
 var health = 100
@@ -65,20 +65,19 @@ func take_damage(amount):
 [cursor line="0" column="0"]
 [validator path="taking-damage/TestDamagingRobot.gd"]
 [script_slice path="taking-damage/DamagingRobot.gd" name="damage"]
-[hint]Add an instruction to subtract [code]amount[/code] from [code]health[/code].[/hint]
-[docs]take_damage[/docs]
+[hint]Добавьте инструкцию, чтобы вычесть [code]amount[/code] из [code]health[/code].[/hint]
 [/practice]
 
-[practice id="healing-the-robot" title="Healing the Robot"]
-[description]Our robot needs healing after that practice! Create a function to heal it back to full health.[/description]
+[practice id="healing-the-robot" title="Исцеление робота"]
+[description]После предыдущего упражнения наш робот нуждается в лечении! Создайте функцию, чтобы восстановить его здоровье до максимума.[/description]
 [goal]
-It's time to heal the robot up to full health!
+Настало время исцелить нашего робота!
 
-Write a function called [code]heal()[/code] that takes [code]amount[/code] as a parameter.
+Напишите функцию [code]heal()[/code], принимающую [code]amount[/code] в виде параметра.
 
-The function should add [code]amount[/code] to [code]health[/code].
+Функция должна добавлять [code]amount[/code] к [code]health[/code].
 
-The robot starts with 50 health and will heal 50 to get it up to 100.
+Робот должен начать с 50 очками здоровья и исцелиться на 50 в результате выполнения функции, чтобы полностью восстановиться до 100.
 [/goal]
 [starting_code]
 var health = 50
@@ -88,8 +87,8 @@ var health = 50
 [cursor line="0" column="0"]
 [validator path="healing/TestHealingRobot.gd"]
 [script_slice path="healing/HealingRobot.gd" name="heal"]
-[hint]Define the [code]heal()[/code] function using [code]func[/code][/hint]
-[hint]The first line is [code]func heal(amount):[/code][/hint]
-[docs]heal[/docs]
+[hint]Определите функцию [code]heal()[/code] с помощью [code]func[/code][/hint]
+[hint]Первая строка: [code]func heal(amount):[/code][/hint]
 [/practice]
+
 [/lesson]
