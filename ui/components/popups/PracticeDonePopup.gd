@@ -2,8 +2,7 @@ extends ColorRect
 
 signal accepted
 
-const BACKGROUND_FADE_DURATION := 0.3
-const CLASH_IN_DURATION := 0.2
+const FADE_DURATION := 0.25
 
 var _raw_summary := ""
 var do_fade_background_on_exit := true
@@ -33,20 +32,27 @@ var _scene_tween: Tween
 
 func _ready() -> void:
 	set_as_top_level(true)
-	self_modulate.a = 0.0
+	visible = false
+
+	_reset_offsets(_message_container)
+	_reset_offsets(_game_container)
 
 	# BBCode text is not autotranslated, so we do this to preserve the initial value.
 	# FIXME: Some weird Windows issue, replace before translating so matching works.
 	_raw_summary = _summary2_label.text.replace("\r\n", "\n")
 	_summary2_label.text = tr(_raw_summary)
 
-	_message_anchors.custom_minimum_size = _message_container.custom_minimum_size
-	var offscreen_offset := -get_viewport_rect().size.x
-	_message_container.offset_left = offscreen_offset
-	_message_container.offset_right = offscreen_offset
-
 	_move_on_button.pressed.connect(fade_out)
 	_stay_button.pressed.connect(hide)
+
+
+func _reset_offsets(control: Control) -> void:
+	if not control:
+		return
+	control.offset_left = 0.0
+	control.offset_right = 0.0
+	control.offset_top = 0.0
+	control.offset_bottom = 0.0
 
 
 func _notification(what: int) -> void:
@@ -64,34 +70,29 @@ func fade_in(game_container: Control) -> void:
 	z_index = 100
 	z_as_relative = false
 
-	# Adjust the sizing to account for the game container.
-	_game_anchors.custom_minimum_size = game_container.size
-	var offscreen_offset := get_viewport_rect().size.x
-	_game_container.offset_left = offscreen_offset
-	_game_container.offset_right = offscreen_offset
+	_reset_offsets(_message_container)
+	_reset_offsets(_game_container)
 
-	var message_offscreen_offset := -get_viewport_rect().size.x
-	_message_container.offset_left = message_offscreen_offset
-	_message_container.offset_right = message_offscreen_offset
+	var vp_size := get_viewport_rect().size
+	if is_instance_valid(game_container) and vp_size.x >= 1100.0:
+		_game_anchors.visible = true
+		_game_anchors.custom_minimum_size = game_container.size
+		var game_view = game_container.find_child("GameView") as GameView
+		if game_view and game_view.get_viewport_override():
+			_game_texture.texture = game_view.get_viewport_override().get_texture()
+	else:
+		_game_anchors.visible = false
 
 	_layout_container.reset_size()
 	_layout_container.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)
 	_layout_container.pivot_offset = _layout_container.size / 2
 
-	# Set the texture for the output replication safely.
-	var game_view = game_container.find_child("GameView") as GameView
-	if game_view and game_view.get_viewport_override():
-		_game_texture.texture = game_view.get_viewport_override().get_texture()
+	modulate.a = 0.0
+	show()
 
-	# Fade in the background.
 	_scene_tween = create_tween().set_parallel()
-	_scene_tween.tween_property(self, "self_modulate:a", 1.0, BACKGROUND_FADE_DURATION).from(0.0)
-
-	# Then move the message and the game together to clash at the center.
-	_animate_margin(_message_container, "offset_left", 0.0, CLASH_IN_DURATION, BACKGROUND_FADE_DURATION)
-	_animate_margin(_message_container, "offset_right", 0.0, CLASH_IN_DURATION, BACKGROUND_FADE_DURATION)
-	_animate_margin(_game_container, "offset_left", 0.0, CLASH_IN_DURATION, BACKGROUND_FADE_DURATION)
-	_animate_margin(_game_container, "offset_right", 0.0, CLASH_IN_DURATION, BACKGROUND_FADE_DURATION)
+	_scene_tween.tween_property(self, "modulate:a", 1.0, FADE_DURATION).from(0.0)
+	_scene_tween.tween_property(_layout_container, "scale", Vector2.ONE, FADE_DURATION).from(Vector2(0.9, 0.9)).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 	_move_on_button.grab_focus()
 
@@ -101,29 +102,13 @@ func fade_out() -> void:
 		_scene_tween.kill()
 
 	_scene_tween = create_tween().set_parallel()
+	_scene_tween.tween_property(self, "modulate:a", 0.0, FADE_DURATION).from(1.0)
+	_scene_tween.tween_property(_layout_container, "scale", Vector2(0.9, 0.9), FADE_DURATION).from(Vector2.ONE).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 
-	# The order is opposite to fade in. First "un-clash" the message and the game view.
-	var message_offscreen_offset := -get_viewport_rect().size.x
-	_animate_margin(_message_container, "offset_left", message_offscreen_offset, CLASH_IN_DURATION)
-	_animate_margin(_message_container, "offset_right", message_offscreen_offset, CLASH_IN_DURATION)
-
-	var game_offscreen_offset := get_viewport_rect().size.x
-	_animate_margin(_game_container, "offset_left", game_offscreen_offset, CLASH_IN_DURATION)
-	_animate_margin(_game_container, "offset_right", game_offscreen_offset, CLASH_IN_DURATION)
-
-	# Fade out the background unless another completion popup is replacing this one.
-	if do_fade_background_on_exit:
-		_scene_tween.chain().tween_property(self, "self_modulate:a", 0.0, BACKGROUND_FADE_DURATION).from(1.0)
-
-	_scene_tween.tween_callback(_on_fade_out_completed).set_delay(
-		CLASH_IN_DURATION + (BACKGROUND_FADE_DURATION if do_fade_background_on_exit else 0.0)
-	)
-
-
-func _animate_margin(control: Control, margin_name: String, to_value: float, duration: float, delay: float = 0.0) -> void:
-	_scene_tween.tween_property(control, margin_name, to_value, duration).from(control.get(margin_name)).set_ease(Tween.EASE_OUT).set_delay(delay)
+	_scene_tween.chain().tween_callback(_on_fade_out_completed)
 
 
 func _on_fade_out_completed() -> void:
 	hide()
+	modulate.a = 1.0
 	accepted.emit()

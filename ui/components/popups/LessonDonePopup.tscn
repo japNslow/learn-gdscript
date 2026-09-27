@@ -9,20 +9,8 @@
 [ext_resource type="StyleBox" uid="uid://bsrxxsifsyu4k" path="res://ui/theme/styles/focus_accent.tres" id="9"]
 [ext_resource type="StyleBox" uid="uid://dhdt5bfr2nel5" path="res://ui/theme/styles/button_outline_large_accent.tres" id="13"]
 
-[sub_resource type="Shader" id="24"]
-code = "shader_type canvas_item;
-render_mode blend_add;
-
-uniform float thickness = 1.0;
-
-void vertex() {
-    VERTEX.y *= (1.0 - INSTANCE_CUSTOM.y) * 2.0;
-	VERTEX.x *= thickness;
-}"
-
-[sub_resource type="ShaderMaterial" id="23"]
-shader = SubResource("24")
-shader_parameter/thickness = 2.0
+[sub_resource type="CanvasItemMaterial" id="23"]
+blend_mode = 1
 
 [sub_resource type="Gradient" id="20"]
 offsets = PackedFloat32Array(0, 0.516355, 1)
@@ -37,10 +25,6 @@ fill_to = Vector2(1, 1)
 [sub_resource type="Curve" id="Curve_qcsph"]
 _data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(0.06878307, 1), 0.0, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="ShaderMaterial" id="26"]
-shader = SubResource("24")
-shader_parameter/thickness = 3.0
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_d0mvg"]
 gradient = SubResource("20")
@@ -76,7 +60,7 @@ scale_amount_max = 5.5
 scale_amount_curve = SubResource("Curve_qcsph")
 
 [node name="ThickParticles" type="CPUParticles2D" parent="." unique_id=1095404079]
-material = SubResource("26")
+material = SubResource("23")
 position = Vector2(960, 540)
 amount = 4
 texture = SubResource("GradientTexture2D_d0mvg")
