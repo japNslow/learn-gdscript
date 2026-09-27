@@ -82,7 +82,7 @@ class BuildInfo:
         self.base_url = os.environ.get(
             "url", "https://gdquest.github.io/learn-gdscript"
         )
-        is_release = self.git_branch == "release"
+        is_release = self.git_branch in ["release", "main"]
         if not is_release:
             self.base_url = f"{self.base_url}/{self.git_branch}"
 

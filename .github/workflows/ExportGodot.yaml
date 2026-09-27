@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches:
+      - main
       - release
       - staging
 
@@ -78,7 +79,7 @@ jobs:
         run: python3 build.py export ${{ matrix.platform }}
 
       - name: Push to itch.io
-        if: github.ref_name == 'release' || github.ref_name == 'staging'
+        if: (github.ref_name == 'release' || github.ref_name == 'staging') && env.BUTLER_API_KEY != ''
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
           ITCHIO_USERNAME: ${{ secrets.ITCHIO_USERNAME }}
@@ -103,13 +104,11 @@ jobs:
 
   deploy-pages:
     name: Deploy web build to GitHub Pages
-    if: github.ref_name == 'release' || github.ref_name == 'staging'
+    if: github.ref_name == 'release' || github.ref_name == 'staging' || github.ref_name == 'main'
     needs: export
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    environment:
-      name: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v7.0.1
@@ -122,8 +121,8 @@ jobs:
           name: build-web
           path: build/web
 
-      - name: Deploy release web build
-        if: github.ref_name == 'release'
+      - name: Deploy web build
+        if: github.ref_name == 'release' || github.ref_name == 'main'
         # 4.8.0 pinned commit
         uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f
         with:
@@ -145,7 +144,7 @@ jobs:
 
   publish:
     name: Publish builds
-    if: github.ref_name == 'release' || github.ref_name == 'staging'
+    if: github.ref_name == 'release'
     needs: export
     runs-on: ubuntu-latest
     permissions:
