@@ -111,7 +111,7 @@ class BuildInfo:
             "web": "build/web",
         }
         base = BUILD_DIRECTORIES[platform]
-        if platform == "web" and self.git_branch != "release":
+        if platform == "web" and self.git_branch not in ["release", "main"]:
             return f"{base}/{self.git_branch}"
         return base
 

@@ -130,7 +130,7 @@ jobs:
           branch: gh-pages
           folder: build/web
           target-folder: ''
-          clean: false
+          clean: true
 
       - name: Deploy staging web build
         if: github.ref_name == 'staging'
