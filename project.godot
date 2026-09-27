@@ -58,6 +58,11 @@ enabled=PackedStringArray("res://addons/color_picker_presets/plugin.cfg", "res:/
 
 theme/custom="uid://b03mml1yyrchy"
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://i18n/ru/application.po", "res://i18n/ru/course.po", "res://i18n/ru/supplementary.po")
+locale/fallback="ru"
+
 [input]
 
 save={

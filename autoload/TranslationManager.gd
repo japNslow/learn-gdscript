@@ -54,6 +54,11 @@ var _loaded_translations := []
 func _ready() -> void:
 	var current_profile := UserProfiles.get_profile()
 	var target_lang := current_profile.language if not current_profile.language.is_empty() else DEFAULT_LOCALE
+	if target_lang.is_empty() or target_lang == "en":
+		target_lang = "ru"
+		current_profile.language = "ru"
+		current_profile.save()
+	current_language = ""
 	set_language(target_lang)
 
 	_update_language_completeness()
@@ -176,13 +181,17 @@ func set_language(language_code: String) -> void:
 		return
 
 	for file in fs.get_files():
-		if not file.get_extension() == PO_EXTENSION:
+		var ext := file.get_extension()
+		if ext != PO_EXTENSION and ext != "translation" and not file.ends_with(".po.remap"):
 			continue
 
-		var full_path := locale_dir_path.path_join(file)
+		var clean_file := file.trim_suffix(".remap")
+		var full_path := locale_dir_path.path_join(clean_file)
 		if not ResourceLoader.exists(full_path):
-			printerr("Language file at '%s' is not recognized as a valid resource." % [full_path])
-			continue
+			full_path = locale_dir_path.path_join(file)
+			if not ResourceLoader.exists(full_path):
+				printerr("Language file at '%s' is not recognized as a valid resource." % [full_path])
+				continue
 
 		var position := ResourceLoader.load(full_path, "Translation") as Translation
 		if not position:
