@@ -66,6 +66,10 @@ func set_min_size(value: Vector2) -> void:
 
 
 func popup() -> void:
+	position = Vector2.ZERO
+	size = get_viewport_rect().size
+	z_index = 100
+	z_as_relative = false
 	show()
 	_root_container.size = _root_container.custom_minimum_size
 	_root_container.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)

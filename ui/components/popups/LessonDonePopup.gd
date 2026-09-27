@@ -41,14 +41,19 @@ func set_incomplete(incomplete: bool) -> void:
 
 
 func popup_centered() -> void:
+	position = Vector2.ZERO
+	size = get_viewport_rect().size
+	z_index = 100
+	z_as_relative = false
+
 	_particles.position = size / 2
 	_thick_particles.position = size / 2
 
-	_popup_container.size = _popup_container.custom_minimum_size
-	_popup_container.scale = Vector2(FADE_IN_START_SCALE, FADE_IN_START_SCALE)
-	show()
+	_popup_container.reset_size()
 	_popup_container.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)
 	_popup_container.pivot_offset = _popup_container.size / 2
+	_popup_container.scale = Vector2(FADE_IN_START_SCALE, FADE_IN_START_SCALE)
+	show()
 
 	var scene_tween = create_tween()
 	scene_tween.tween_property(_popup_container, "scale", Vector2(1.0, 1.0), FADE_IN_DURATION).from(_popup_container.scale).set_trans(Tween.TRANS_CUBIC)

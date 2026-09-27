@@ -59,15 +59,29 @@ func fade_in(game_container: Control) -> void:
 	if _scene_tween:
 		_scene_tween.kill()
 
+	position = Vector2.ZERO
+	size = get_viewport_rect().size
+	z_index = 100
+	z_as_relative = false
+
 	# Adjust the sizing to account for the game container.
 	_game_anchors.custom_minimum_size = game_container.size
 	var offscreen_offset := get_viewport_rect().size.x
 	_game_container.offset_left = offscreen_offset
 	_game_container.offset_right = offscreen_offset
-	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+
+	var message_offscreen_offset := -get_viewport_rect().size.x
+	_message_container.offset_left = message_offscreen_offset
+	_message_container.offset_right = message_offscreen_offset
+
+	_layout_container.reset_size()
 	_layout_container.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)
-	# Set the texture for the output replication.
-	_game_texture.texture = (game_container.find_child("GameView") as GameView).get_viewport_override().get_texture()
+	_layout_container.pivot_offset = _layout_container.size / 2
+
+	# Set the texture for the output replication safely.
+	var game_view = game_container.find_child("GameView") as GameView
+	if game_view and game_view.get_viewport_override():
+		_game_texture.texture = game_view.get_viewport_override().get_texture()
 
 	# Fade in the background.
 	_scene_tween = create_tween().set_parallel()

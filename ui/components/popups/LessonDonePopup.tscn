@@ -53,10 +53,11 @@ _data = [Vector2(0, 0), 0.0, 15.1674, 0, 0, Vector2(0.0419426, 1), 0.0, 0.0, 0, 
 point_count = 2
 
 [node name="LessonDonePopup" type="ColorRect" unique_id=357865209]
+z_index = 100
+z_as_relative = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-pivot_offset = Vector2(2826, 416)
 color = Color(0.0352941, 0.0392157, 0.129412, 0.627451)
 script = ExtResource("2")
 
