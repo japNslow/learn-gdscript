@@ -171,9 +171,9 @@ func _show_answer(gave_correct_answer := true) -> void:
 		quiz_passed.emit()
 	else:
 		if _quiz_data.get_answer_count() == 1:
-			_result_label.text = "The answer was:"
+			_result_label.text = tr("The answer was:")
 		else:
-			_result_label.text = "The answers were:"
+			_result_label.text = tr("The answers were:")
 		_correct_answer_label.show()
 		_correct_answer_label.text = _quiz_data.get_correct_answer_string()
 		quiz_skipped.emit()

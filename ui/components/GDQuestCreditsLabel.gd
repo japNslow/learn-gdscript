@@ -4,6 +4,7 @@ extends Control
 
 
 func _ready():
+	_rich_text_label.text = tr(_rich_text_label.text)
 	_rich_text_label.meta_clicked.connect(_on_meta_clicked)
 
 

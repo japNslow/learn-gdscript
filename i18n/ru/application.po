@@ -2265,3 +2265,42 @@ msgstr "ПРОДОЛЖИТЬ"
 
 msgid "Learn to Code From Zero with Godot"
 msgstr "Научитесь программировать с нуля с Godot"
+
+msgid "The answer was:"
+msgstr "Правильный ответ:"
+
+msgid "The answers were:"
+msgstr "Правильные ответы:"
+
+msgid ""
+"You've used the provided solution.\n"
+"This practice will not count towards your course progress."
+msgstr ""
+"Вы использовали предложенное решение.\n"
+"Это упражнение не будет учитываться в прогрессе курса."
+
+msgid "line %d"
+msgstr "строка %d"
+
+msgid "ASSERT"
+msgstr "ПРОВЕРКА"
+
+msgid "ERROR"
+msgstr "ОШИБКА"
+
+msgid "WARNING"
+msgstr "ПРЕДУПРЕЖДЕНИЕ"
+
+msgid "You will lose your progress on this practice!"
+msgstr "Вы потеряете свой прогресс в этом упражнении!"
+
+msgid ""
+"[center]Are you sure you want to reset the course progress?\n"
+"This cannot be undone.[/center]"
+msgstr ""
+"[center]Вы уверены, что хотите сбросить прогресс курса?\n"
+"Это действие нельзя отменить.[/center]"
+
+msgid "To order"
+msgstr "Предзаказ"
+

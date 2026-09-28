@@ -51,24 +51,24 @@ func _update_visuals() -> void:
 		_external_label.show()
 	else:
 		_external_label.hide()
-		_location_label.text = "line %d" % [origin_line + 1]
+		_location_label.text = tr("line %d") % [origin_line + 1]
 		_location_row.show()
 
 	match message_severity:
 		MessageBus.MESSAGE_TYPE.ASSERT:
-			_severity_label.text = "ASSERT"
+			_severity_label.text = tr("ASSERT")
 			_message_label.add_theme_color_override("font_color", Color(1, 0.094118, 0.321569))
 			_severity_label.add_theme_color_override("font_color", Color(1, 0.094118, 0.321569))
 		MessageBus.MESSAGE_TYPE.ERROR:
-			_severity_label.text = "ERROR"
+			_severity_label.text = tr("ERROR")
 			_message_label.add_theme_color_override("font_color", Color(1, 0.094118, 0.321569))
 			_severity_label.add_theme_color_override("font_color", Color(1, 0.094118, 0.321569))
 		MessageBus.MESSAGE_TYPE.WARNING:
-			_severity_label.text = "WARNING"
+			_severity_label.text = tr("WARNING")
 			_message_label.add_theme_color_override("font_color", Color(1, 0.960784, 0.25098))
 			_severity_label.add_theme_color_override("font_color", Color(1, 0.960784, 0.25098))
 		_:
-			_severity_label.text = "INFO"
+			_severity_label.text = tr("INFO")
 			_message_label.add_theme_color_override(
 				"font_color",
 				Color(0.572549, 0.560784, 0.721569),

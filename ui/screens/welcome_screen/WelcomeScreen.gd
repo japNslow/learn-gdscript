@@ -18,6 +18,13 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	_title_link_label.text = tr(_title_link_label.text)
+	_start_button.text = tr(_start_button.text)
+	_outliner_button.text = tr(_outliner_button.text)
+	_settings_button.text = tr(_settings_button.text)
+	if is_instance_valid(_quit_button):
+		_quit_button.text = tr(_quit_button.text)
+
 	for button: BaseButton in _buttons_to_disable:
 		button.disabled = true
 

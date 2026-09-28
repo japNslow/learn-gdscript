@@ -5728,3 +5728,30 @@ msgstr "Тип [code]String[/code] означает, что вам нужно в
 
 msgid "Learn to Code From Zero with Godot"
 msgstr "Изучаем программирование с нуля с Godot"
+
+msgid ""
+"When healing the character twice by 40 points, the health should go up to 60, then 80. Instead, we got %s.\n"
+"Are you using the amount parameter?"
+msgstr ""
+"При двукратном лечении персонажа на 40 очков здоровье должно подняться до 60, затем до 80. Вместо этого получено %s.\n"
+"Вы используете параметр amount?"
+
+msgid ""
+"When damaging the character three times by 10 points, the health should go down to 10, then 0. Instead, we got %s.\n"
+"Are you using the amount parameter?"
+msgstr ""
+"При нанесении персонажу урона трижды по 10 очков здоровье должно опуститься до 10, затем до 0. Вместо этого получено %s.\n"
+"Вы используете параметр amount?"
+
+msgid "The number of items displayed does not match the number of items in the inventory. Did you display each item exactly once?"
+msgstr "Количество отображённых предметов не совпадает с количеством предметов в инвентаре. Вы отобразили каждый предмет ровно один раз?"
+
+msgid "Your code does not use a for loop to call display_item(). Please make sure you display each item inside the loop."
+msgstr "Ваш код не использует цикл for для вызова display_item(). Убедитесь, что вызываете display_item() внутри цикла."
+
+msgid "The number of units displayed does not match the number of units in the units dictionary. Did you place each unit exactly once?"
+msgstr "Количество отображённых юнитов не совпадает с количеством юнитов в словаре units. Вы разместили каждого юнита ровно один раз?"
+
+msgid "Your code does not use a for loop to call place_unit(). Please make sure you place each unit inside the loop."
+msgstr "Ваш код не использует цикл for для вызова place_unit(). Убедитесь, что вызываете place_unit() внутри цикла."
+

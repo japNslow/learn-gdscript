@@ -186,9 +186,9 @@ func set_status_icon(status: int) -> void:
 			_status_icon.hide()
 		Status.COMPLETED_BEFORE:
 			_status_icon.texture = STATUS_ICON_COMPLETED_BEFORE
-			_status_icon.tooltip_text = "You've completed this practice before."
+			_status_icon.tooltip_text = tr("You've completed this practice before.")
 			_status_icon.show()
 		Status.SOLUTION_USED:
 			_status_icon.texture = STATUS_ICON_SOLUTION_USED
-			_status_icon.tooltip_text = "You've used the provided solution.\nThis practice will not count towards your course progress."
+			_status_icon.tooltip_text = tr("You've used the provided solution.\nThis practice will not count towards your course progress.")
 			_status_icon.show()
