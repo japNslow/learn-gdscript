@@ -36,6 +36,9 @@ func _ready() -> void:
 
 	_reset_offsets(_message_container)
 	_reset_offsets(_game_container)
+	if _game_anchors:
+		_game_anchors.visible = false
+		_game_anchors.custom_minimum_size = Vector2.ZERO
 
 	# BBCode text is not autotranslated, so we do this to preserve the initial value.
 	# FIXME: Some weird Windows issue, replace before translating so matching works.
@@ -61,7 +64,7 @@ func _notification(what: int) -> void:
 			_summary2_label.text = tr(_raw_summary)
 
 
-func fade_in(game_container: Control) -> void:
+func fade_in(_game_container: Control = null) -> void:
 	if _scene_tween:
 		_scene_tween.kill()
 
@@ -71,17 +74,9 @@ func fade_in(game_container: Control) -> void:
 	z_as_relative = false
 
 	_reset_offsets(_message_container)
-	_reset_offsets(_game_container)
-
-	var vp_size := get_viewport_rect().size
-	if is_instance_valid(game_container) and vp_size.x >= 1100.0:
-		_game_anchors.visible = true
-		_game_anchors.custom_minimum_size = game_container.size
-		var game_view = game_container.find_child("GameView") as GameView
-		if game_view and game_view.get_viewport_override():
-			_game_texture.texture = game_view.get_viewport_override().get_texture()
-	else:
+	if _game_anchors:
 		_game_anchors.visible = false
+		_game_anchors.custom_minimum_size = Vector2.ZERO
 
 	_layout_container.reset_size()
 	_layout_container.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)

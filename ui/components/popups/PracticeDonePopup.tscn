@@ -26,9 +26,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -310.0
+offset_left = -300.0
 offset_top = -202.5
-offset_right = 310.0
+offset_right = 300.0
 offset_bottom = 202.5
 theme_override_constants/separation = 20
 alignment = 1
@@ -138,6 +138,7 @@ theme_override_styles/focus = ExtResource("10")
 text = "Continue"
 
 [node name="GameAnchors" type="Control" parent="Layout" unique_id=770576928]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
